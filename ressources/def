@@ -1,0 +1,156 @@
+//Création d'un utilisateur
+POST http://localhost/utilisateur
+
+réception : 
+{
+   nom,
+   prenom,
+   login,
+   mot_de_passe,
+   naissance
+}
+envoie :
+valide
+{
+	status : int,
+	user : objet
+}
+invalide
+{
+	status : int,
+	erreur : string
+}
+
+//authentification
+GET http://localhost/utilisateur/authentification
+réception : 
+{
+   login,
+   mot_de_passe
+}
+
+envoie :
+valide
+{
+	status : int,
+	user : objet
+}
+invalide
+{
+	status : int,
+	erreur : string
+}
+
+//Récupération d'un utilisateur
+GET http://localhost/utilisateur/{id}
+envoie :
+valide
+{
+	status : int,
+	user : objet + s'assurer que les profils sont dans l'objet utilisateur
+}
+invalide
+{
+	status : int,
+	erreur : string
+}
+
+
+//PUT ET DELETE des utilisateurs à définir
+
+//ajout d'un profil
+POST http://localhost/utilisateur/{id}/profil/{id}
+renvoie :
+valide
+{
+	status : int,
+}
+invalide
+{
+	status : int,
+	erreur : string
+}
+
+//Suppression d'un profil
+DELETE http://localhost/utilisateur/{id}/profil/{id}
+réception : 
+{
+	id_profil : int,
+	id_user : int
+}
+renvoie :
+valide
+{
+	status : int,
+}
+invalide
+{
+	status : int,
+	erreur : string
+}
+
+
+//Récupération GET des tables utilisateur_profil + type_releve
+
+
+//Ajout d'un relevé médicale
+POST http://localhost/releve
+réception : 
+{
+	releve_medicale : objet
+}
+renvoie :
+valide
+{
+	status : int,
+	releve_medicale : objet
+}
+invalide
+{
+	status : int,
+	erreur : string
+}
+
+//modifier un relevé
+PUT http://localhost/releve/{id}
+réception : 
+{
+	releve_medicale : objet
+}
+renvoie :
+valide
+{
+	status : int,
+	releve_medicale : objet
+}
+invalide
+{
+	status : int,
+	erreur : string
+}
+
+//supprimer un relevé
+DELETE http://localhost/releve/{id}
+renvoie :
+valide
+{
+	status : int,
+}
+invalide
+{
+	status : int,
+	erreur : string
+}
+
+
+//Récupération d'un relevé
+GET http://localhost/releve/{id}
+
+//Liste des relevé d'un utilisateur => faire une pagination
+GET http://localhost/releve/utilisateur/{id}
+
+//Récupération des analyses
+GET http://localhost/analyse/utilisateur/{id}
+
+//Récupérer l'analyse d'un releve
+GET http://localhost/analyse/releve/{id}
