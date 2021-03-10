@@ -86,6 +86,30 @@ module.exports = () => {
         });
     });
 
+    //ajout d'un profil à l'utilisateur
+    router.post('/:iduser/profil/:idprofil', (req , res) => {
+        models.Utilisateur.findByPk(req.params.iduser).then(user => {
+            user.addProfil(req.params.idprofil);
+            user.save();
+        }).then(() => {
+            res.status(200).send(true);
+        }).catch((error) => {
+            res.sendStatus(500);
+        });
+    });
+
+    //suppression d'un profil à l'utilisateur
+    router.delete('/:iduser/profil/:idprofil', (req , res) => {
+        models.Utilisateur.findByPk(req.params.iduser).then(user => {
+            user.removeProfil(req.params.idprofil);
+            user.save();
+        }).then(() => {
+            res.status(200).send(true);
+        }).catch((error) => {
+            res.sendStatus(500);
+        });
+    });
+
     
     return router;
 };
