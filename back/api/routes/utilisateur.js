@@ -94,7 +94,7 @@ module.exports = () => {
         }).then(() => {
             res.status(200).send(true);
         }).catch((error) => {
-            res.sendStatus(500);
+            res.status(500).send(error);
         });
     });
 
@@ -106,7 +106,7 @@ module.exports = () => {
         }).then(() => {
             res.status(200).send(true);
         }).catch((error) => {
-            res.sendStatus(500);
+            res.status(500).send(error);
         });
     });
 

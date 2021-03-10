@@ -99,7 +99,7 @@ renvoie :
 valide
 {
 	status : 200,
-	user : objet
+	true
 }
 invalide
 {
@@ -109,19 +109,15 @@ invalide
 
 //Suppression d'un profil
 DELETE http://localhost/utilisateur/{id}/profil/{id}
-réception : 
-{
-	id_profil : int,
-	id_user : int
-}
 renvoie :
 valide
 {
-	status : int,
+	status : 200,
+	true
 }
 invalide
 {
-	status : int,
+	status : 500,
 	erreur : string
 }
 
