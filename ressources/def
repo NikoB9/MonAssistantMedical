@@ -12,12 +12,12 @@ réception :
 envoie :
 valide
 {
-	status : int,
+	status : 200,
 	user : objet
 }
 invalide
 {
-	status : int,
+	status : 500,
 	erreur : string
 }
 
@@ -26,18 +26,18 @@ GET http://localhost/utilisateur/authentification
 réception : 
 {
    login,
-   mot_de_passe
+   mdp
 }
 
 envoie :
 valide
 {
-	status : int,
-	user : objet
+	status : 200,
+	user : objet => null si pas d'utilisateur existant
 }
 invalide
 {
-	status : int,
+	status : 500,
 	erreur : string
 }
 
@@ -46,28 +46,64 @@ GET http://localhost/utilisateur/{id}
 envoie :
 valide
 {
-	status : int,
+	status : 200,
 	user : objet + s'assurer que les profils sont dans l'objet utilisateur
 }
 invalide
 {
-	status : int,
+	status : 500,
 	erreur : string
 }
 
 
-//PUT ET DELETE des utilisateurs à définir
+//modif utilisateur
+PUT http://localhost/utilisateur/
+
+réception : 
+{
+   id,
+   nom,
+   prenom,
+   login,
+   mot_de_passe,
+   naissance
+}
+envoie :
+valide
+{
+	status : 200,
+	true
+}
+invalide
+{
+	status : 500,
+	erreur : string
+}
+
+//suppression utilisateur
+DELETE http://localhost/utilisateur/{id}
+valide
+{
+	status : 200,
+	true
+}
+invalide
+{
+	status : 500,
+	erreur : string
+}
 
 //ajout d'un profil
 POST http://localhost/utilisateur/{id}/profil/{id}
 renvoie :
 valide
 {
-	status : int,
+	status : 200,
+	user : objet
 }
 invalide
 {
-	status : int,
+	status : 500,
 	erreur : string
 }
 

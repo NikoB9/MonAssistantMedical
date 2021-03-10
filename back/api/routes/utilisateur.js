@@ -16,6 +16,29 @@ module.exports = () => {
         });;
     });
 
+    //Authentification d'un utilisateur
+    router.get('/authentification', (req, res) => {
+        models.Utilisateur.findOne({
+
+            where: {
+                login: req.body.login,
+                mot_de_passe: req.body.mdp
+            },
+            include: [
+                {
+                    model: models.Profil,
+                }
+            ]
+
+        }).then((user) => {
+            console.log(user);
+            res.status(200).send(user);
+        }).catch((error) => {
+            console.log(error);
+            res.sendStatus(500)
+        });
+    });
+
     //Récupération des informations d'un utilisateur + ses profils
     router.get('/:id', (req, res) => {
         models.Utilisateur.findOne({
@@ -35,64 +58,34 @@ module.exports = () => {
         });
     });
 
-    //Authentification d'un utilisateur
-    router.get('/authentification', (req, res) => {
-        models.Utilisateur.count({
+    //modification d'un utilisateur
+    router.put('/', (req, res) => {
 
+        models.Utilisateur.update(req.body, {
             where: {
-                login: req.body.login,
-                mot_de_passe: req.body.mdp
+                id: req.body.id
             }
-
-        }).then((user) => {
-            console.log(user);
-
-            res.status(200).send(user);
+        }).then((response) => {
+            console.log(response);
+            res.status(200).send(true);
         }).catch((error) => {
-            console.log(error);
-            res.sendStatus(500)
+            res.status(500).send(error);
         });
     });
 
+    //suppression d'un utilisateur
     router.delete('/:id', (req , res) => {
-        models.Authors.destroy({
+        models.Utilisateur.destroy({
             where: {
                 id: req.params.id
             }
         }).then(() => {
             res.status(200).send(true);
         }).catch((error) => {
-            res.sendStatus(500);
+            res.status(500).send(error);
         });
     });
 
-    router.put('/', (req, res) => {
-
-
-        //update
-        models.Authors.update(req.body, {
-            where: {
-                id: req.body.id
-            }
-        }).then(() => {
-            res.status(200).send(true);
-        }).catch((error) => {
-            res.sendStatus(500);
-        });
-    });
-
-    //perso : auteurs d'un livre 
-    router.get('/book/:id', (req, res) => {
-        models.Authors.findAll({ 
-        	include: [{ model: models.Books, where: {id: req.params.id}, required: true }] 
-
-    	}).then((authors) => {
-            res.send(authors);
-        }).catch((error) => {
-            console.log(error);
-            res.sendStatus(500)
-        });
-    });
-
+    
     return router;
 };
