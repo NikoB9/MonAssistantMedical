@@ -18,7 +18,16 @@ module.exports = () => {
 
     //Récupération des informations d'un utilisateur + ses profils
     router.get('/:id', (req, res) => {
-        models.Utilisateur.findByPk(req.params.id).then((user) => {
+        models.Utilisateur.findOne({
+
+            where: { id: req.params.id },
+            include: [
+                {
+                    model: models.Profil,
+                }
+            ]
+
+        }).then((user) => {
             res.status(200).send(user);
         }).catch((error) => {
             console.log(error);
