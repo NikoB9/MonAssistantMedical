@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   var Analyse = sequelize.define('Analyse', {
     mini: DataTypes.DOUBLE,
     maxi: DataTypes.DOUBLE
-  });
+  }, { tableName: 'Analyse' });
 
   Analyse.associate = function(models) {
     models.Analyse.belongsTo(models.Dangerosite);

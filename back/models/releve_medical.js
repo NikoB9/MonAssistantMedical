@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   var ReleveMedical = sequelize.define('ReleveMedical', {
     prise_de_mesure: DataTypes.DATE,
     valeur: DataTypes.DOUBLE
-  });
+  }, { tableName: 'ReleveMedical' });
 
   ReleveMedical.associate = function(models) {
     models.ReleveMedical.belongsTo(models.Utilisateur);

@@ -4,17 +4,9 @@ const models = require('../../models');
 
 module.exports = () => {
 
-    router.get('/', (req, res) => {
-        models.Authors.findAll().then((authors) => {
-            res.send(authors);
-        }).catch((error) => {
-            console.log(error);
-            res.sendStatus(500)
-        });
-    });
-
+    //Création d'un utilisateur
     router.post('/', (req, res) => {
-        models.Authors.create(req.body).then(() => {
+        models.Utilisateur.create(req.body).then(() => {
             res.status(200).send(true);
         }).catch((error) => {
             console.log(error);

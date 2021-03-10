@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     login: DataTypes.STRING,
     mot_de_passe: DataTypes.STRING,
     naissance: DataTypes.DATE
-  });
+  }, { tableName: 'Utilisateur' });
 
   Utilisateur.associate = function(models) {
     models.Utilisateur.belongsToMany(models.Profil, { through: 'utilisateur_profils' })
