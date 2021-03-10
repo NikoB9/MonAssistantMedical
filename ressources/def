@@ -121,7 +121,6 @@ renvoie :
 valide
 {
 	status : int,
-	releve_medicale : objet
 }
 invalide
 {
