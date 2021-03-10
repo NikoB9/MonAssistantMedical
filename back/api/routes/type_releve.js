@@ -4,72 +4,54 @@ const models = require('../../models');
 
 module.exports = () => {
 
+ 
+    //récupération des types de relevés
     router.get('/', (req, res) => {
-        models.Authors.findAll().then((authors) => {
-            res.send(authors);
+        models.TypeReleve.findAll().then((typereleve) => {
+            res.status(200).send(typereleve);
         }).catch((error) => {
             console.log(error);
-            res.sendStatus(500)
+            res.status(500).send(error);
         });
     });
+    
 
+    //ajout d'un type de relevé
     router.post('/', (req, res) => {
-        models.Authors.create(req.body).then(() => {
+        models.TypeReleve.create(req.body).then(() => {
             res.status(200).send(true);
         }).catch((error) => {
             console.log(error);
-            res.sendStatus(500)
+            res.status(500).send(error);
         });;
     });
 
-    router.get('/:id', (req, res) => {
-        models.Authors.findByPk(req.params.id).then((author) => {
-            res.send(author);
+
+    //supression d'un type de relevé
+    router.delete('/:id', async(req, res) => {
+        models.TypeReleve.destroy({
+            where : {
+                id : req.params.id
+            }
+        }).then(() => {
+            res.status(200).send(true);
         }).catch((error) => {
             console.log(error);
-            res.sendStatus(500)
+            res.status(500).send(error);
         });
     });
 
-    router.delete('/:id', (req , res) => {
-        models.Authors.destroy({
-            where: {
+    //modification du type de relevé
+    router.put('/:id', async(req, res) => {
+        delete req.body.title
+        models.TypeReleve.update(req.body, {
+            where : {
                 id: req.params.id
             }
-        }).then(() => {
-            res.status(200).send(true);
-        }).catch((error) => {
-            res.sendStatus(500);
         });
+        res.status(200).send(true);
     });
 
-    router.put('/', (req, res) => {
-
-
-        //update
-        models.Authors.update(req.body, {
-            where: {
-                id: req.body.id
-            }
-        }).then(() => {
-            res.status(200).send(true);
-        }).catch((error) => {
-            res.sendStatus(500);
-        });
-    });
-
-    //perso : auteurs d'un livre 
-    router.get('/book/:id', (req, res) => {
-        models.Authors.findAll({ 
-        	include: [{ model: models.Books, where: {id: req.params.id}, required: true }] 
-
-    	}).then((authors) => {
-            res.send(authors);
-        }).catch((error) => {
-            console.log(error);
-            res.sendStatus(500)
-        });
-    });
 
     return router;
 };

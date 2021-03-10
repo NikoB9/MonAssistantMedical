@@ -41,15 +41,15 @@ module.exports = {
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('now')
+        defaultValue: Sequelize.NOW
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('now')
+        defaultValue: Sequelize.NOW
       }
     }).then(function () {
-      queryInterface.sequelize.query("INSERT INTO analyse(mini, maxi, dangerositeId, typeReleveId, profilId)" +
+      queryInterface.sequelize.query("INSERT INTO Analyse(mini, maxi, dangerositeId, typeReleveId, profilId)" +
       // Vérifications IMC -- Adulte"
       "VALUES (0, 18.4, 1, 8, 2)," +
       "(18.5, 24.9, 2, 8, 2)," +

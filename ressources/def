@@ -90,7 +90,7 @@ invalide
 }
 
 
-//Récupération GET des tables profil + type_releve
+//Récupération GET des tables profil + type_releve + POST PUT DELETE
 
 
 //Ajout d'un relevé médicale
