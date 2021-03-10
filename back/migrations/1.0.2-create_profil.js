@@ -21,6 +21,8 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn('now')
       }
+    }).then(function () {
+      queryInterface.sequelize.query("INSERT INTO profil(id, label) VALUES(1, 'Cardiaque'), (2, 'Adulte');");
     });
   },
   down: (queryInterface, Sequelize) => {
