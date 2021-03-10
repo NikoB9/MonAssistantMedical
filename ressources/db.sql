@@ -56,7 +56,7 @@ INSERT INTO dangerosite(id, message, couleur) VALUES(1, "Insuffisance pondérale
 (12, "Glycémie normale", 1), (13, "Hyperglycémie modérée", 2), 
 (14, "Diabète", 3);
 
-CREATE TABLE releve_medicale(
+CREATE TABLE releve_medical(
    id INT AUTO_INCREMENT,
    prise_de_mesure DATETIME DEFAULT current_timestamp(),
    valeur DOUBLE NOT NULL,

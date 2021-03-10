@@ -5,3 +5,15 @@
  # Schéma de la base de données
 
 ![Alt text](ressources/MCD.PNG?raw=true "schéma bd")
+
+# Requis
+
+* node
+* mysql
+
+# Installation
+
+* Téléchargement du dossier git
+* cd chemin/projet/MonAssistantMedical/back/
+* npm install
+* npx sequelize db:migrate
