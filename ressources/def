@@ -145,11 +145,23 @@ invalide
 //Récupération d'un relevé
 GET http://localhost/releve/{id}
 
-//Liste des relevé d'un utilisateur => faire une pagination
+// Récupération des relevé en fonction d'un type
+GET http://localhost/releve?type=:type
+
+//Liste des relevé d'un utilisateur
 GET http://localhost/releve/utilisateur/{id}
 
-//Récupération des analyses
+//Liste des relevé d'un utilisateur avec une pagination par 5 relevés
+GET http://localhost/releve/page/:page/utilisateur/{id}
+
+//Récupération des analyses d'un utilisateur
 GET http://localhost/analyse/utilisateur/{id}
 
-//Récupérer l'analyse d'un releve
+//Récupérer les analyses d'un releve
 GET http://localhost/analyse/releve/{id}
+
+
+// filtre type + 2 grosses requêtes 
+
+// voir si pagination c'est ok
+// comment faire la doc

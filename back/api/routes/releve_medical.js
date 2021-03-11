@@ -31,6 +31,7 @@ module.exports = () => {
         }).then(() => {
             res.status(200).send(true);
         }).catch((error) => {
+            console.log(error);
             res.sendStatus(500).send(error);
         });
     });
@@ -43,18 +44,49 @@ module.exports = () => {
         }).then(() => {
             res.status(200).send(true);
         }).catch((error) => {
+            console.log(error);
             res.sendStatus(500).send(error);
         });
     });
 
     router.get('/:id', (req, res) => {
-        models.ReleveMedical.findOne({
-            where: { 
-                id: req.params.id 
-            }
-        }).then((response) => {
+        models.ReleveMedical.findByPk(req.params.id).then((response) => {
             res.status(200).send(response);
         }).catch((error) => {
+            console.log(error);
+            res.status(500).send(error);
+        });
+    });
+
+    router.get('/utilisateur/:id', (req, res) => {
+        models.ReleveMedical.findByPk(req.params.id).then((releves) => {
+            res.status(200).send(releves);
+        }).catch((error) => {
+            console.log(error);
+            res.status(500).send(error);
+        });
+    });
+    //localhost//releve/page/1/utilisateur/1
+
+    //localhost//utilisateur/1/releve/?page=1
+
+    router.get('/?page=:page/utilisateur/:id', (req, res) => {
+        NOMBRE_RELEVES_PAR_PAGE = 5
+        start = (req.params.page - 1)*NOMBRE_RELEVES_PAR_PAGE
+        end = (req.params.page)*NOMBRE_RELEVES_PAR_PAGE 
+        // req.query
+        console.log(req.params.page)
+
+        models.ReleveMedical.findAll({
+            offset: start,
+            limit: end,
+            where: { 
+                UtilisateurId: req.params.id
+            }
+        }).then((releves) => {
+            res.status(200).send(releves);
+        }).catch((error) => {
+            console.log(error);
             res.status(500).send(error);
         });
     });
