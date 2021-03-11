@@ -186,11 +186,5 @@ GET http://localhost/utilisateur/{id}/releve
 //Liste des relevé d'un utilisateur avec une pagination par 5 relevés possibilité de filtrer par un nom de type
 GET http://localhost/utilisateur/{id}/releve?page=:page&type=:type
 
-//Récupération des analyses d'un utilisateur
-GET http://localhost/analyse/utilisateur/{id}
-
 //Récupérer les analyses d'un releve
 GET http://localhost/analyse/releve/{id}
-
-
-// dernière grosse requête
