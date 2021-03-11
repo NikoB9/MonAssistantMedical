@@ -4,15 +4,17 @@ const models = require('../../models');
 
 module.exports = () => {
 
+ 
     //récupération des couleurs
     router.get('/', (req, res) => {
-        models.Couleur.findAll().then((couleurs) => {
-            res.send(couleurs);
+        models.Couleur.findAll().then((couleur) => {
+            res.status(200).send(couleur);
         }).catch((error) => {
             console.log(error);
-            res.sendStatus(500)
+            res.status(500).send(error);
         });
     });
+    
 
     //ajout d'une couleur
     router.post('/', (req, res) => {
@@ -20,9 +22,36 @@ module.exports = () => {
             res.status(200).send(true);
         }).catch((error) => {
             console.log(error);
-            res.sendStatus(500)
+            res.status(500).send(error);
         });;
     });
+
+
+    //supression d'une couleur
+    router.delete('/:id', async(req, res) => {
+        models.Couleur.destroy({
+            where : {
+                id : req.params.id
+            }
+        }).then(() => {
+            res.status(200).send(true);
+        }).catch((error) => {
+            console.log(error);
+            res.status(500).send(error);
+        });
+    });
+
+    //modification de la couleurs
+    router.put('/:id', async(req, res) => {
+        delete req.body.title
+        models.Couleur.update(req.body, {
+            where : {
+                id: req.params.id
+            }
+        });
+        res.status(200).send(true);
+    });
+    
 
     return router;
 };
