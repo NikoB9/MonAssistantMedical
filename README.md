@@ -2,7 +2,7 @@
 
  API permettant de créer une application d'assistance médicale.
 
- # Schéma de la base de données
+# Schéma de la base de données
 
 ![Alt text](ressources/MCD.PNG?raw=true "schéma bd")
 
@@ -13,14 +13,21 @@
 # Installation
 
 * Téléchargement du dossier git
-* cd chemin/projet/MonAssistantMedical/
-* docker-compose build
+```bash
+$ cd chemin/projet/MonAssistantMedical/
+$ docker-compose build
+```
 
 # Lancement de l'API
 
-* docker-compose up -d back
+```bash
+$ docker-compose up -d db
+$ docker-compose up -d back
+//attendre 5 secondes avant de migrer la base de données avec la commande suivante
+$ docker-compose run --rm back npx sequelize db:migrate
+```
 
-# Amélioration
+# Pistes d'amélioration
 
 * Chiffrement des mots de passes
 * Sécurisation des requêtes par login/mot de passe au lieu de l'id
