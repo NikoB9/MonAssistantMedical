@@ -43,7 +43,6 @@ module.exports = () => {
 
     //modification du type de relevé
     router.put('/:id', async(req, res) => {
-        delete req.body.title
         models.TypeReleve.update(req.body, {
             where : {
                 id: req.params.id
