@@ -4,5 +4,9 @@ module.exports = (sequelize, DataTypes) => {
     label: DataTypes.STRING
   }, { tableName: 'Couleur' });
 
+  Couleur.associate = function(models) {
+    models.Couleur.hasMany(models.Dangerosite);
+  };
+
   return Couleur;
 };

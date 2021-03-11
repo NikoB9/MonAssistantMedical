@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
   }, { tableName: 'Dangerosite' });
 
   Dangerosite.associate = function(models) {
-    models.Dangerosite.belongsTo(models.Couleur)
+    models.Dangerosite.belongsTo(models.Couleur);
+    models.Dangerosite.hasMany(models.Analyse);
   };
 
   return Dangerosite;

@@ -1,0 +1,179 @@
+swagger: "2.0"
+info:
+  description: "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters."
+  version: "1.0.0"
+  title: "Swagger Petstore"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "petstore.swagger.io"
+basePath: "/v2"
+tags:
+- name: "Utilisateur"
+  description: "Utilisateur de l'outil qui fait un relevé médical et une analyse. Il a un nom, un prénom, une date de naissance, un login et un mots de passe."
+  
+- name: "Profil"
+  description: "Les différents profils de personnes pour pouvoir adapter les analyses. Il y en a 2 pour l'instant : Cardiaque et Adulte."
+  
+- name: "Relevé médical"
+  description: "Relevé d'un certain type (cf. type de relevé) qui a une date, une valeur, un type et qui correspond à un utilisateur."
+  
+- name: "Type de relevé"
+  description: "C'est le type de relevé médical effectué. Par exemple : Glycémie, taille, température, ..."
+  
+- name: "Analyse"
+  description: "Permet de fournir une analyse d'un relevé en fonction de son type et de sa valeur. Declenche une dangerosité (cf. dangerosité pour l'exemple)."
+  
+- name: "Dangerosité"
+  description: "La dangerosité de la situation en fonction du relevé. Par exemple, si l'IMC d'un utilisateur est supérieur à 25, il est dans le cadre du surpoid et la couleur est orange car ce n'est pas excessivement mauvais pour la santé mais c'est tout de même un élément à surveiller. Elle est déclenchée à partir de l'analyse."
+  
+- name: "Couleur"
+  description: "Les trois couleurs possible sont : vert, orange et rouge. Elles représentent l'intensité du risque de santé de l'utilisateur."
+
+schemes:
+- "https"
+- "http"
+
+paths:
+  /utilisateur:
+    post:
+      tags:
+      - "Utilisateur"
+      summary: "Création d'un utilisateur"
+      description: ""
+      operationId: "addUser"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Utilisateur que l'on veut ajouter à la table."
+        required: true
+        schema:
+          $ref: "#/definitions/Utilisateur"
+      responses:
+        "200":
+          description: "Add OK"
+        "500":
+          description: "Add NOK"
+#      security:
+#      - petstore_auth:
+#        - "write:pets"
+#        - "read:pets"
+    put:
+      tags:
+      - "Utilisateur"
+      summary: "Modification d'un utilisateur"
+      description: ""
+      operationId: "updateUser"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Utilisateur que l'on veut modifier."
+        required: true
+        schema:
+          $ref: "#/definitions/Utilisateur"
+      responses:
+        "200":
+          description: "Update OK"
+        "500":
+          description: "Update NOK"
+          
+  /utilisateur/authentification:
+    get:
+      tags:
+      - "Utilisateur"
+      summary: "Création d'un utilisateur"
+      description: ""
+      operationId: "loginUser"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Utilisateur que l'on veut ajouter à la table."
+        required: true
+        schema:
+          $ref: "#/definitions/UtilisateurLogin"
+      responses:
+        "200":
+          description: "Utilisateur. Null si pas d'utilisateur"
+        "500":
+          description: "Login NOK"
+    
+securityDefinitions:
+  petstore_auth:
+    type: "oauth2"
+    authorizationUrl: "http://petstore.swagger.io/oauth/dialog"
+    flow: "implicit"
+    scopes:
+      write:pets: "modify pets in your account"
+      read:pets: "read your pets"
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+definitions:
+
+  Utilisateur:
+    type: "object"
+    required:
+    - "nom"
+    - "prenom"
+    - "login"
+    - "mot_de_passe"
+    - "naissance"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      nom:
+        type: "string"
+        example: "Fraysse"
+      prenom:
+        type: "string"
+        example: "Marcel"
+      login:
+        type: "string"
+        example: "marcel.fraysse"
+      mot_de_passe:
+        type: "string"
+        example: "Mfraysse12"
+      naissance:
+        type: "string"
+        example: "1997-04-23T00:00:00.511Z"
+#    xml:
+#      name: "Pet"
+  UtilisateurLogin:
+    type: "object"
+    required:
+    - "login"
+    - "mot_de_passe"
+    properties:
+      login:
+        type: "string"
+        example: "marcel.fraysse"
+      mot_de_passe:
+        type: "string"
+        example: "Mfraysse12"
+
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"

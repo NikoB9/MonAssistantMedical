@@ -4,5 +4,10 @@ module.exports = (sequelize, DataTypes) => {
     label: DataTypes.STRING
   }, { tableName: 'TypeReleve' });
 
+  TypeReleve.associate = function(models) {
+    models.TypeReleve.hasMany(models.ReleveMedical);
+    models.TypeReleve.hasMany(models.Analyse);
+  };
+
   return TypeReleve;
 };

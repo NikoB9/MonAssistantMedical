@@ -51,6 +51,5 @@ module.exports = () => {
         res.status(200).send(true);
     });
 
-
     return router;
 };
