@@ -4,72 +4,54 @@ const models = require('../../models');
 
 module.exports = () => {
 
+ 
+    //récupération des couleurs
     router.get('/', (req, res) => {
-        models.Authors.findAll().then((authors) => {
-            res.send(authors);
+        models.Dangerosite.findAll().then((dangerosite) => {
+            res.status(200).send(dangerosite);
         }).catch((error) => {
             console.log(error);
-            res.sendStatus(500)
+            res.status(500).send(error);
         });
     });
+    
 
+    //ajout d'une couleur
     router.post('/', (req, res) => {
-        models.Authors.create(req.body).then(() => {
+        models.Dangerosite.create(req.body).then(() => {
             res.status(200).send(true);
         }).catch((error) => {
             console.log(error);
-            res.sendStatus(500)
+            res.status(500).send(error);
         });;
     });
 
-    router.get('/:id', (req, res) => {
-        models.Authors.findByPk(req.params.id).then((author) => {
-            res.send(author);
+
+    //supression d'une couleur
+    router.delete('/:id', async(req, res) => {
+        models.Dangerosite.destroy({
+            where : {
+                id : req.params.id
+            }
+        }).then(() => {
+            res.status(200).send(true);
         }).catch((error) => {
             console.log(error);
-            res.sendStatus(500)
+            res.status(500).send(error);
         });
     });
 
-    router.delete('/:id', (req , res) => {
-        models.Authors.destroy({
-            where: {
+    //modification de la couleurs
+    router.put('/:id', async(req, res) => {
+        delete req.body.title
+        models.Dangerosite.update(req.body, {
+            where : {
                 id: req.params.id
             }
-        }).then(() => {
-            res.status(200).send(true);
-        }).catch((error) => {
-            res.sendStatus(500);
         });
+        res.status(200).send(true);
     });
-
-    router.put('/', (req, res) => {
-
-
-        //update
-        models.Authors.update(req.body, {
-            where: {
-                id: req.body.id
-            }
-        }).then(() => {
-            res.status(200).send(true);
-        }).catch((error) => {
-            res.sendStatus(500);
-        });
-    });
-
-    //perso : auteurs d'un livre 
-    router.get('/book/:id', (req, res) => {
-        models.Authors.findAll({ 
-        	include: [{ model: models.Books, where: {id: req.params.id}, required: true }] 
-
-    	}).then((authors) => {
-            res.send(authors);
-        }).catch((error) => {
-            console.log(error);
-            res.sendStatus(500)
-        });
-    });
+    
 
     return router;
 };

@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
   }, { tableName: 'Profil' });
 
   Profil.associate = function(models) {
-    models.Profil.belongsToMany(models.Utilisateur, { through: 'utilisateur_profils' })
+    models.Profil.belongsToMany(models.Utilisateur, { through: 'utilisateur_profils' });
+    models.Profil.hasMany(models.Analyse);
   };
 
   return Profil;

@@ -4,11 +4,11 @@ module.exports = {
     development: {
       /*dialect: "sqlite",
       storage: "./db.development.sqlite"*/
-      username: "root",
-      password: "",
-      database: "testnpm",
-      host: "localhost",
-      dialect: 'mysql',
+      username: "sql11397981",
+      password: "DGnYNgMRRQ",
+      database: "sql11397981",
+      host: "sql11.freesqldatabase.com",
+      dialect: 'mysql'
     },
     test: {
       dialect: "sqlite",
