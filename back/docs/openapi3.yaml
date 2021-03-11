@@ -61,36 +61,14 @@ paths:
       responses:
         "200":
           description: "Add OK"
+          schema:
+            $ref: "#/definitions/Utilisateur"
         "500":
           description: "Add NOK"
 #      security:
 #      - petstore_auth:
 #        - "write:pets"
 #        - "read:pets"
-    put:
-      tags:
-      - "Utilisateur"
-      summary: "Modification d'un utilisateur"
-      description: ""
-      operationId: "updateUser"
-      consumes:
-      - "application/json"
-      - "application/xml"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "body"
-        description: "Utilisateur que l'on veut modifier."
-        required: true
-        schema:
-          $ref: "#/definitions/Utilisateur"
-      responses:
-        "200":
-          description: "Update OK"
-        "500":
-          description: "Update NOK"
           
   /utilisateur/authentification:
     get:
@@ -147,6 +125,36 @@ paths:
             $ref: "#/definitions/UtilisateurComplet"
         "500":
           description: "Utilisateur non trouvé."
+    put:
+      tags:
+      - "Utilisateur"
+      summary: "Modification d'un utilisateur"
+      description: ""
+      operationId: "updateUser"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "id de l'utilisateur que l'on veut modifier"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: "Utilisateur que l'on veut modifier."
+        required: true
+        schema:
+          $ref: "#/definitions/Utilisateur"
+      responses:
+        "200":
+          description: "Update OK"
+        "500":
+          description: "Update NOK"
     delete:
       tags:
       - "Utilisateur"
@@ -463,6 +471,7 @@ paths:
           description: "Création OK"
         "500":
           description: "Création NOK"
+  /releve_medical/{id}:
     put:
       tags:
       - "Relevé médical"
@@ -476,6 +485,12 @@ paths:
       - "application/xml"
       - "application/json"
       parameters:
+      - name: "id"
+        in: "path"
+        description: "Identifiant du relevé médical."
+        required: true
+        type: "integer"
+        format: "int64"
       - in: "body"
         name: "body"
         description: "Relevé médical à modifier."
@@ -487,7 +502,6 @@ paths:
           description: "Modification OK"
         "500":
           description: "Modification NOK"
-  /releve_medical/{id}:
     get:
       tags:
       - "Relevé médical"
@@ -561,7 +575,7 @@ paths:
         "200":
           description: "Récupération OK"
           schema:
-            $ref: "#/definitions/TypeReleve"
+            $ref: "#/definitions/ListeTypeReleves"
         "500":
           description: "Récupération NOK"
     post:
@@ -586,9 +600,67 @@ paths:
       responses:
         "200":
           description: "Ajout OK."
+          schema:
+            $ref: "#/definitions/TypeReleve"
         "500":
           description: "Ajout NOK"
-  
+          
+  /type_releve/{id}:
+    put:
+      tags:
+      - "Type de relevé"
+      summary: "modification d'un type de relevé"
+      description: ""
+      operationId: "editTypeReleve"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "id du type de relevé que l'on veut modifier"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: "Type de relevé que l'on veut ajouter à la table."
+        required: true
+        schema:
+          $ref: "#/definitions/TypeReleve"
+      responses:
+        "200":
+          description: "true"
+        "500":
+          description: "erreur"
+          
+    delete:
+      tags:
+      - "Type de relevé"
+      summary: "suppression d'un type de relevé."
+      description: ""
+      operationId: "rmTypeReleve"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "id du type de relevé que l'on veut supprimer"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "true"
+        "500":
+          description: "erreur"
 
 ########################################
 #                                      #
@@ -642,6 +714,7 @@ paths:
             $ref: "#/definitions/Analyse"
         "500":
           description: "Création NOK"
+  /analyse/{id}:
     put:
       tags:
       - "Analyse"
@@ -655,6 +728,12 @@ paths:
       - "application/xml"
       - "application/json"
       parameters:
+      - name: "id"
+        in: "path"
+        description: "Identifiant de l'analyse à modifier."
+        required: true
+        type: "integer"
+        format: "int64"
       - in: "body"
         name: "body"
         description: "Analyse à modifier."
@@ -666,7 +745,6 @@ paths:
           description: "Modification OK"
         "500":
           description: "Modification NOK"
-  /analyse/{id}:
     delete:
       tags:
       - "Analyse"
@@ -770,6 +848,7 @@ paths:
             $ref: "#/definitions/Dangerosite"
         "500":
           description: "Création NOK"
+  /dangerosite/{id}:
     put:
       tags:
       - "Dangerosité"
@@ -783,6 +862,12 @@ paths:
       - "application/xml"
       - "application/json"
       parameters:
+      - name: "id"
+        in: "path"
+        description: "Identifiant de la dangerosite à modifier."
+        required: true
+        type: "integer"
+        format: "int64"
       - in: "body"
         name: "body"
         description: "Dangerosité à modifier."
@@ -794,7 +879,6 @@ paths:
           description: "Modification OK"
         "500":
           description: "Modification NOK"
-  /dangerosite/{id}:
     delete:
       tags:
       - "Dangerosité"
@@ -871,6 +955,7 @@ paths:
             $ref: "#/definitions/Couleur"
         "500":
           description: "Création NOK"
+  /couleur/{id}:
     put:
       tags:
       - "Couleur"
@@ -884,6 +969,12 @@ paths:
       - "application/xml"
       - "application/json"
       parameters:
+      - name: "id"
+        in: "path"
+        description: "Identifiant de la couleur à modifier."
+        required: true
+        type: "integer"
+        format: "int64"
       - in: "body"
         name: "body"
         description: "Couleur à modifier."
@@ -895,7 +986,6 @@ paths:
           description: "Modification OK"
         "500":
           description: "Modification NOK"
-  /couleur/{id}:
     delete:
       tags:
       - "Couleur"
@@ -1133,6 +1223,13 @@ definitions:
       label:
         type: "string"
         example: "Taille"
+  ListeTypeReleves:
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        schema:
+          $ref: "#/definitions/TypeReleve"
   Couleur:
     type: "object"
     required:
@@ -1169,7 +1266,7 @@ definitions:
         type: "object"
         properties:
           schema:
-            $ref: "#/definitions/Analyse"
+            $ref: "#/definitions/Couleur"
   AnalyseDangerositeCouleur:
     type: "object"
     required:
@@ -1208,4 +1305,3 @@ definitions:
         schema:
           $ref: "#/definitions/AnalyseDangerositeCouleur"
   
-          
