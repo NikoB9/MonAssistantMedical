@@ -273,8 +273,121 @@ paths:
 #     Requêtes pour relevé médical     #
 #                                      #
 ########################################
-
-  
+  /releve_medical:
+    get:
+      tags:
+      - "Relevé médical"
+      summary: "Récupération des relevés médicaux."
+      description: ""
+      operationId: "getReleveMedical"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      responses:
+        "200":
+          description: "Récupération OK"
+        "500":
+          description: "Récupération NOK"
+    post:
+      tags:
+      - "Relevé médical"
+      summary: "Création d'un relevé médical"
+      description: ""
+      operationId: "addReleveMedical"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Relevé medical a ajouter."
+        required: true
+        schema:
+          $ref: "#/definitions/ReleveMedical"
+      responses:
+        "200":
+          description: "Création OK"
+        "500":
+          description: "Création NOK"
+    put:
+      tags:
+      - "Relevé médical"
+      summary: "Modification d'un relevé médical"
+      description: ""
+      operationId: "updateReleveMedical"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Relevé médical à modifier."
+        required: true
+        schema:
+          $ref: "#/definitions/ReleveMedical"
+      responses:
+        "200":
+          description: "Modification OK"
+        "500":
+          description: "Modification NOK"
+  /releve_medical/{id}:
+    get:
+      tags:
+      - "Relevé médical"
+      summary: "Récupération des relevés médicaux par son identifiant"
+      description: ""
+      operationId: "getReleveMedicalById"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Identifiant du relevé médical."
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "Récupération OK"
+        "500":
+          description: "Récupération NOK"
+    delete:
+      tags:
+      - "Relevé médical"
+      summary: "Suppression d'un relevé médical"
+      description: ""
+      operationId: "deleteReleveMedicalById"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Identifiant du relevé médical."
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "Suppression OK"
+        "500":
+          description: "Suppression NOK"
 
 ########################################
 #                                      #
@@ -365,3 +478,47 @@ definitions:
       mot_de_passe:
         type: "string"
         example: "Mfraysse12"
+  ReleveMedical:
+    type: "object"
+    required:
+    - "id"
+    - "prise_de_mesure"
+    - "valeur"
+    - "utilisateurId"
+    - "typeReleveId"
+    properties:
+      id:
+        type: "integer"
+        example: 1
+      prise_de_mesure:
+        type: "string"
+        example: "1997-04-23T00:00:00.511Z"
+      valeur:
+        type: "integer"
+        example: "110"
+      utilisateurId:
+        type: "integer"
+        example: "19"
+      typeReleveId:
+        type: "integer"
+        example: "6"
+  ListeRelevesMedicaux:
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          example: 1
+        prise_de_mesure:
+          type: "string"
+          example: "1997-04-23T00:00:00.511Z"
+        valeur:
+          type: "integer"
+          example: "110"
+        utilisateurId:
+          type: "integer"
+          example: "19"
+        typeReleveId:
+          type: "integer"
+          example: "6"
