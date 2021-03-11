@@ -115,6 +115,8 @@ paths:
       responses:
         "200":
           description: "Utilisateur. Null si pas d'utilisateur"
+          schema:
+            $ref: "#/definitions/UtilisateurComplet"
         "500":
           description: "Login NOK"
           
@@ -141,6 +143,8 @@ paths:
       responses:
         "200":
           description: "Utilisateur et ses profils."
+          schema:
+            $ref: "#/definitions/UtilisateurComplet"
         "500":
           description: "Utilisateur non trouvé."
     delete:
@@ -731,6 +735,41 @@ definitions:
       naissance:
         type: "string"
         example: "1997-04-23T00:00:00.511Z"
+  UtilisateurComplet:
+    type: "object"
+    required:
+    - "id"
+    - "nom"
+    - "prenom"
+    - "login"
+    - "mot_de_passe"
+    - "naissance"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      nom:
+        type: "string"
+        example: "Fraysse"
+      prenom:
+        type: "string"
+        example: "Marcel"
+      login:
+        type: "string"
+        example: "marcel.fraysse"
+      mot_de_passe:
+        type: "string"
+        example: "Mfraysse12"
+      naissance:
+        type: "string"
+        example: "1997-04-23T00:00:00.511Z"
+      Profils:
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            schema:
+              $ref: "#/definitions/Profil"
 #    xml:
 #      name: "Pet"
   UtilisateurLogin:
