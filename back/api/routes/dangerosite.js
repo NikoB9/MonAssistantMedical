@@ -5,7 +5,7 @@ const models = require('../../models');
 module.exports = () => {
 
  
-    //récupération des couleurs
+    //récupération des dangerosités
     router.get('/', (req, res) => {
         models.Dangerosite.findAll().then((dangerosite) => {
             res.status(200).send(dangerosite);
@@ -16,7 +16,7 @@ module.exports = () => {
     });
     
 
-    //ajout d'une couleur
+    //ajout d'une dangerosité
     router.post('/', (req, res) => {
         models.Dangerosite.create(req.body).then(() => {
             res.status(200).send(true);
@@ -27,7 +27,7 @@ module.exports = () => {
     });
 
 
-    //supression d'une couleur
+    //supression d'une dangerosité
     router.delete('/:id', async(req, res) => {
         models.Dangerosite.destroy({
             where : {
@@ -41,11 +41,11 @@ module.exports = () => {
         });
     });
 
-    //modification de la couleur
-    router.put('/', (req, res) => {
+    //modification de la dangerosité
+    router.put('/:id', async(req, res) => {
         models.Dangerosite.update(req.body, {
-            where: {
-                id: req.body.id
+            where : {
+                id: req.params.id
             }
         }).then((response) => {
             console.log(response);

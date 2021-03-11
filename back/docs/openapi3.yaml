@@ -1099,7 +1099,6 @@ definitions:
       properties:
         schema:
           $ref: "#/definitions/Analyse"
-<<<<<<< HEAD
   Dangerosite:
     type: "object"
     required:
@@ -1123,21 +1122,25 @@ definitions:
       properties:
         schema:
           $ref: "#/definitions/Dangerosite"
-  Couleur:
-    type: "object"
-    required:
-    - "id"
-=======
-          
   TypeReleve:
     type: "object"
     required:
->>>>>>> bd4ab58c11079b45d63aba7f2dd4137ad4b02d14
     - "label"
     properties:
       id:
         type: "integer"
-<<<<<<< HEAD
+        format: "int64"
+      label:
+        type: "string"
+        example: "Taille"
+  Couleur:
+    type: "object"
+    required:
+    - "id"
+    - "label"
+    properties:
+      id:
+        type: "integer"
         example: 1
       label:
         type: "string"
@@ -1205,10 +1208,4 @@ definitions:
         schema:
           $ref: "#/definitions/AnalyseDangerositeCouleur"
   
-=======
-        format: "int64"
-      label:
-        type: "string"
-        example: "Taille"
           
->>>>>>> bd4ab58c11079b45d63aba7f2dd4137ad4b02d14

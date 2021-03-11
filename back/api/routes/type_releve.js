@@ -46,8 +46,12 @@ module.exports = () => {
             where : {
                 id: req.params.id
             }
+        }).then((response) => {
+            console.log(response);
+            res.status(200).send(true);
+        }).catch((error) => {
+            res.status(500).send(error);
         });
-        res.status(200).send(true);
     });
 
     return router;

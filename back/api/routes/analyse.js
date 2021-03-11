@@ -42,16 +42,16 @@ module.exports = () => {
     });
 
     //modification d'une analyse
-    router.put('/', (req, res) => {
+    router.put('/:id', async(req, res) => {
         models.Analyse.update(req.body, {
-            where: {
-                id: req.body.id
+            where : {
+                id: req.params.id
             }
-        }).then(() => {
+        }).then((response) => {
+            console.log(response);
             res.status(200).send(true);
         }).catch((error) => {
-            console.log(error);
-            res.sendStatus(500).send(error);
+            res.status(500).send(error);
         });
     });
 

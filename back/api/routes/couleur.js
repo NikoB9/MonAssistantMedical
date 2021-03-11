@@ -42,10 +42,10 @@ module.exports = () => {
     });
 
     //modification de la couleurs
-    router.put('/', (req, res) => {
+    router.put('/:id', async(req, res) => {
         models.Couleur.update(req.body, {
-            where: {
-                id: req.body.id
+            where : {
+                id: req.params.id
             }
         }).then((response) => {
             console.log(response);

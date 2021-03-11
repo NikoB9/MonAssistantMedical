@@ -59,11 +59,10 @@ module.exports = () => {
     });
 
     //modification d'un utilisateur
-    router.put('/', (req, res) => {
-
+    router.put('/:id', async(req, res) => {
         models.Utilisateur.update(req.body, {
-            where: {
-                id: req.body.id
+            where : {
+                id: req.params.id
             }
         }).then((response) => {
             console.log(response);
