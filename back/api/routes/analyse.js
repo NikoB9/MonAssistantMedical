@@ -5,6 +5,53 @@ const { Op } = require('sequelize');
 
 module.exports = () => {
 
+    //récupération des analyses
+    router.get('/', (req, res) => {
+        models.Analyse.findAll().then((analyse) => {
+            res.status(200).send(analyse);
+        }).catch((error) => {
+            console.log(error);
+            res.status(500).send(error);
+        });
+    });
+    
+
+    //ajout d'une analyse
+    router.post('/', (req, res) => {
+        models.Analyse.create(req.body).then((analyse) => {
+            res.status(200).send(analyse);
+        }).catch((error) => {
+            console.log(error);
+            res.status(500).send(error);
+        });;
+    });
+
+
+    //supression d'une analyse
+    router.delete('/:id', async(req, res) => {
+        models.Analyse.destroy({
+            where : {
+                id : req.params.id
+            }
+        }).then(() => {
+            res.status(200).send(true);
+        }).catch((error) => {
+            console.log(error);
+            res.status(500).send(error);
+        });
+    });
+
+    //modification d'une analyse
+    router.put('/:id', async(req, res) => {
+        models.Analyse.update(req.body, {
+            where : {
+                id: req.params.id
+            }
+        });
+        res.status(200).send(true);
+    });
+
+    // récupération des analyses d'un relevé
     router.get('/releve/:releveId', async(req, res) => {
         try {
             const releve = await models.ReleveMedical.findByPk(req.params.releveId);

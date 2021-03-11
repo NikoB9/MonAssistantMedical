@@ -3,7 +3,6 @@ const router = express.Router();
 const models = require('../../models');
 
 module.exports = () => {
-
  
     //récupération des types de relevés
     router.get('/', (req, res) => {
