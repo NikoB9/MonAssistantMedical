@@ -2,18 +2,27 @@ version: "3.1"
 
 services:
   back:
+    image: mam-api
     build:
       context: ./back
       dockerfile: Dockerfile
     networks:
-    - MonAssistantMedical
+        - MonAssistantMedical
+    #environment:
+    env_file:
+        - back.env
     ports:
-    - "3000:3000"
+        - "3000:3000"
 
-#  mysql:
-#    image: user/dockercoins_hasher:1.0
-#    networks:
-#    - MonAssistantMedical
+  db:
+    image: mysql:latest
+    networks:
+        - MonAssistantMedical
+    env_file:
+        - db.env
+    ports:
+        - "3306:3306"
+    
 
 networks:
     MonAssistantMedical:

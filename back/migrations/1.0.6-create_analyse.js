@@ -41,12 +41,12 @@ module.exports = {
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.NOW
+        defaultValue: Sequelize.fn('now')
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.NOW
+        defaultValue: Sequelize.fn('now')
       }
     }).then(function () {
       queryInterface.sequelize.query("INSERT INTO Analyse(mini, maxi, dangerositeId, typeReleveId, profilId)" +
