@@ -230,15 +230,12 @@ paths:
         "500":
           description: "Suppression NOK."
           
-  ########################
-  #       TODO TONY      #
-  ########################
   /utilisateur/{id}/releve:
     get:
       tags:
       - "Utilisateur"
-      summary: "Récupération d'un utilisateur grâce à son identifiant."
-      description: ""
+      summary: "Récupération des relevés d'un utilisateur"
+      description: "Récupération des relevés d'un utilisateur, possibilité de filtrer par type de relevé et de paginer la récupération par page de 5"
       operationId: "getUserReleve"
       consumes:
       - "application/json"
@@ -253,11 +250,23 @@ paths:
         required: true
         type: "integer"
         format: "int64"
+      - name: "page"
+        in: "query"
+        description: "numero de la page que l'on veut récupérer"
+        required: false
+        type: "integer"
+        format: "int64"
+      - name: "type"
+        in: "query"
+        description: "type des relevés que l'on veut récupérer."
+        required: false
+        type: "string"
+        format: "int64"
       responses:
         "200":
-          description: "Utilisateur et ses profils."
+          description: "Relevés trouvés."
         "500":
-          description: "Utilisateur non trouvé."
+          description: "Relevés non trouvés."
 
 
 ########################################
@@ -306,7 +315,7 @@ paths:
       parameters:
       - in: "body"
         name: "body"
-        description: "Relevé medical a ajouter."
+        description: "Relevé medical à ajouter."
         required: true
         schema:
           $ref: "#/definitions/ReleveMedical"
@@ -403,8 +412,123 @@ paths:
 #                                      #
 ########################################
 
-
-
+  /analyse:
+    get:
+      tags:
+      - "Analyse"
+      summary: "Récupération des analyses."
+      description: ""
+      operationId: "getAnalyse"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      responses:
+        "200":
+          description: "Récupération OK"
+        "500":
+          description: "Récupération NOK"
+    post:
+      tags:
+      - "Analyse"
+      summary: "Création d'une analyse."
+      description: ""
+      operationId: "addAnalyse"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Analyse à ajouter."
+        required: true
+        schema:
+          $ref: "#/definitions/Analyse"
+      responses:
+        "200":
+          description: "Création OK"
+        "500":
+          description: "Création NOK"
+    put:
+      tags:
+      - "Analyse"
+      summary: "Modification d'une analyse."
+      description: ""
+      operationId: "updateAnalyse"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Analyse à modifier."
+        required: true
+        schema:
+          $ref: "#/definitions/Analyse"
+      responses:
+        "200":
+          description: "Modification OK"
+        "500":
+          description: "Modification NOK"
+  /analyse/{id}:
+    delete:
+      tags:
+      - "Analyse"
+      summary: "Suppression d'une analyse"
+      description: ""
+      operationId: "deleteAnalyseById"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Identifiant de l'analyse à supprimer."
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "Suppression OK"
+        "500":
+          description: "Suppression NOK"
+  /analyse/relevé/{id}:
+    get:
+      tags:
+      - "Analyse"
+      summary: "Récupération des analyses d'un relevé"
+      description: ""
+      operationId: "getAnalyseByReleve"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Identifiant du relevé à analyser."
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "Récupération OK"
+        "500":
+          description: "Récupération NOK"
+          
 ########################################
 #                                      #
 #       Requêtes pour dangerosité      #
@@ -495,30 +619,38 @@ definitions:
         example: "1997-04-23T00:00:00.511Z"
       valeur:
         type: "integer"
-        example: "110"
+        example: 110
       utilisateurId:
         type: "integer"
-        example: "19"
+        example: 19
       typeReleveId:
         type: "integer"
-        example: "6"
-  ListeRelevesMedicaux:
-    type: "array"
-    items:
-      type: "object"
-      properties:
-        id:
-          type: "integer"
-          example: 1
-        prise_de_mesure:
-          type: "string"
-          example: "1997-04-23T00:00:00.511Z"
-        valeur:
-          type: "integer"
-          example: "110"
-        utilisateurId:
-          type: "integer"
-          example: "19"
-        typeReleveId:
-          type: "integer"
-          example: "6"
+        example: 6
+  Analyse:
+    type: "object"
+    required:
+    - "id"
+    - "mini"
+    - "maxi"
+    - "dangerositeId"
+    - "profilId"
+    - "typeReleveId"
+    properties:
+      id:
+        type: "integer"
+        example: 12
+      mini:
+        type: "integer"
+        example: 95
+      maxi:
+        type: "integer"
+        example: 110
+      dangerositeId:
+        type: "integer"
+        example: 7
+      profilId:
+        type: "integer"
+        example: 2
+      typeReleveId:
+        type: "integer"
+        example: 3

@@ -42,13 +42,17 @@ module.exports = () => {
     });
 
     //modification d'une analyse
-    router.put('/:id', async(req, res) => {
+    router.put('/', (req, res) => {
         models.Analyse.update(req.body, {
-            where : {
-                id: req.params.id
+            where: {
+                id: req.body.id
             }
+        }).then(() => {
+            res.status(200).send(true);
+        }).catch((error) => {
+            console.log(error);
+            res.sendStatus(500).send(error);
         });
-        res.status(200).send(true);
     });
 
     // récupération des analyses d'un relevé

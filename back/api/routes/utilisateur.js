@@ -110,7 +110,7 @@ module.exports = () => {
         });
     });
 
-    // récumération des relevés d'un utilisateur, possibilité de filtré par type de relevé et de paginer
+    // récupération des relevés d'un utilisateur, possibilité de filtré par type de relevé et de paginer
     router.get('/:id/releve', (req, res) => {
         if(req.query.page) {
             NOMBRE_RELEVES_PAR_PAGE = 5
