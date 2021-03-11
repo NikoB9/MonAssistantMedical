@@ -23,7 +23,7 @@ $ docker-compose build
 ```bash
 $ docker-compose up -d db
 $ docker-compose up -d back
-//attendre 5 secondes avant de migrer la base de données avec la commande suivante
+//attendre 10/15 secondes avant de migrer la base de données avec la commande suivante
 $ docker-compose run --rm back npx sequelize db:migrate
 ```
 
