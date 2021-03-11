@@ -14,12 +14,12 @@ module.exports = {
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('now')
+        defaultValue: Sequelize.NOW
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('now')
+        defaultValue: Sequelize.NOW
       }
     }).then(function () {
       queryInterface.sequelize.query("INSERT INTO TypeReleve(id, label) VALUES(1, 'Tension systolique'), " +

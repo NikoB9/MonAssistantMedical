@@ -22,3 +22,8 @@
 
 * cd chemin/projet/MonAssistantMedical/back/
 * node index.js
+
+# Amélioration
+
+* Chiffrement des mots de passes
+* Sécurisation des requêtes par login/mot de passe au lieu de l'id

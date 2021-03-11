@@ -14,15 +14,15 @@ module.exports = {
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('now')
+        defaultValue: Sequelize.NOW
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('now')
+        defaultValue: Sequelize.NOW
       }
     }).then(function () {
-      queryInterface.sequelize.query("INSERT INTO couleur(id, label) VALUES(1, 'green'),(2, 'orange'), (3, 'red')");
+      queryInterface.sequelize.query("INSERT INTO Couleur(id, label) VALUES(1, 'green'),(2, 'orange'), (3, 'red')");
     });
   },
   down: (queryInterface, Sequelize) => {
