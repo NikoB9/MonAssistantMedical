@@ -265,6 +265,8 @@ paths:
       responses:
         "200":
           description: "Relevés trouvés."
+          schema:
+            $ref: "#/definitions/ListeRelevesMedicaux"
         "500":
           description: "Relevés non trouvés."
 
@@ -298,6 +300,8 @@ paths:
       responses:
         "200":
           description: "Récupération OK"
+          schema:
+            $ref: "#/definitions/ListeRelevesMedicaux"
         "500":
           description: "Récupération NOK"
     post:
@@ -321,6 +325,8 @@ paths:
           $ref: "#/definitions/ReleveMedical"
       responses:
         "200":
+          schema:
+            $ref: "#/definitions/ReleveMedical"
           description: "Création OK"
         "500":
           description: "Création NOK"
@@ -371,6 +377,8 @@ paths:
       responses:
         "200":
           description: "Récupération OK"
+          schema:
+            $ref: "#/definitions/ReleveMedical"
         "500":
           description: "Récupération NOK"
     delete:
@@ -428,6 +436,8 @@ paths:
       responses:
         "200":
           description: "Récupération OK"
+          schema:
+            $ref: "#/definitions/ListeAnalyses"
         "500":
           description: "Récupération NOK"
     post:
@@ -452,6 +462,8 @@ paths:
       responses:
         "200":
           description: "Création OK"
+          schema:
+            $ref: "#/definitions/Analyse"
         "500":
           description: "Création NOK"
     put:
@@ -526,6 +538,8 @@ paths:
       responses:
         "200":
           description: "Récupération OK"
+          schema:
+            $ref: "#/definitions/ListeAnalyses"
         "500":
           description: "Récupération NOK"
           
@@ -626,6 +640,13 @@ definitions:
       typeReleveId:
         type: "integer"
         example: 6
+  ListeRelevesMedicaux:
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        schema:
+          $ref: "#/definitions/ReleveMedical"
   Analyse:
     type: "object"
     required:
@@ -654,3 +675,11 @@ definitions:
       typeReleveId:
         type: "integer"
         example: 3
+  ListeAnalyses:
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        schema:
+          $ref: "#/definitions/Analyse"
+          
