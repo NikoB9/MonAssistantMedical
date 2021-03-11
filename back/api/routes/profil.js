@@ -38,7 +38,6 @@ module.exports = () => {
 
     //modification du profil
     router.put('/:id', async(req, res) => {
-        delete req.body.title
         models.Profil.update(req.body, {
             where : {
                 id: req.params.id

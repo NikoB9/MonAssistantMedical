@@ -43,7 +43,6 @@ module.exports = () => {
 
     //modification de la couleurs
     router.put('/:id', async(req, res) => {
-        delete req.body.title
         models.Couleur.update(req.body, {
             where : {
                 id: req.params.id
