@@ -6,22 +6,19 @@
 
 ![Alt text](ressources/MCD.PNG?raw=true "schéma bd")
 
-# Requis
+# Pré-requis
 
-* node
-* mysql
+* Docker
 
 # Installation
 
 * Téléchargement du dossier git
-* cd chemin/projet/MonAssistantMedical/back/
-* npm install
-* npx sequelize db:migrate
+* cd chemin/projet/MonAssistantMedical/
+* docker-compose build
 
 # Lancement de l'API
 
-* cd chemin/projet/MonAssistantMedical/back/
-* node index.js
+* docker-compose up -d back
 
 # Amélioration
 
