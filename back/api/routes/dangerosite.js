@@ -41,14 +41,18 @@ module.exports = () => {
         });
     });
 
-    //modification de la couleurs
-    router.put('/:id', async(req, res) => {
+    //modification de la couleur
+    router.put('/', (req, res) => {
         models.Dangerosite.update(req.body, {
-            where : {
-                id: req.params.id
+            where: {
+                id: req.body.id
             }
+        }).then((response) => {
+            console.log(response);
+            res.status(200).send(true);
+        }).catch((error) => {
+            res.status(500).send(error);
         });
-        res.status(200).send(true);
     });
     
 

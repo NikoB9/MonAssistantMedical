@@ -539,7 +539,7 @@ paths:
         "200":
           description: "Récupération OK"
           schema:
-            $ref: "#/definitions/ListeAnalyses"
+            $ref: "#/definitions/ListeAnalysesDangerositeCouleur"
         "500":
           description: "Récupération NOK"
           
@@ -548,16 +548,202 @@ paths:
 #       Requêtes pour dangerosité      #
 #                                      #
 ########################################
-
-  
+  /dangerosite:
+    get:
+      tags:
+      - "Dangerosité"
+      summary: "Récupération des dangerosités."
+      description: ""
+      operationId: "getDangerosite"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      responses:
+        "200":
+          description: "Récupération OK"
+          schema:
+            $ref: "#/definitions/ListeDangerosites"
+        "500":
+          description: "Récupération NOK"
+    post:
+      tags:
+      - "Dangerosité"
+      summary: "Création d'une dangerosité."
+      description: ""
+      operationId: "addDangerosite"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Dangerosité à ajouter."
+        required: true
+        schema:
+          $ref: "#/definitions/Dangerosite"
+      responses:
+        "200":
+          description: "Création OK"
+          schema:
+            $ref: "#/definitions/Dangerosite"
+        "500":
+          description: "Création NOK"
+    put:
+      tags:
+      - "Dangerosité"
+      summary: "Modification d'une dangerosité."
+      description: ""
+      operationId: "updateDangerosite"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Dangerosité à modifier."
+        required: true
+        schema:
+          $ref: "#/definitions/Dangerosite"
+      responses:
+        "200":
+          description: "Modification OK"
+        "500":
+          description: "Modification NOK"
+  /dangerosite/{id}:
+    delete:
+      tags:
+      - "Dangerosité"
+      summary: "Suppression d'une dangerosite"
+      description: ""
+      operationId: "deleteDangerositeById"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Identifiant de la dangerosite à supprimer."
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "Suppression OK"
+        "500":
+          description: "Suppression NOK"
 
 ########################################
 #                                      #
 #         Requêtes pour couleur        #
 #                                      #
 ########################################
-
-    
+  /couleur:
+    get:
+      tags:
+      - "Couleur"
+      summary: "Récupération des couleur."
+      description: ""
+      operationId: "getCouleur"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      responses:
+        "200":
+          description: "Récupération OK"
+          schema:
+            $ref: "#/definitions/ListeCouleurs"
+        "500":
+          description: "Récupération NOK"
+    post:
+      tags:
+      - "Couleur"
+      summary: "Création d'une couleur."
+      description: ""
+      operationId: "addCouleur"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Couleur à ajouter."
+        required: true
+        schema:
+          $ref: "#/definitions/Couleur"
+      responses:
+        "200":
+          description: "Création OK"
+          schema:
+            $ref: "#/definitions/Couleur"
+        "500":
+          description: "Création NOK"
+    put:
+      tags:
+      - "Couleur"
+      summary: "Modification d'une couleur."
+      description: ""
+      operationId: "updateCouleur"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Couleur à modifier."
+        required: true
+        schema:
+          $ref: "#/definitions/Couleur"
+      responses:
+        "200":
+          description: "Modification OK"
+        "500":
+          description: "Modification NOK"
+  /couleur/{id}:
+    delete:
+      tags:
+      - "Couleur"
+      summary: "Suppression d'une couleur"
+      description: ""
+      operationId: "deleteCouleurById"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Identifiant de la couleur à supprimer."
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "Suppression OK"
+        "500":
+          description: "Suppression NOK"
     
 securityDefinitions:
   petstore_auth:
@@ -682,4 +868,101 @@ definitions:
       properties:
         schema:
           $ref: "#/definitions/Analyse"
-          
+  Dangerosite:
+    type: "object"
+    required:
+    - "id"
+    - "message"
+    - "couleurId"
+    properties:
+      id:
+        type: "integer"
+        example: 8
+      message:
+        type: "string"
+        example: "A surveiller. Consulter votre médecin."
+      couleurId:
+        type: "integer"
+        example: 2
+  ListeDangerosites:
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        schema:
+          $ref: "#/definitions/Dangerosite"
+  Couleur:
+    type: "object"
+    required:
+    - "id"
+    - "label"
+    properties:
+      id:
+        type: "integer"
+        example: 1
+      label:
+        type: "string"
+        example: "green"
+  ListeCouleurs:
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        schema:
+          $ref: "#/definitions/Couleur"
+  DangerositeCouleur:
+    type: "object"
+    required:
+    - "id"
+    - "message"
+    - "couleur"
+    properties:
+      id:
+        type: "integer"
+        example: 8
+      message:
+        type: "string"
+        example: "A surveiller. Consulter votre médecin."
+      couleur:
+        type: "object"
+        properties:
+          schema:
+            $ref: "#/definitions/Analyse"
+  AnalyseDangerositeCouleur:
+    type: "object"
+    required:
+    - "id"
+    - "mini"
+    - "maxi"
+    - "dangerosite"
+    - "profilId"
+    - "typeReleveId"
+    properties:
+      id:
+        type: "integer"
+        example: 12
+      mini:
+        type: "integer"
+        example: 95
+      maxi:
+        type: "integer"
+        example: 110
+      dangerosite:
+        type: "object"
+        properties:
+          schema:
+            $ref: "#/definitions/DangerositeCouleur"
+      profilId:
+        type: "integer"
+        example: 2
+      typeReleveId:
+        type: "integer"
+        example: 3
+  ListeAnalysesDangerositeCouleur:
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        schema:
+          $ref: "#/definitions/AnalyseDangerositeCouleur"
+  
