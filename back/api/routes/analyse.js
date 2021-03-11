@@ -43,52 +43,51 @@ module.exports = () => {
         }
     });
 
-    router.get('/utilisateur/:UtilisateurId', async(req, res) => {
-        try {
-            const utilisateur = await models.Utilisateur.findByPk(req.params.UtilisateurId);
-            const profils = await utilisateur.getProfils();
-            let profilsId = [];
-            profils.forEach(profil => {
-                profilsId.push(profil.id);
-            });
-            const releves = await models.ReleveMedical.findAll({ where: { UtilisateurId: req.params.UtilisateurId } });
-            let analyses_total = [];
-            releves.forEach(releve => {
-                models.Analyse.findAll({
-                    where: {
-                        ProfilId: profilsId,               // qui respecte les profils
-                        TypeReleveId: releve.TypeReleveId, // le type de releve
-                        mini: { [Op.lte]: releve.valeur }, // la valeur de releve doit être compris entre le seuil min
-                        maxi: { [Op.gte]: releve.valeur }  // et le seuil max
-                    },
-                    include: [
-                        {
-                            model: models.Dangerosite, 
-                            include: [
-                                {
-                                    model: models.Couleur,
-                                }
-                            ]
-                        }
-                    ]
-                }).then((analyses) => {
-                    // console.log(releves);
-                    console.log(releve);
-                    console.log(analyses);
-                    analyses_total = analyses_total.concat(analyses);
-                    console.log(analyses_total);
-                }).catch((error) => {
-                    console.log(error);
-                    res.status(500).send(error);
-                });
-            });
-            console.log(analyses_total);
-            res.status(200).send(analyses_total);
-        } catch(error) {
-            console.log(error);
-            res.status(500).send(error);
-        }
-    });
+    // router.get('/utilisateur/:UtilisateurId', async(req, res) => {
+    //     try {
+    //         const utilisateur = await models.Utilisateur.findByPk(req.params.UtilisateurId);
+    //         const profils = await utilisateur.getProfils();
+    //         let profilsId = [];
+    //         profils.forEach(profil => {
+    //             profilsId.push(profil.id);
+    //         });
+    //         const releves = await models.ReleveMedical.findAll({ where: { UtilisateurId: req.params.UtilisateurId } });
+    //         let analyses_total = [];
+    //         releves.forEach(async(releve) => {
+    //             const analyses =
+    //             await models.Analyse.findAll({
+    //                 where: {
+    //                     ProfilId: profilsId,               // qui respecte les profils
+    //                     TypeReleveId: releve.TypeReleveId, // le type de releve
+    //                     mini: { [Op.lte]: releve.valeur }, // la valeur de releve doit être compris entre le seuil min
+    //                     maxi: { [Op.gte]: releve.valeur }  // et le seuil max
+    //                 },
+    //                 include: [
+    //                     {
+    //                         model: models.Dangerosite, 
+    //                         include: [
+    //                             {
+    //                                 model: models.Couleur,
+    //                             }
+    //                         ]
+    //                     }
+    //                 ]
+    //             });
+    //             console.log(analyses)
+    //             analyses_total = analyses_total.push(analyses);
+    //             // console.log(releve);
+    //             // console.log(analyses);
+    //             // analyses_total = analyses_total.concat(analyses);
+    //             // console.log(analyses_total);
+    //         });
+    //         console.log(analyses_total);
+    //         console.log("babou");
+    //         res.status(200).send(analyses_total);
+    //     } catch(error) {
+    //         console.log(error);
+    //         res.status(500).send(error);
+    //     }
+    // });
 
     return router;
 };

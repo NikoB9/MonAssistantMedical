@@ -110,6 +110,82 @@ module.exports = () => {
         });
     });
 
-    
+    router.get('/:id/releve', (req, res) => {
+        if(req.query.page) {
+            NOMBRE_RELEVES_PAR_PAGE = 5
+            start = (req.query.page - 1)*NOMBRE_RELEVES_PAR_PAGE;
+            end = (req.query.page)*NOMBRE_RELEVES_PAR_PAGE;
+            if(req.query.type) {
+                models.TypeReleve.findOne({
+                    where: { 
+                        label: req.query.type
+                    }
+                }).then((type) => {
+                    models.ReleveMedical.findAll({
+                        offset: start,
+                        limit: end,
+                        where: { 
+                            UtilisateurId: req.params.id,
+                            TypeReleveId: type.id
+                        },
+                    }).then((releves) => {
+                        res.status(200).send(releves);
+                    }).catch((error) => {
+                        console.log(error);
+                        res.status(500).send(error);
+                    });
+                }).catch((error) => {
+                    console.log(error);
+                    res.status(500).send(error);
+                });
+            } else {
+                models.ReleveMedical.findAll({
+                    offset: start,
+                    limit: end,
+                    where: { 
+                        UtilisateurId: req.params.id
+                    }
+                }).then((releves) => {
+                    res.status(200).send(releves);
+                }).catch((error) => {
+                    console.log(error);
+                    res.status(500).send(error);
+                });
+            }
+        } else if (req.query.type) {
+            models.TypeReleve.findOne({
+                where: {
+                    label: req.query.type
+                }
+            }).then((type) => {
+                models.ReleveMedical.findAll({
+                    where: {
+                        UtilisateurId: req.params.id,
+                        TypeReleveId: type.id
+                    },
+                }).then((releves) => {
+                    res.status(200).send(releves);
+                }).catch((error) => {
+                    console.log(error);
+                    res.status(500).send(error);
+                });
+            }).catch((error) => {
+                console.log(error);
+                res.status(500).send(error);
+            });
+        } else {
+            models.ReleveMedical.findAll({
+                where: { 
+                    UtilisateurId: req.params.id
+                }
+            }).then((releves) => {
+                res.status(200).send(releves);
+            }).catch((error) => {
+                console.log(error);
+                res.status(500).send(error);
+            });
+        }
+    });
+
     return router;
 };
