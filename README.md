@@ -31,3 +31,7 @@ $ docker-compose run --rm back npx sequelize db:migrate
 
 * Chiffrement des mots de passes
 * Sécurisation des requêtes par login/mot de passe au lieu de l'id
+
+# Guide d'utilisation
+
+La [documentation d'utilisation](https://app.swaggerhub.com/apis-docs/NikoB9/MonAssitantMedical/1.0.1 "documentation") est disponible ici : [https://app.swaggerhub.com/apis-docs/NikoB9/MonAssitantMedical/1.0.1](https://app.swaggerhub.com/apis-docs/NikoB9/MonAssitantMedical/1.0.1).
