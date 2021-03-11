@@ -277,7 +277,136 @@ paths:
 #                                      #
 ########################################
 
-
+  /profil:
+    post:
+      tags:
+      - "Profil"
+      summary: "Création d'un profil utilisateur"
+      description: ""
+      operationId: "addProfil"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Profil d'utilisateur que l'on veut ajouter à la table."
+        required: true
+        schema:
+          $ref: "#/definitions/Profil"
+      responses:
+        "200":
+          description: "Profil"
+          schema:
+            $ref: "#/definitions/Profil"
+        "500":
+          description: "erreur"
+    get:
+      tags:
+      - "Profil"
+      summary: "Récupération des profils utilisateur"
+      description: ""
+      operationId: "getProfils"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      responses:
+        "200":
+          description: "Liste des profils"
+          schema:
+            $ref: "#/definitions/Profils"
+        "500":
+          description: "erreur"
+      
+  /profil/{id}:
+    get:
+      tags:
+      - "Profil"
+      summary: "Récupération d'un profil utilisateur"
+      description: ""
+      operationId: "getProfil"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "id du profil que l'on cherche"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "Profil"
+          schema:
+            $ref: "#/definitions/Profil"
+        "500":
+          description: "erreur"
+    
+    put:
+      tags:
+      - "Profil"
+      summary: "modification d'un profil utilisateur"
+      description: ""
+      operationId: "editProfil"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "id du profil que l'on veut modifier"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: "Profil d'utilisateur que l'on veut ajouter à la table."
+        required: true
+        schema:
+          $ref: "#/definitions/Profil"
+      responses:
+        "200":
+          description: "true"
+        "500":
+          description: "erreur"
+          
+    delete:
+      tags:
+      - "Profil"
+      summary: "suppression d'un profil utilisateur"
+      description: ""
+      operationId: "rmProfil"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "id du profil que l'on veut supprimer"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "true"
+        "500":
+          description: "erreur"
 
 ########################################
 #                                      #
