@@ -34,4 +34,4 @@ $ docker-compose run --rm back npx sequelize db:migrate
 
 # Guide d'utilisation
 
-![Alt text for embed](https://app.swaggerhub.com/apis-docs/NikoB9/MonAssitantMedical/1.0.1)
+![](ressources/embed.svg)
