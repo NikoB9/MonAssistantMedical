@@ -1,16 +1,9 @@
 swagger: "2.0"
 info:
-  description: "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters."
+  description: "Une application pour effectuer des relevés médicaux, les analyser et suivre sa santé."
   version: "1.0.0"
-  title: "Swagger Petstore"
-  termsOfService: "http://swagger.io/terms/"
-  contact:
-    email: "apiteam@swagger.io"
-  license:
-    name: "Apache 2.0"
-    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "petstore.swagger.io"
-basePath: "/v2"
+  title: "Mon assistance médical"
+
 tags:
 - name: "Utilisateur"
   description: "Utilisateur de l'outil qui fait un relevé médical et une analyse. Il a un nom, un prénom, une date de naissance, un login et un mots de passe."
@@ -38,6 +31,13 @@ schemes:
 - "http"
 
 paths:
+
+########################################
+#                                      #
+#      Requêtes pour utilisateurs      #
+#                                      #
+########################################
+
   /utilisateur:
     post:
       tags:
@@ -117,6 +117,196 @@ paths:
           description: "Utilisateur. Null si pas d'utilisateur"
         "500":
           description: "Login NOK"
+          
+  /utilisateur/{id}:
+    get:
+      tags:
+      - "Utilisateur"
+      summary: "Récupération d'un utilisateur grâce à son identifiant."
+      description: ""
+      operationId: "getUserById"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "id de l'utilisateur que l'on cherche"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "Utilisateur et ses profils."
+        "500":
+          description: "Utilisateur non trouvé."
+    delete:
+      tags:
+      - "Utilisateur"
+      summary: "Suppression d'un utilisateur au moyen de son identifiant."
+      description: ""
+      operationId: "deleteUserById"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "id de l'utilisateur que l'on veut supprimer."
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "Suppression OK."
+        "500":
+          description: "Suppression NOK."
+          
+  /utilisateur/{id}/profil/{idprofil}:
+    post:
+      tags:
+      - "Utilisateur"
+      summary: "Ajout d'un profil à un utilisateur."
+      description: ""
+      operationId: "addProfilToUser"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "id de l'utilisateur auquel on veut ajouter un profil."
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "idprofil"
+        in: "path"
+        description: "id du profil que l'on veut ajouter à l'utilisateur."
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "Ajout OK."
+        "500":
+          description: "Ajout NOK."
+    delete:
+      tags:
+      - "Utilisateur"
+      summary: "Supression d'un profil à un utilisateur."
+      description: ""
+      operationId: "supprProfilToUser"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "id de l'utilisateur duquel on veut supprimer un profil."
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "idprofil"
+        in: "path"
+        description: "id du profil que l'on veut supprimer de l'utilisateur."
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "Suppression OK."
+        "500":
+          description: "Suppression NOK."
+          
+  ########################
+  #       TODO TONY      #
+  ########################
+  /utilisateur/{id}/releve:
+    get:
+      tags:
+      - "Utilisateur"
+      summary: "Récupération d'un utilisateur grâce à son identifiant."
+      description: ""
+      operationId: "getUserReleve"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "id de l'utilisateur que l'on cherche"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "Utilisateur et ses profils."
+        "500":
+          description: "Utilisateur non trouvé."
+
+
+########################################
+#                                      #
+#         Requêtes pour profil         #
+#                                      #
+########################################
+
+
+
+########################################
+#                                      #
+#     Requêtes pour relevé médical     #
+#                                      #
+########################################
+
+  
+
+########################################
+#                                      #
+#     Requêtes pour type de relevé     #
+#                                      #
+########################################
+
+  
+
+########################################
+#                                      #
+#         Requêtes pour analyse        #
+#                                      #
+########################################
+
+
+
+########################################
+#                                      #
+#       Requêtes pour dangerosité      #
+#                                      #
+########################################
+
+  
+
+########################################
+#                                      #
+#         Requêtes pour couleur        #
+#                                      #
+########################################
+
+    
     
 securityDefinitions:
   petstore_auth:
@@ -130,11 +320,13 @@ securityDefinitions:
     type: "apiKey"
     name: "api_key"
     in: "header"
+    
+    
 definitions:
-
   Utilisateur:
     type: "object"
     required:
+    - "id"
     - "nom"
     - "prenom"
     - "login"
@@ -173,7 +365,3 @@ definitions:
       mot_de_passe:
         type: "string"
         example: "Mfraysse12"
-
-externalDocs:
-  description: "Find out more about Swagger"
-  url: "http://swagger.io"
