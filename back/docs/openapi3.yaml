@@ -64,7 +64,7 @@ paths:
           schema:
             $ref: "#/definitions/Utilisateur"
         "500":
-          description: "Add NOK"
+          description: "erreur"
 #      security:
 #      - petstore_auth:
 #        - "write:pets"
@@ -96,7 +96,7 @@ paths:
           schema:
             $ref: "#/definitions/UtilisateurComplet"
         "500":
-          description: "Login NOK"
+          description: "erreur"
           
   /utilisateur/{id}:
     get:
@@ -154,7 +154,7 @@ paths:
         "200":
           description: "Update OK"
         "500":
-          description: "Update NOK"
+          description: "erreur"
     delete:
       tags:
       - "Utilisateur"
@@ -178,7 +178,7 @@ paths:
         "200":
           description: "Suppression OK."
         "500":
-          description: "Suppression NOK."
+          description: "erreur"
           
   /utilisateur/{id}/profil/{idprofil}:
     post:
@@ -210,7 +210,7 @@ paths:
         "200":
           description: "Ajout OK."
         "500":
-          description: "Ajout NOK."
+          description: "erreur"
     delete:
       tags:
       - "Utilisateur"
@@ -240,7 +240,7 @@ paths:
         "200":
           description: "Suppression OK."
         "500":
-          description: "Suppression NOK."
+          description: "erreur"
           
   /utilisateur/{id}/releve:
     get:
@@ -280,7 +280,7 @@ paths:
           schema:
             $ref: "#/definitions/ListeRelevesMedicaux"
         "500":
-          description: "Relevés non trouvés."
+          description: "erreur"
 
 
 ########################################
@@ -444,7 +444,7 @@ paths:
           schema:
             $ref: "#/definitions/ListeRelevesMedicaux"
         "500":
-          description: "Récupération NOK"
+          description: "erreur"
     post:
       tags:
       - "Relevé médical"
@@ -470,7 +470,7 @@ paths:
             $ref: "#/definitions/ReleveMedical"
           description: "Création OK"
         "500":
-          description: "Création NOK"
+          description: "erreur"
   /releve_medical/{id}:
     put:
       tags:
@@ -501,7 +501,7 @@ paths:
         "200":
           description: "Modification OK"
         "500":
-          description: "Modification NOK"
+          description: "erreur"
     get:
       tags:
       - "Relevé médical"
@@ -527,7 +527,7 @@ paths:
           schema:
             $ref: "#/definitions/ReleveMedical"
         "500":
-          description: "Récupération NOK"
+          description: "erreur"
     delete:
       tags:
       - "Relevé médical"
@@ -551,7 +551,7 @@ paths:
         "200":
           description: "Suppression OK"
         "500":
-          description: "Suppression NOK"
+          description: "erreur"
 
 ########################################
 #                                      #
@@ -577,7 +577,7 @@ paths:
           schema:
             $ref: "#/definitions/ListeTypeReleves"
         "500":
-          description: "Récupération NOK"
+          description: "erreur"
     post:
       tags:
       - "Type de relevé"
@@ -603,7 +603,7 @@ paths:
           schema:
             $ref: "#/definitions/TypeReleve"
         "500":
-          description: "Ajout NOK"
+          description: "erreur"
           
   /type_releve/{id}:
     put:
@@ -687,7 +687,7 @@ paths:
           schema:
             $ref: "#/definitions/ListeAnalyses"
         "500":
-          description: "Récupération NOK"
+          description: "erreur"
     post:
       tags:
       - "Analyse"
@@ -713,7 +713,7 @@ paths:
           schema:
             $ref: "#/definitions/Analyse"
         "500":
-          description: "Création NOK"
+          description: "erreur"
   /analyse/{id}:
     put:
       tags:
@@ -744,7 +744,7 @@ paths:
         "200":
           description: "Modification OK"
         "500":
-          description: "Modification NOK"
+          description: "erreur"
     delete:
       tags:
       - "Analyse"
@@ -768,7 +768,7 @@ paths:
         "200":
           description: "Suppression OK"
         "500":
-          description: "Suppression NOK"
+          description: "erreur"
   /analyse/relevé/{id}:
     get:
       tags:
@@ -795,7 +795,7 @@ paths:
           schema:
             $ref: "#/definitions/ListeAnalysesDangerositeCouleur"
         "500":
-          description: "Récupération NOK"
+          description: "erreur"
           
 ########################################
 #                                      #
@@ -821,7 +821,7 @@ paths:
           schema:
             $ref: "#/definitions/ListeDangerosites"
         "500":
-          description: "Récupération NOK"
+          description: "erreur"
     post:
       tags:
       - "Dangerosité"
@@ -847,7 +847,7 @@ paths:
           schema:
             $ref: "#/definitions/Dangerosite"
         "500":
-          description: "Création NOK"
+          description: "erreur"
   /dangerosite/{id}:
     put:
       tags:
@@ -878,7 +878,7 @@ paths:
         "200":
           description: "Modification OK"
         "500":
-          description: "Modification NOK"
+          description: "erreur"
     delete:
       tags:
       - "Dangerosité"
@@ -902,7 +902,7 @@ paths:
         "200":
           description: "Suppression OK"
         "500":
-          description: "Suppression NOK"
+          description: "erreur"
 
 ########################################
 #                                      #
@@ -928,7 +928,7 @@ paths:
           schema:
             $ref: "#/definitions/ListeCouleurs"
         "500":
-          description: "Récupération NOK"
+          description: "erreur"
     post:
       tags:
       - "Couleur"
@@ -954,7 +954,7 @@ paths:
           schema:
             $ref: "#/definitions/Couleur"
         "500":
-          description: "Création NOK"
+          description: "erreur"
   /couleur/{id}:
     put:
       tags:
@@ -985,7 +985,7 @@ paths:
         "200":
           description: "Modification OK"
         "500":
-          description: "Modification NOK"
+          description: "erreur"
     delete:
       tags:
       - "Couleur"
@@ -1009,7 +1009,7 @@ paths:
         "200":
           description: "Suppression OK"
         "500":
-          description: "Suppression NOK"
+          description: "erreur"
     
 securityDefinitions:
   petstore_auth:

@@ -34,4 +34,4 @@ $ docker-compose run --rm back npx sequelize db:migrate
 
 # Guide d'utilisation
 
-La [documentation d'utilisation](https://app.swaggerhub.com/apis-docs/NikoB9/MonAssitantMedical/1.0.2 "documentation") est disponible ici : [https://app.swaggerhub.com/apis-docs/NikoB9/MonAssitantMedical/1.0.2](https://app.swaggerhub.com/apis-docs/NikoB9/MonAssitantMedical/1.0.2).
+La [documentation d'utilisation](https://app.swaggerhub.com/apis-docs/NikoB9/MonAssitantMedical/1.0.4 "documentation") est disponible ici : [https://app.swaggerhub.com/apis-docs/NikoB9/MonAssitantMedical/1.0.4](https://app.swaggerhub.com/apis-docs/NikoB9/MonAssitantMedical/1.0.4).
