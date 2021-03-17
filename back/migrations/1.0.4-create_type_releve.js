@@ -23,8 +23,8 @@ module.exports = {
       }
     }).then(function () {
       queryInterface.sequelize.query("INSERT INTO TypeReleve(id, label) VALUES(1, 'Tension systolique'), " +
-      "(2, 'Masse corporelle'), (3, 'Oxygénation'), (4, 'Rythme cardiaque'), " +
-      "(5, 'Glycémie'), (6, 'Taille'), (7, 'Température'), (8, 'IMC');");
+      "(2, 'Oxygénation'), (3, 'Rythme cardiaque'), " +
+      "(4, 'Glycémie'), (5, 'Température'), (6, 'IMC');");
     });
   },
   down: (queryInterface, Sequelize) => {

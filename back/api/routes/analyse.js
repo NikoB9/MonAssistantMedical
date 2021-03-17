@@ -65,7 +65,7 @@ module.exports = () => {
             profils.forEach(profil => {
                 profilsId.push(profil.id);
             });
-            models.Analyse.findAll({
+            const analyses = await models.Analyse.findAll({
                 where: {
                     ProfilId: profilsId,               // qui respecte les profils
                     TypeReleveId: releve.TypeReleveId, // le type de releve
@@ -82,12 +82,8 @@ module.exports = () => {
                         ]
                     }
                 ]
-            }).then((analyses) => {
-                res.status(200).send(analyses);
-            }).catch((error) => {
-                console.log(error);
-                res.status(500).send(error);
             });
+            res.status(200).send(analyses);
         } catch(error) {
             console.log(error);
             res.status(500).send(error);
