@@ -8,3 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'front';
 }
+
+//sessionStorage.setItem('id', '1');
+//sessionStorage.removeItem('id');
+

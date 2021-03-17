@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">MonAssistantMedical</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Informations <span class="sr-only" *ngIf="navElems.accueil">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="this.connected; else elseReleve" class="nav-link" href="#">Relevés <span class="sr-only" *ngIf="navElems.releves">(current)</span></a>
+        <ng-template #elseReleve>
+          <a class="nav-link disabled" href="#">Relevés</a>
+        </ng-template>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="connected; else elseAnalyse" class="nav-link" href="#">Analyses <span class="sr-only" *ngIf="navElems.analyses">(current)</span></a>
+        <ng-template #elseAnalyse>
+          <a class="nav-link disabled" href="#">Analyses</a>
+        </ng-template>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <button class="btn btn-outline-dark my-2 my-sm-0" type="button" (click)="open(content)">Connexion</button>
+    </form>
+  </div>
+</nav>
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Authentification</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+      <li [ngbNavItem]="1">
+        <a ngbNavLink>Connexion</a>
+        <ng-template ngbNavContent>
+          <app-authentification (closeModal)="close($event)"></app-authentification>
+        </ng-template>
+      </li>
+      <li [ngbNavItem]="2">
+        <a ngbNavLink>Création</a>
+        <ng-template ngbNavContent>
+          <app-authentification (closeModal)="close($event)"></app-authentification>
+        </ng-template>
+      </li>
+    </ul>
+
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+  </div>
+</ng-template>
+
+
+
+<br>

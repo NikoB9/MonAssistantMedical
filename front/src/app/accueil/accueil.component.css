@@ -1,0 +1,9 @@
+#infocard{
+  width: 80vw !important;
+}
+
+#infopage{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
