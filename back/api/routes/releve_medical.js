@@ -10,7 +10,7 @@ module.exports = () => {
             res.status(200).send(releves);
         }).catch((error) => {
             console.log(error);
-            res.sendStatus(500).send(error);
+            res.status(500).send(error);
         });
     });
 
@@ -20,7 +20,7 @@ module.exports = () => {
             res.status(200).send(response.dataValues);
         }).catch((error) => {
             console.log(error);
-            res.sendStatus(500).send(error);
+            res.status(500).send(error);
         });;
     });
 
@@ -48,7 +48,7 @@ module.exports = () => {
             res.status(200).send(true);
         }).catch((error) => {
             console.log(error);
-            res.sendStatus(500).send(error);
+            res.status(500).send(error);
         });
     });
 
