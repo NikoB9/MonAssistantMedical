@@ -71,10 +71,10 @@ paths:
 #        - "read:pets"
           
   /utilisateur/authentification:
-    get:
+    post:
       tags:
       - "Utilisateur"
-      summary: "Création d'un utilisateur"
+      summary: "Authentification d'un utilisateur"
       description: ""
       operationId: "loginUser"
       consumes:
@@ -97,7 +97,7 @@ paths:
             $ref: "#/definitions/UtilisateurComplet"
         "500":
           description: "erreur"
-          
+
   /utilisateur/{id}:
     get:
       tags:
@@ -179,7 +179,7 @@ paths:
           description: "Suppression OK."
         "500":
           description: "erreur"
-          
+
   /utilisateur/{id}/profil/{idprofil}:
     post:
       tags:
@@ -241,7 +241,7 @@ paths:
           description: "Suppression OK."
         "500":
           description: "erreur"
-          
+
   /utilisateur/{id}/releve:
     get:
       tags:
@@ -278,7 +278,7 @@ paths:
         "200":
           description: "Relevés trouvés."
           schema:
-            $ref: "#/definitions/ListeRelevesAnalyses"
+            $ref: "#/definitions/ListeRelevesMedicaux"
         "500":
           description: "erreur"
 
@@ -335,7 +335,7 @@ paths:
             $ref: "#/definitions/Profils"
         "500":
           description: "erreur"
-      
+
   /profil/{id}:
     get:
       tags:
@@ -363,7 +363,7 @@ paths:
             $ref: "#/definitions/Profil"
         "500":
           description: "erreur"
-    
+
     put:
       tags:
       - "Profil"
@@ -394,7 +394,7 @@ paths:
           description: "true"
         "500":
           description: "erreur"
-          
+
     delete:
       tags:
       - "Profil"
@@ -604,7 +604,7 @@ paths:
             $ref: "#/definitions/TypeReleve"
         "500":
           description: "erreur"
-          
+
   /type_releve/{id}:
     put:
       tags:
@@ -636,7 +636,7 @@ paths:
           description: "true"
         "500":
           description: "erreur"
-          
+
     delete:
       tags:
       - "Type de relevé"
@@ -796,7 +796,7 @@ paths:
             $ref: "#/definitions/ListeAnalysesDangerositeCouleur"
         "500":
           description: "erreur"
-          
+
 ########################################
 #                                      #
 #       Requêtes pour dangerosité      #
@@ -1010,7 +1010,7 @@ paths:
           description: "Suppression OK"
         "500":
           description: "erreur"
-    
+
 securityDefinitions:
   petstore_auth:
     type: "oauth2"
@@ -1023,8 +1023,8 @@ securityDefinitions:
     type: "apiKey"
     name: "api_key"
     in: "header"
-    
-    
+
+
 definitions:
   Utilisateur:
     type: "object"
@@ -1114,7 +1114,7 @@ definitions:
       label:
         type: "string"
         example: "Adulte"
-  
+
   Profils:
     type: "array"
     items:
@@ -1122,15 +1122,15 @@ definitions:
       properties:
         schema:
           $ref: "#/definitions/Profil"
-          
+
   ReleveMedical:
     type: "object"
     required:
     - "id"
     - "prise_de_mesure"
     - "valeur"
-    - "UtilisateurId"
-    - "TypeReleveId"
+    - "utilisateurId"
+    - "typeReleveId"
     properties:
       id:
         type: "integer"
@@ -1141,10 +1141,10 @@ definitions:
       valeur:
         type: "integer"
         example: 110
-      UtilisateurId:
+      utilisateurId:
         type: "integer"
         example: 19
-      TypeReleveId:
+      typeReleveId:
         type: "integer"
         example: 6
   ListeRelevesMedicaux:
@@ -1160,9 +1160,9 @@ definitions:
     - "id"
     - "mini"
     - "maxi"
-    - "DangerositeId"
-    - "ProfilId"
-    - "TypeReleveId"
+    - "dangerositeId"
+    - "profilId"
+    - "typeReleveId"
     properties:
       id:
         type: "integer"
@@ -1173,13 +1173,13 @@ definitions:
       maxi:
         type: "integer"
         example: 110
-      DangerositeId:
+      dangerositeId:
         type: "integer"
         example: 7
-      ProfilId:
+      profilId:
         type: "integer"
         example: 2
-      TypeReleveId:
+      typeReleveId:
         type: "integer"
         example: 3
   ListeAnalyses:
@@ -1194,7 +1194,7 @@ definitions:
     required:
     - "id"
     - "message"
-    - "CouleurId"
+    - "couleurId"
     properties:
       id:
         type: "integer"
@@ -1202,7 +1202,7 @@ definitions:
       message:
         type: "string"
         example: "A surveiller. Consulter votre médecin."
-      CouleurId:
+      couleurId:
         type: "integer"
         example: 2
   ListeDangerosites:
@@ -1274,8 +1274,8 @@ definitions:
     - "mini"
     - "maxi"
     - "dangerosite"
-    - "ProfilId"
-    - "TypeReleveId"
+    - "profilId"
+    - "typeReleveId"
     properties:
       id:
         type: "integer"
@@ -1291,10 +1291,10 @@ definitions:
         properties:
           schema:
             $ref: "#/definitions/DangerositeCouleur"
-      ProfilId:
+      profilId:
         type: "integer"
         example: 2
-      TypeReleveId:
+      typeReleveId:
         type: "integer"
         example: 3
   ListeAnalysesDangerositeCouleur:
@@ -1304,19 +1304,3 @@ definitions:
       properties:
         schema:
           $ref: "#/definitions/AnalyseDangerositeCouleur"
-  ListeRelevesAnalyses:
-    type: "array"
-    items:
-      type: "object"
-      properties:
-        releve:
-          type: "object"
-          properties:
-            schema:
-              $ref: "#/definitions/ReleveMedical"
-        analyse:
-          type: "object"
-          properties:
-            schema:
-              $ref: "#/definitions/AnalyseDangerositeCouleur"
-  
