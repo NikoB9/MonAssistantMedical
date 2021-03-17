@@ -278,7 +278,7 @@ paths:
         "200":
           description: "Relevés trouvés."
           schema:
-            $ref: "#/definitions/ListeRelevesMedicaux"
+            $ref: "#/definitions/ListeRelevesAnalyses"
         "500":
           description: "erreur"
 
@@ -1129,8 +1129,8 @@ definitions:
     - "id"
     - "prise_de_mesure"
     - "valeur"
-    - "utilisateurId"
-    - "typeReleveId"
+    - "UtilisateurId"
+    - "TypeReleveId"
     properties:
       id:
         type: "integer"
@@ -1141,10 +1141,10 @@ definitions:
       valeur:
         type: "integer"
         example: 110
-      utilisateurId:
+      UtilisateurId:
         type: "integer"
         example: 19
-      typeReleveId:
+      TypeReleveId:
         type: "integer"
         example: 6
   ListeRelevesMedicaux:
@@ -1160,9 +1160,9 @@ definitions:
     - "id"
     - "mini"
     - "maxi"
-    - "dangerositeId"
-    - "profilId"
-    - "typeReleveId"
+    - "DangerositeId"
+    - "ProfilId"
+    - "TypeReleveId"
     properties:
       id:
         type: "integer"
@@ -1173,13 +1173,13 @@ definitions:
       maxi:
         type: "integer"
         example: 110
-      dangerositeId:
+      DangerositeId:
         type: "integer"
         example: 7
-      profilId:
+      ProfilId:
         type: "integer"
         example: 2
-      typeReleveId:
+      TypeReleveId:
         type: "integer"
         example: 3
   ListeAnalyses:
@@ -1194,7 +1194,7 @@ definitions:
     required:
     - "id"
     - "message"
-    - "couleurId"
+    - "CouleurId"
     properties:
       id:
         type: "integer"
@@ -1202,7 +1202,7 @@ definitions:
       message:
         type: "string"
         example: "A surveiller. Consulter votre médecin."
-      couleurId:
+      CouleurId:
         type: "integer"
         example: 2
   ListeDangerosites:
@@ -1274,8 +1274,8 @@ definitions:
     - "mini"
     - "maxi"
     - "dangerosite"
-    - "profilId"
-    - "typeReleveId"
+    - "ProfilId"
+    - "TypeReleveId"
     properties:
       id:
         type: "integer"
@@ -1291,10 +1291,10 @@ definitions:
         properties:
           schema:
             $ref: "#/definitions/DangerositeCouleur"
-      profilId:
+      ProfilId:
         type: "integer"
         example: 2
-      typeReleveId:
+      TypeReleveId:
         type: "integer"
         example: 3
   ListeAnalysesDangerositeCouleur:
@@ -1304,4 +1304,19 @@ definitions:
       properties:
         schema:
           $ref: "#/definitions/AnalyseDangerositeCouleur"
+  ListeRelevesAnalyses:
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        releve:
+          type: "object"
+          properties:
+            schema:
+              $ref: "#/definitions/ReleveMedical"
+        analyse:
+          type: "object"
+          properties:
+            schema:
+              $ref: "#/definitions/AnalyseDangerositeCouleur"
   
