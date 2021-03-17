@@ -9,5 +9,5 @@ export interface Utilisateur{
 
 export interface UtilisateurLogin{
   'login': string;
-  'mot_de_passe': string;
+  'password': string;
 }

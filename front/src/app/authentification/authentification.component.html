@@ -1,4 +1,7 @@
 <form [formGroup]="authenticationForm">
+
+  <app-error-message *ngIf="error" [message]="this.errorMessage"></app-error-message>
+
   <div class="form-group">
     <label for="login">Pseudo</label>
     <input type="text" class="form-control" id="login" placeholder="Entrez votre pseudo" formControlName="login">

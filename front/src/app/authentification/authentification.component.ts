@@ -1,5 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {UtilisateurService} from '../services/utilisateur.service';
+import {Utilisateur} from '../models/utilisateur.model';
 
 @Component({
   selector: 'app-authentification',
@@ -12,12 +14,16 @@ export class AuthentificationComponent implements OnInit {
   closeModal: EventEmitter<string> = new EventEmitter<string>();
 
   authenticationForm: FormGroup;
+  error: boolean;
+  errorMessage: string;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private userService: UtilisateurService) {
     this.authenticationForm = this.fb.group({
       login: ['', Validators.required],
       password: ['', Validators.required],
     });
+    this.errorMessage = 'Login ou mot de passe incorrect';
+    this.error = false;
   }
 
 
@@ -26,7 +32,22 @@ export class AuthentificationComponent implements OnInit {
 
   authenticate(): void{
     console.log(this.authenticationForm.value);
-    this.close('close modal after authentication');
+    this.userService.authenticate(this.authenticationForm.value).subscribe( (user) => {
+
+      console.log(user);
+
+      if (user as Utilisateur){
+        sessionStorage.setItem('id', String(user.id));
+        sessionStorage.setItem('login', String(user.login));
+        this.close('close modal after authentication');
+      }
+      else {
+        this.error = true;
+        console.log('Login ou mot de passe incorrect');
+      }
+
+    });
+
   }
 
   close(reason: string): void {

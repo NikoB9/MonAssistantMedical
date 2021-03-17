@@ -14,11 +14,12 @@ export class NavbarComponent implements OnInit {
   active = 1;
 
   @Input()
-  navElems: Menu;
+  navElems?: Menu;
   connected: boolean;
+  login?: string | null;
 
   constructor(private modalService: NgbModal) {
-    this.navElems = {accueil: true, releves: false, analyses: false};
+    /*this.navElems = {accueil: true, releves: false, analyses: false, profil: false};*/
     this.connected = sessionStorage?.getItem('id') !== null;
   }
 
@@ -32,6 +33,8 @@ export class NavbarComponent implements OnInit {
 
   close(reason: string): void {
     this.modalService.dismissAll(reason);
+    this.connected = true;
+    this.login = sessionStorage.getItem('login');
   }
 
   private getDismissReason(reason: any): string {
@@ -46,6 +49,17 @@ export class NavbarComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {}
+  disconnect(): void {
+    this.connected = false;
+    sessionStorage.clear();
+  }
+
+  ngOnInit(): void {
+
+    if (sessionStorage?.getItem('id') !== null){
+      this.login = sessionStorage.getItem('login');
+    }
+
+  }
 
 }

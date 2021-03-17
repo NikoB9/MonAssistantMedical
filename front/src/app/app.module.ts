@@ -11,10 +11,18 @@ import {RouterModule, Routes} from '@angular/router';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {ReactiveFormsModule} from '@angular/forms';
 import { CreateUserComponent } from './create-user/create-user.component';
+import {HttpClientModule} from '@angular/common/http';
+import { ErrorMessageComponent } from './error-message/error-message.component';
+import { ProfilPageComponent } from './profil-page/profil-page.component';
+import { AnalysePageComponent } from './analyse-page/analyse-page.component';
+import { RelevePageComponent } from './releve-page/releve-page.component';
 
 const appRoutes: Routes = [
   { path: 'informations', component: AccueilComponent },
   { path: '', component: AccueilComponent },
+  { path: 'profil', component: ProfilPageComponent },
+  { path: 'releves', component: RelevePageComponent },
+  { path: 'analyses', component: AnalysePageComponent },
 ];
 
 @NgModule({
@@ -23,14 +31,19 @@ const appRoutes: Routes = [
     NavbarComponent,
     AuthentificationComponent,
     AccueilComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    ErrorMessageComponent,
+    ProfilPageComponent,
+    AnalysePageComponent,
+    RelevePageComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
     FontAwesomeModule,
     [RouterModule.forRoot(appRoutes)],
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,25 +4,13 @@ const models = require('../../models');
 
 module.exports = () => {
 
-    //Création d'un utilisateur
-    //valide : renvoie utilisateur
-    //invalide : renvoie erreur
-    router.post('/', (req, res) => {
-        models.Utilisateur.create(req.body).then((response) => {
-            res.status(200).send(response.dataValues);
-        }).catch((error) => {
-            console.log(error);
-            res.status(500).send(error);
-        });;
-    });
-
     //Authentification d'un utilisateur
-    router.post('/authentification', (req, res) => {
+    router.get('/authentification/:login/:mdp', (req, res) => {
         models.Utilisateur.findOne({
 
             where: {
-                login: req.body.login,
-                mot_de_passe: req.body.mdp
+                login: req.params.login,
+                mot_de_passe: req.params.mdp
             },
             include: [
                 {
@@ -37,6 +25,18 @@ module.exports = () => {
             console.log(error);
             res.sendStatus(500)
         });
+    });
+
+    //Création d'un utilisateur
+    //valide : renvoie utilisateur
+    //invalide : renvoie erreur
+    router.post('/', (req, res) => {
+        models.Utilisateur.create(req.body).then((response) => {
+            res.status(200).send(response.dataValues);
+        }).catch((error) => {
+            console.log(error);
+            res.status(500).send(error);
+        });;
     });
 
     //Récupération des informations d'un utilisateur + ses profils

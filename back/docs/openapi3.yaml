@@ -70,7 +70,7 @@ paths:
 #        - "write:pets"
 #        - "read:pets"
           
-  /utilisateur/authentification:
+  /utilisateur/authentification/{login}/{mdp}:
     post:
       tags:
       - "Utilisateur"
@@ -84,12 +84,16 @@ paths:
       - "application/xml"
       - "application/json"
       parameters:
-      - in: "body"
-        name: "body"
-        description: "Utilisateur que l'on veut ajouter à la table."
+      - name: "login"
+        in: "path"
+        description: "login de l'utilisateur"
         required: true
-        schema:
-          $ref: "#/definitions/UtilisateurLogin"
+        type: "string"
+      - name: "mdp"
+        in: "path"
+        description: "mot de passe"
+        required: true
+        type: "string"
       responses:
         "200":
           description: "Utilisateur. Null si pas d'utilisateur"

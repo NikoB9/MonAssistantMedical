@@ -11,6 +11,10 @@ export class UtilisateurService {
   constructor(private http: HttpClient) { }
 
   public authenticate(userLogin: UtilisateurLogin): Observable<Utilisateur> {
-    return this.http.post<Utilisateur>('http://localhost:3000/utilisateur/authentification', userLogin);
+    return this.http.get<Utilisateur>(`http://localhost:3000/api/utilisateur/authentification/${userLogin.login}/${userLogin.password}`);
+  }
+
+  public createUser(user: Utilisateur): Observable<Utilisateur> {
+    return this.http.post<Utilisateur>(`http://localhost:3000/api/utilisateur/`, user);
   }
 }
