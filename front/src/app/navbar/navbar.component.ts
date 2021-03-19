@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Menu} from '../models/menu.model';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -18,7 +19,7 @@ export class NavbarComponent implements OnInit {
   connected: boolean;
   login?: string | null;
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal, private router: Router) {
     /*this.navElems = {accueil: true, releves: false, analyses: false, profil: false};*/
     this.connected = sessionStorage?.getItem('id') !== null;
   }
@@ -35,6 +36,7 @@ export class NavbarComponent implements OnInit {
     this.modalService.dismissAll(reason);
     this.connected = true;
     this.login = sessionStorage.getItem('login');
+    this.router.navigate(['/']);
   }
 
   private getDismissReason(reason: any): string {
@@ -52,6 +54,7 @@ export class NavbarComponent implements OnInit {
   disconnect(): void {
     this.connected = false;
     sessionStorage.clear();
+    this.router.navigate(['/']);
   }
 
   ngOnInit(): void {

@@ -9,9 +9,13 @@ import {Menu} from '../models/menu.model';
 export class ProfilPageComponent implements OnInit {
 
   navElems: Menu;
+  connected: boolean;
+  errorMessage: string;
 
   constructor() {
     this.navElems = {accueil: false, releves: false, analyses: false, profil: true};
+    this.connected = sessionStorage?.getItem('id') !== null;
+    this.errorMessage = 'Vous êtes déconnecté. Veuillez vous connecter afin d\'accéder à cette page';
   }
 
   ngOnInit(): void {

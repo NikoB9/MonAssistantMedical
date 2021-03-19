@@ -1,1 +1,9 @@
 <app-navbar [navElems]="this.navElems"></app-navbar>
+
+<div *ngIf="connected; else elseError" >
+
+</div>
+
+<ng-template #elseError>
+  <app-error-message [message]="this.errorMessage"></app-error-message>
+</ng-template>

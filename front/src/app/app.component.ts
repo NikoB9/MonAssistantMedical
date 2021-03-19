@@ -9,5 +9,5 @@ export class AppComponent {
   title = 'front';
 }
 
-sessionStorage.removeItem('id');
+/*sessionStorage.removeItem('id');*/
 
