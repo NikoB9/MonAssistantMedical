@@ -2,9 +2,6 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {UtilisateurService} from '../services/utilisateur.service';
 import {Utilisateur} from '../models/utilisateur.model';
-import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
-
-
 
 @Component({
   selector: 'app-create-user',
@@ -39,10 +36,8 @@ export class CreateUserComponent implements OnInit {
 
   create(): void{
     this.createUserForm.value.naissance = `${this.createUserForm.value.naissance.year}-${this.createUserForm.value.naissance.month}-${this.createUserForm.value.naissance.day}`;
-    console.log(this.createUserForm.value);
-    this.userService.createUser(this.createUserForm.value).subscribe( (user) => {
 
-      console.log(user);
+    this.userService.createUser(this.createUserForm.value).subscribe( (user) => {
 
       if (user as Utilisateur){
         sessionStorage.setItem('id', String(user.id));
@@ -51,7 +46,6 @@ export class CreateUserComponent implements OnInit {
       }
       else {
         this.error = true;
-        console.log('Une erreur est survenue');
       }
 
     });

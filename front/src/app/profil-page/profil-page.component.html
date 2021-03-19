@@ -1,9 +1,12 @@
 <app-navbar [navElems]="this.navElems"></app-navbar>
 
-<div *ngIf="connected; else elseError" >
+<div class="flexrow">
+  <div *ngIf="connected; else elseError" class="conteneurPage">
+    <app-edit-user></app-edit-user>
+  </div>
 
+  <ng-template #elseError>
+    <app-error-message [message]="this.errorMessage"></app-error-message>
+  </ng-template>
 </div>
 
-<ng-template #elseError>
-  <app-error-message [message]="this.errorMessage"></app-error-message>
-</ng-template>

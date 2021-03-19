@@ -31,10 +31,8 @@ export class AuthentificationComponent implements OnInit {
   }
 
   authenticate(): void{
-    console.log(this.authenticationForm.value);
-    this.userService.authenticate(this.authenticationForm.value).subscribe( (user) => {
 
-      console.log(user);
+    this.userService.authenticate(this.authenticationForm.value).subscribe( (user) => {
 
       if (user as Utilisateur){
         sessionStorage.setItem('id', String(user.id));
@@ -43,7 +41,6 @@ export class AuthentificationComponent implements OnInit {
       }
       else {
         this.error = true;
-        console.log('Login ou mot de passe incorrect');
       }
 
     });

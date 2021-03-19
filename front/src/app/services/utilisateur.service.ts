@@ -17,4 +17,12 @@ export class UtilisateurService {
   public createUser(user: Utilisateur): Observable<Utilisateur> {
     return this.http.post<Utilisateur>(`http://localhost:3000/api/utilisateur/`, user);
   }
+
+  public getUser(id: string | null): Observable<Utilisateur> {
+    return this.http.get<Utilisateur>(`http://localhost:3000/api/utilisateur/${id}`);
+  }
+
+  public updateUser(id: string | null, user: Utilisateur): Observable<boolean> {
+    return this.http.put<boolean>(`http://localhost:3000/api/utilisateur/${id}`, user);
+  }
 }

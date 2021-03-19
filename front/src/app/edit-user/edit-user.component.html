@@ -1,1 +1,42 @@
-<p>edit-user works!</p>
+<h3>Modification de vos données personnelles</h3>
+
+<form [formGroup]="editUserForm" (ngSubmit)="edit()">
+
+  <app-error-message *ngIf="error" [message]="this.errorMessage"></app-error-message>
+  <app-valid-message *ngIf="update" [message]="this.validMessage"></app-valid-message>
+
+  <div class="form-group">
+    <label for="nom">Nom</label>
+    <input type="text" class="form-control" id="nom" placeholder="Entrez votre nom de famille" formControlName="nom">
+  </div>
+
+  <div class="form-group">
+    <label for="prenom">Prénom</label>
+    <input type="text" class="form-control" id="prenom" placeholder="Entrez votre prénom" formControlName="prenom">
+  </div>
+
+  <div class="form-group">
+    <label for="naissance">Date de Naissance</label>
+    <div class="input-group">
+      <input class="form-control" placeholder="aaaa-mm-jj"
+             name="naissance" id="naissance" formControlName="naissance" ngbDatepicker #d="ngbDatepicker">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i class="fas fa-calendar-alt"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="login">Pseudo</label>
+    <input type="text" class="form-control" id="login" placeholder="Entrez votre pseudo" formControlName="login">
+  </div>
+
+  <div class="form-group">
+    <label for="mot_de_passe">Mot de passe</label>
+    <input type="password" class="form-control" id="mot_de_passe" placeholder="MotDePasse" formControlName="mot_de_passe">
+  </div>
+
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-outline-dark">VALIDER</button>
+  </div>
+</form>
