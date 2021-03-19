@@ -16,6 +16,7 @@ import { ErrorMessageComponent } from './error-message/error-message.component';
 import { ProfilPageComponent } from './profil-page/profil-page.component';
 import { AnalysePageComponent } from './analyse-page/analyse-page.component';
 import { RelevePageComponent } from './releve-page/releve-page.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 const appRoutes: Routes = [
   { path: 'informations', component: AccueilComponent },
@@ -35,7 +36,8 @@ const appRoutes: Routes = [
     ErrorMessageComponent,
     ProfilPageComponent,
     AnalysePageComponent,
-    RelevePageComponent
+    RelevePageComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

@@ -3,20 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a7367ba2-ed7a-4a7d-88f9-a4688256e7b3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/routes/utilisateur.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/routes/utilisateur.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/docs/openapi3.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/back/docs/openapi3.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/accueil/accueil.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/accueil/accueil.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/angular.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/authentification/authentification.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/authentification/authentification.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/authentification/authentification.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/authentification/authentification.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/create-user/create-user.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/create-user/create-user.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/create-user/create-user.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/create-user/create-user.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/models/menu.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/models/menu.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/models/utilisateur.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/models/utilisateur.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/navbar/navbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/navbar/navbar.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/navbar/navbar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/navbar/navbar.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/services/utilisateur.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/services/utilisateur.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,15 +37,13 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -72,7 +58,8 @@
       <option name="presentableId" value="Default" />
       <updated>1615968064873</updated>
       <workItem from="1615968068645" duration="17394000" />
-      <workItem from="1615997232323" duration="7933000" />
+      <workItem from="1615997232323" duration="8233000" />
+      <workItem from="1616172667866" duration="549000" />
     </task>
     <servers />
   </component>
