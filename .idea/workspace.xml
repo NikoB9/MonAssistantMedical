@@ -3,14 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="a7367ba2-ed7a-4a7d-88f9-a4688256e7b3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/analyse-page/analyse-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/analyse-page/analyse-page.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/analyse-page/analyse-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/analyse-page/analyse-page.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/navbar/navbar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/navbar/navbar.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/profil-page/profil-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/profil-page/profil-page.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/profil-page/profil-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/profil-page/profil-page.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/releve-page/releve-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/releve-page/releve-page.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/releve-page/releve-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/releve-page/releve-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/accueil/accueil.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/accueil/accueil.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/accueil/accueil.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/accueil/accueil.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/navbar/navbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/navbar/navbar.component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +60,7 @@
       <updated>1615968064873</updated>
       <workItem from="1615968068645" duration="17394000" />
       <workItem from="1615997232323" duration="8233000" />
-      <workItem from="1616172667866" duration="2065000" />
+      <workItem from="1616172667866" duration="2848000" />
     </task>
     <servers />
   </component>
