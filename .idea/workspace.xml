@@ -3,19 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="a7367ba2-ed7a-4a7d-88f9-a4688256e7b3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/accueil/accueil.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/accueil/accueil.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/analyse-page/analyse-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/analyse-page/analyse-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/docs/openapi3.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/back/docs/openapi3.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/authentification/authentification.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/authentification/authentification.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/create-user/create-user.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/create-user/create-user.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/edit-user/edit-user.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/edit-user/edit-user.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/edit-profils/edit-profils.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/edit-profils/edit-profils.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/edit-profils/edit-profils.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/edit-profils/edit-profils.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/edit-profils/edit-profils.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/edit-profils/edit-profils.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/app/edit-user/edit-user.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/edit-user/edit-user.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/error-message/error-message.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/error-message/error-message.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/app/models/utilisateur.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/models/utilisateur.model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/app/profil-page/profil-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/profil-page/profil-page.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/releve-page/releve-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/releve-page/releve-page.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/app/services/utilisateur.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/services/utilisateur.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,16 +44,34 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration default="true" type="SwaggerCodegen">
+      <option name="activeConfigurationType" value="FILE" />
+      <option name="configurationPath" value="" />
+      <option name="customJreEnabled" value="false" />
+      <option name="customTemplatesPath" value="" />
+      <option name="enableDebugLogging" value="false" />
+      <option name="generateToPath" value="C:\Users\33603\Desktop\APP5\Architecture_orientée_services\MonAssistantMedical\gen" />
+      <option name="generationParameters">
+        <list />
+      </option>
+      <option name="generatorPath" value="https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/4.3.1/openapi-generator-cli-4.3.1.jar" />
+      <option name="jdkPath" value="" />
+      <option name="language" value="java" />
+      <option name="specificationPath" value="C:\Users\33603\Desktop\APP5\Architecture_orientée_services\MonAssistantMedical\back\docs\openapi3.yaml" />
+      <method v="2" />
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -70,7 +84,8 @@
       <updated>1615968064873</updated>
       <workItem from="1615968068645" duration="17394000" />
       <workItem from="1615997232323" duration="8233000" />
-      <workItem from="1616172667866" duration="7200000" />
+      <workItem from="1616172667866" duration="7488000" />
+      <workItem from="1616232084713" duration="7545000" />
     </task>
     <servers />
   </component>

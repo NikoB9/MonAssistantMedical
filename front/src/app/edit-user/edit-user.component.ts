@@ -19,7 +19,7 @@ export class EditUserComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private userService: UtilisateurService) {
     this.error = false;
-    this.errorMessage = 'Un problème est survenu. Vérifier votre connexion.';
+    this.errorMessage = 'Un problème est survenu. Vérifiez votre connexion.';
     this.editUserForm = this.fb.group({
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
@@ -55,6 +55,9 @@ export class EditUserComponent implements OnInit {
   }
 
   edit(): void {
+
+    this.update = false;
+    this.error = false;
 
     this.editUserForm.value.naissance = `${this.editUserForm.value.naissance.year}-${this.editUserForm.value.naissance.month}-${this.editUserForm.value.naissance.day}`;
 

@@ -212,7 +212,7 @@ paths:
         format: "int64"
       responses:
         "200":
-          description: "Ajout OK."
+          description: "true"
         "500":
           description: "erreur"
     delete:
@@ -242,7 +242,7 @@ paths:
         format: "int64"
       responses:
         "200":
-          description: "Suppression OK."
+          description: "true"
         "500":
           description: "erreur"
 

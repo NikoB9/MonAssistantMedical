@@ -19,6 +19,8 @@ import { RelevePageComponent } from './releve-page/releve-page.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { EditProfilsComponent } from './edit-profils/edit-profils.component';
 import { ValidMessageComponent } from './valid-message/valid-message.component';
+import {ProfilService} from './services/profil.service';
+import {UtilisateurService} from './services/utilisateur.service';
 
 const appRoutes: Routes = [
   { path: 'informations', component: AccueilComponent },
@@ -51,7 +53,10 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    UtilisateurService,
+    ProfilService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

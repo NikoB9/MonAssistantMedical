@@ -1,0 +1,11 @@
+.addprofil{
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.delBtn{
+  cursor: pointer;
+}

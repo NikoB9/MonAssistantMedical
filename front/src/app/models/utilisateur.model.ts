@@ -7,7 +7,7 @@ export interface Utilisateur{
   'login': string;
   'mot_de_passe': string;
   'naissance': string;
-  'profils': [Profil];
+  'Profils': Profil[];
 }
 
 export interface UtilisateurLogin{

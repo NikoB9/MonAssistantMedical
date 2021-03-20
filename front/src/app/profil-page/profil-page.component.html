@@ -3,6 +3,8 @@
 <div class="flexrow">
   <div *ngIf="connected; else elseError" class="conteneurPage">
     <app-edit-user></app-edit-user>
+    <hr>
+    <app-edit-profils></app-edit-profils>
   </div>
 
   <ng-template #elseError>

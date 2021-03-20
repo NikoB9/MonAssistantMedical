@@ -1,1 +1,20 @@
-<p>edit-profils works!</p>
+<h3>Gestion de votre profil médical</h3>
+
+<app-error-message *ngIf="error" [message]="this.errorMessage"></app-error-message>
+
+<div style="margin: 15px">
+  <span *ngFor="let profil of this.profils" class="addprofil" (click)="addProfil(profil.id)"><i class="fas fa-plus-circle"></i>&nbsp;{{profil.label}}</span>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Profils utilisateur</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let profil of this.user.Profils">
+      <td class="delBtn" (click)="deleteProfil(profil.id)"><span><i class="fas fa-trash-alt"></i></span>&nbsp;&nbsp;{{profil.label}}</td>
+    </tr>
+  </tbody>
+</table>

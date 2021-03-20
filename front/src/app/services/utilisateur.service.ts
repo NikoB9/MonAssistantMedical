@@ -25,4 +25,12 @@ export class UtilisateurService {
   public updateUser(id: string | null, user: Utilisateur): Observable<boolean> {
     return this.http.put<boolean>(`http://localhost:3000/api/utilisateur/${id}`, user);
   }
+
+  public addUserProfil(idUser: number, idProfil: number): Observable<boolean> {
+    return this.http.post<boolean>(`http://localhost:3000/api/utilisateur/${idUser}/profil/${idProfil}`, {});
+  }
+
+  public removeUserProfil(idUser: number, idProfil: number): Observable<boolean> {
+    return this.http.delete<boolean>(`http://localhost:3000/api/utilisateur/${idUser}/profil/${idProfil}`);
+  }
 }
