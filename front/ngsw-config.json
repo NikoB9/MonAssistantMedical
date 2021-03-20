@@ -26,5 +26,17 @@
         ]
       }
     }
+  ],
+  "dataGroups": [
+    {
+      "name": "monassistantmedical-api",
+      "urls": ["http://localhost:3000/api/"],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 100,
+        "maxAge": "5d",
+        "timeout": "5s"
+      }
+    }
   ]
 }
