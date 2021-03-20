@@ -21,6 +21,8 @@ import { EditProfilsComponent } from './edit-profils/edit-profils.component';
 import { ValidMessageComponent } from './valid-message/valid-message.component';
 import {ProfilService} from './services/profil.service';
 import {UtilisateurService} from './services/utilisateur.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const appRoutes: Routes = [
   { path: 'informations', component: AccueilComponent },
@@ -51,7 +53,8 @@ const appRoutes: Routes = [
     FontAwesomeModule,
     [RouterModule.forRoot(appRoutes)],
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     UtilisateurService,
