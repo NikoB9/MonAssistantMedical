@@ -49,3 +49,4 @@ testem.log
 .DS_Store
 Thumbs.db
 .idea/workspace.xml
+.DS_Store
