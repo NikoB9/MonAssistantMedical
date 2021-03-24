@@ -1,8 +1,37 @@
-<p>releve works!</p>
 <div>
-    <p> {{this.id}} </p>
+<!-- 	<p>You can do filter table data, in this case with observables and our <code>NgbHighlight</code> component used in Typeahead</p> -->
+
+	<form>
+		<div class="form-group form-inline">
+			Full text search: <input class="form-control ml-2" type="text" /> <!-- [formControl]="filter" -->
+		</div>
+	</form>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">Type</th>
+				<th scope="col">Date</th>
+				<th scope="col">Valeur</th>
+				<th scope="col">Information</th>
+				<th scope="col">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let releve of releves">
+				<td>{{releve.TypeReleve.label}}</td>
+				<td>{{this.dateFormat(releve.prise_de_mesure)}}</td>
+				<td>{{releve.valeur}}</td>
+				<td></td>
+				<td>
+					<span class="buttonPoubelle" (click)="this.deleteReleve(releve.id)"><i class="fas fa-trash-alt"></i></span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+<!--     <p> {{this.id}} </p>
     <p> {{this.prise_de_mesure}} </p>
     <p> {{this.valeur}} </p>
     <p> {{this.UtilisateurId}} </p>
-    <p> {{this.TypeReleveId}} </p>
+    <p> {{this.TypeReleveId}} </p> -->
 </div>

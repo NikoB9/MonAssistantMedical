@@ -3,6 +3,7 @@
 
 <div class="flexrow">
   <div *ngIf="connected; else elseError" class="conteneurPage">
+  	<app-releve></app-releve>
   </div>
 
   <ng-template #elseError>

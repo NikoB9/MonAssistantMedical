@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs/Observable";
-import {Releve } from './models/releve.models';
+import {Observable} from "rxjs";
+import {Releve } from '../models/releve.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +14,9 @@ export class ReleveService {
 
   public getReleves(): Observable<Releve[]> {
     return this.http.get<Releve[]>("http://localhost:3000/api/releve_medical");
+  }
+
+  public deleteReleves(id:number): Observable<boolean> {
+    return this.http.delete<boolean>(`http://localhost:3000/api/releve_medical/${id}`);
   }
 }

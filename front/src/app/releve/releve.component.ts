@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ReleveService } from '../releve.service';
-import {Observable} from "rxjs/Observable";
-import {Releve } from '../models/releve.models';
+import { UtilisateurService } from '../services/utilisateur.service';
+import { ReleveService } from '../services/releve.service';
+import {Observable} from "rxjs";
+import { Releve } from '../models/releve.model';
 
 @Component({
   selector: 'app-releve',
@@ -10,13 +11,36 @@ import {Releve } from '../models/releve.models';
 })
 
 export class ReleveComponent implements OnInit {
-  releves?: Observable<Releve[]>;
+  releves?: Releve[];
+  id: string | null;
 
-  constructor(private releveService: ReleveService) {
+  constructor(private utilisateurService: UtilisateurService, private releveService: ReleveService) {
+  	this.id = sessionStorage?.getItem('id');
   }
 
   ngOnInit() {
-    this.releves = this.releveService.getReleves();
+    this.getReleves();
   }
 
- }
+  getReleves(): void{
+    this.utilisateurService.getUserReleves(this.id).subscribe((releves)=>{
+      this.releves = releves;
+      console.log(this.releves);
+    });
+  }
+
+  dateFormat(date: string):string {
+    const dateSplit = date.split('-');
+
+    return "" + dateSplit[2].split('T')[0] + "/" + dateSplit[1] + "/" + dateSplit[0];
+  }
+
+  deleteReleve(id: number): void{
+    this.releveService.deleteReleves(id).subscribe((supression) =>{
+      if (supression) {
+        this.getReleves();
+      } // TODO else avec msg d'erreur
+    })
+  }
+
+}

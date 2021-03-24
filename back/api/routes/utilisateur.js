@@ -187,5 +187,43 @@ module.exports = () => {
         }
     });
 
+    // récupération des relevés d'un utilisateur, possibilité de filtrer par type de relevé et de paginer
+    router.get('/:id/releves', (req, res) => {
+        models.ReleveMedical.findAll({
+            where: {
+                UtilisateurId: req.params.id
+            },
+            include: [{
+                model: models.Analyse,
+                // where: {
+                //     ProfilId: profilsId,               // qui respecte les profils
+                //     TypeReleveId: releve.TypeReleveId, // le type de releve
+                //     mini: { [Op.lte]: releve.valeur }, // la valeur de releve doit être compris entre le seuil min
+                //     maxi: { [Op.gte]: releve.valeur }  // et le seuil max
+                // },
+                include: [{
+                    model: models.Dangerosite,
+                    include: [{
+                        model: models.Couleur,
+                    }]
+                }]
+            }],
+            include: [{
+                model: models.Utilisateur,
+                include: [{
+                    model: models.Profil,
+                }]
+            }],
+            include: [{
+                model: models.TypeReleve,
+            }]
+        }).then((releves) => {
+            res.status(200).send(releves);
+        }).catch((error) => {
+            console.log(error);
+            res.status(500).send(error);
+        });
+    });
+
     return router;
 };
