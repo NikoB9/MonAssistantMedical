@@ -24,7 +24,9 @@ import {UtilisateurService} from './services/utilisateur.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ReleveService } from './services/releve.service';
+import { TypeReleveService } from './services/type-releve.service';
 import { ReleveComponent } from './releve/releve.component';
+import { CreationReleveComponent } from './creation-releve/creation-releve.component';
 
 const appRoutes: Routes = [
   { path: 'informations', component: AccueilComponent },
@@ -48,7 +50,8 @@ const appRoutes: Routes = [
     EditUserComponent,
     EditProfilsComponent,
     ValidMessageComponent,
-    ReleveComponent
+    ReleveComponent,
+    CreationReleveComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,8 @@ const appRoutes: Routes = [
   providers: [
     UtilisateurService,
     ProfilService,
-    ReleveService
+    ReleveService,
+    TypeReleveService
   ],
   bootstrap: [AppComponent]
 })

@@ -15,8 +15,8 @@
   <div class="form-group">
     <label for="naissance">Date de Naissance</label>
     <div class="input-group">
-      <input class="form-control" placeholder="aaaa-mm-jj"
-             name="naissance" id="naissance" formControlName="naissance" ngbDatepicker #d="ngbDatepicker">
+      <input class="form-control" placeholder="dd/mm/yyyy"
+             name="naissance" id="naissance" formControlName="naissance" ngbDatepicker #d="ngbDatepicker" [minDate]="{year: 1900, month: 01, day: 01}" [maxDate]="this.today">
       <div class="input-group-append">
         <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i class="fas fa-calendar-alt"></i></button>
       </div>

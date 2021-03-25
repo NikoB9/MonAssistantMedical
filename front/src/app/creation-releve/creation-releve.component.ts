@@ -1,9 +1,9 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UtilisateurService} from '../services/utilisateur.service';
-import {Utilisateur} from '../models/utilisateur.model';
+import {TypeReleveService} from '../services/type-releve.service';
+import {TypeReleve} from '../models/typeReleve.model';
+import {ReleveService} from '../services/releve.service';
 import {NgbCalendar, NgbDateAdapter, NgbDateParserFormatter, NgbDateStruct, NgbInputDatepickerConfig, NgbDate} from '@ng-bootstrap/ng-bootstrap';
-
 
 
 /**
@@ -52,7 +52,7 @@ export class CustomDateParserFormatter extends NgbDateParserFormatter {
   }
 
   addZero(num: number): string {
-    return num > 9 ? "" + num : "0" + num;
+  	return num > 9 ? "" + num : "0" + num;
   }
 
   format(date: NgbDateStruct | null): string {
@@ -61,9 +61,9 @@ export class CustomDateParserFormatter extends NgbDateParserFormatter {
 }
 
 @Component({
-  selector: 'app-edit-user',
-  templateUrl: './edit-user.component.html',
-  styleUrls: ['./edit-user.component.css'],
+  selector: 'app-creation-releve',
+  templateUrl: './creation-releve.component.html',
+  styleUrls: ['./creation-releve.component.css'],
 
   providers: [
     {provide: NgbDateAdapter, useClass: CustomAdapter},
@@ -72,70 +72,72 @@ export class CustomDateParserFormatter extends NgbDateParserFormatter {
   ]
 })
 
-
-export class EditUserComponent implements OnInit {
+export class CreationReleveComponent implements OnInit {
 
   error: boolean;
   errorMessage: string;
-  editUserForm: FormGroup;
+  addReleveForm: FormGroup;
   userId: string | null;
-  update: boolean;
+  add: boolean;
   validMessage: string;
+  typeReleves: TypeReleve[];
+  noIMC: boolean = true;
   today: NgbDate;
 
-  constructor(private fb: FormBuilder, private userService: UtilisateurService, private calendar: NgbCalendar, private dateAdapter: NgbDateAdapter<string>, private config: NgbInputDatepickerConfig) {
+  constructor(private fb: FormBuilder, private typeReleveService: TypeReleveService, private calendar: NgbCalendar, private dateAdapter: NgbDateAdapter<string>, private config: NgbInputDatepickerConfig, private releveService: ReleveService) { 
+  	this.typeReleves = [];
     this.error = false;
     this.errorMessage = 'Un problème est survenu. Vérifiez votre connexion.';
-    this.editUserForm = this.fb.group({
-      nom: ['', Validators.required],
-      prenom: ['', Validators.required],
-      naissance: ['', Validators.required],
-      login: ['', Validators.required],
-      mot_de_passe: ['', Validators.required],
-    });
     this.userId = sessionStorage.getItem('id');
-    this.update = false;
-    this.validMessage = 'La mise à jour de vos données est effective';
+    this.add = false;
+    this.validMessage = 'Le relevé a bien été ajouté.';
     this.today = this.calendar.getToday();
+
+    this.addReleveForm = this.fb.group({
+      TypeReleveId: ['1', Validators.required],
+      valeur: ['', Validators.required],
+      value2: ['', Validators.required],
+      prise_de_mesure: [this.dateAdapter.toModel(this.today)!, Validators.required],
+    });
+
   }
 
   ngOnInit(): void {
-    this.userService.getUser(this.userId).subscribe( (user) => {
-      if (user as Utilisateur){
+  	this.getTypeReleves();
+  }
 
-        const birthSplit = user.naissance.split('-');
-        const birth = {year: +birthSplit[0], month: +birthSplit[1], day: +birthSplit[2].split('T')[0]};
-
-        this.editUserForm = this.fb.group({
-          nom: [user.nom, Validators.required],
-          prenom: [user.prenom, Validators.required],
-          naissance: [this.dateAdapter.toModel(birth), Validators.required],
-          login: [user.login, Validators.required],
-          mot_de_passe: [user.mot_de_passe, Validators.required],
-        });
-
-      }
-      else {
-        this.error = true;
-      }
+  getTypeReleves(): void{
+    this.typeReleveService.getTypeReleves().subscribe((typeReleves)=>{
+      this.typeReleves = typeReleves;
     });
   }
 
-  edit(): void {
+  choiceIMC(): void {
+  	const label = this.addReleveForm.value.TypeReleveId;
 
-    this.update = false;
-    this.error = false;
-
-    this.editUserForm.value.naissance = `${this.editUserForm.value.naissance.year}-${this.editUserForm.value.naissance.month}-${this.editUserForm.value.naissance.day}`;
-
-    this.userService.updateUser(this.userId, this.editUserForm.value).subscribe( (update) => {
-      if (update){
-        this.update = true;
-      }
-      else {
-        this.error = true;
-      }
-    });
-
+  	if (label === "6") {
+  	  this.noIMC = false;
+  	} else {
+  	  this.noIMC = true;
+  	}
   }
+
+  create(): void {
+  	this.addReleveForm.value.UtilisateurId = this.userId;
+  	this.releveService.createReleve(this.addReleveForm.value).subscribe((releve) => {
+  	  console.log("Yay !");
+  	});
+  }
+
 }
+
+
+
+
+
+
+
+
+
+
+

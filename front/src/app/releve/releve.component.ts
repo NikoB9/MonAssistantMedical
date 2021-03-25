@@ -25,7 +25,6 @@ export class ReleveComponent implements OnInit {
   getReleves(): void{
     this.utilisateurService.getUserReleves(this.id).subscribe((releves)=>{
       this.releves = releves;
-      console.log(this.releves);
     });
   }
 

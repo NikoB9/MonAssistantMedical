@@ -19,4 +19,8 @@ export class ReleveService {
   public deleteReleves(id:number): Observable<boolean> {
     return this.http.delete<boolean>(`http://localhost:3000/api/releve_medical/${id}`);
   }
+
+  public createReleve(releve: Releve): Observable<Releve> {
+  	return this.http.post<Releve>("http://localhost:3000/api/releve_medical", releve);
+  }
 }
