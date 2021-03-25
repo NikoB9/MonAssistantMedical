@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const models = require('../../models');
+const { Op } = require('sequelize');
 
 module.exports = () => {
 
@@ -110,120 +111,105 @@ module.exports = () => {
     });
 
     // récupération des relevés d'un utilisateur, possibilité de filtré par type de relevé et de paginer
-    router.get('/:id/releve', (req, res) => {
-        if(req.query.page) {
-            NOMBRE_RELEVES_PAR_PAGE = 5
-            start = (req.query.page - 1)*NOMBRE_RELEVES_PAR_PAGE;
-            end = (req.query.page)*NOMBRE_RELEVES_PAR_PAGE;
-            if(req.query.type) {
+    router.get('/:id/releve', async (req, res) => {
+        try {
+            const utilisateur = await models.Utilisateur.findByPk(req.params.id);
+            const profils = await utilisateur.getProfils();
+            let profilsId = [];
+            profils.forEach(profil => {
+                profilsId.push(profil.id);
+            });
+            if (req.query.page) {
+                NOMBRE_RELEVES_PAR_PAGE = 5
+                start = (req.query.page - 1) * NOMBRE_RELEVES_PAR_PAGE;
+                end = (req.query.page) * NOMBRE_RELEVES_PAR_PAGE;
+                if (req.query.type) {
+                    const type = await models.TypeReleve.findOne(
+                        {
+                            where: {
+                                label: req.query.type
+                            }
+                        }
+                    );
+                    const releves = await models.ReleveMedical.findAll(
+                        {
+                            offset: start,
+                            limit: end,
+                            where: {
+                                UtilisateurId: req.params.id,
+                                TypeReleveId: type.id
+                            },
+                        }
+                    );
+                    res.status(200).send(await correlateReleveAnalyse(profilsId, releves));
+                } else {
+                    const releves = await models.ReleveMedical.findAll(
+                        {
+                            offset: start,
+                            limit: end,
+                            where: {
+                                UtilisateurId: req.params.id
+                            }
+                        }
+                    );
+                    res.status(200).send(await correlateReleveAnalyse(profilsId, releves));
+                }
+            } else if (req.query.type) {
+                const type = await
                 models.TypeReleve.findOne({
                     where: {
                         label: req.query.type
                     }
-                }).then((type) => {
-                    models.ReleveMedical.findAll({
-                        offset: start,
-                        limit: end,
-                        where: {
-                            UtilisateurId: req.params.id,
-                            TypeReleveId: type.id
-                        },
-                    }).then((releves) => {
-                        res.status(200).send(releves);
-                    }).catch((error) => {
-                        console.log(error);
-                        res.status(500).send(error);
-                    });
-                }).catch((error) => {
-                    console.log(error);
-                    res.status(500).send(error);
                 });
-            } else {
-                models.ReleveMedical.findAll({
-                    offset: start,
-                    limit: end,
-                    where: {
-                        UtilisateurId: req.params.id
-                    }
-                }).then((releves) => {
-                    res.status(200).send(releves);
-                }).catch((error) => {
-                    console.log(error);
-                    res.status(500).send(error);
-                });
-            }
-        } else if (req.query.type) {
-            models.TypeReleve.findOne({
-                where: {
-                    label: req.query.type
-                }
-            }).then((type) => {
-                models.ReleveMedical.findAll({
+                const releves = await models.ReleveMedical.findAll({
                     where: {
                         UtilisateurId: req.params.id,
                         TypeReleveId: type.id
                     },
-                }).then((releves) => {
-                    res.status(200).send(releves);
-                }).catch((error) => {
-                    console.log(error);
-                    res.status(500).send(error);
                 });
-            }).catch((error) => {
-                console.log(error);
-                res.status(500).send(error);
-            });
-        } else {
-            models.ReleveMedical.findAll({
-                where: {
-                    UtilisateurId: req.params.id
-                }
-            }).then((releves) => {
-                res.status(200).send(releves);
-            }).catch((error) => {
-                console.log(error);
-                res.status(500).send(error);
-            });
+                res.status(200).send(await correlateReleveAnalyse(profilsId, releves));
+            } else {
+                const releves = await models.ReleveMedical.findAll({
+                    where: {
+                        UtilisateurId: req.params.id
+                    }
+                });
+                res.status(200).send(await correlateReleveAnalyse(profilsId, releves));
+            }
+        } catch (error) {
+            console.log(error);
+            res.status(500).send(error);
         }
     });
 
-    // récupération des relevés d'un utilisateur, possibilité de filtrer par type de relevé et de paginer
-    router.get('/:id/releves', (req, res) => {
-        models.ReleveMedical.findAll({
-            where: {
-                UtilisateurId: req.params.id
-            },
-            include: [{
-                model: models.Analyse,
-                // where: {
-                //     ProfilId: profilsId,               // qui respecte les profils
-                //     TypeReleveId: releve.TypeReleveId, // le type de releve
-                //     mini: { [Op.lte]: releve.valeur }, // la valeur de releve doit être compris entre le seuil min
-                //     maxi: { [Op.gte]: releve.valeur }  // et le seuil max
-                // },
-                include: [{
-                    model: models.Dangerosite,
-                    include: [{
-                        model: models.Couleur,
-                    }]
-                }]
-            }],
-            include: [{
-                model: models.Utilisateur,
-                include: [{
-                    model: models.Profil,
-                }]
-            }],
-            include: [{
-                model: models.TypeReleve,
-            }]
-        }).then((releves) => {
-            res.status(200).send(releves);
-        }).catch((error) => {
-            console.log(error);
-            res.status(500).send(error);
-        });
-    });
+    async function correlateReleveAnalyse(profilsId, releves) {
+        const relevesAnalyse = [];
+        for(i in releves) {
+            console.log(i);
+            const releve = releves[i];
+            await models.Analyse.findOne({
+                where: {
+                    ProfilId: profilsId,               // qui respecte les profils
+                    TypeReleveId: releve.TypeReleveId, // le type de releve
+                    mini: { [Op.lte]: releve.valeur }, // la valeur de releve doit être compris entre le seuil min
+                    maxi: { [Op.gte]: releve.valeur }  // et le seuil max
+                },
+                include: [
+                    {
+                        model: models.Dangerosite, 
+                        include: [
+                            {
+                                model: models.Couleur,
+                            }
+                        ]
+                    }
+                ]
+            }).then((analyses) => {
+                relevesAnalyse.push([releve, analyses]);
+            });
+        }
+        return relevesAnalyse;
+    }
 
     return router;
 };
