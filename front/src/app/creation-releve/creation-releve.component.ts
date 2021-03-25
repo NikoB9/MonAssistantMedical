@@ -16,7 +16,7 @@ export class CustomAdapter extends NgbDateAdapter<string> {
 
   fromModel(value: string | null): NgbDateStruct | null {
     if (value) {
-      let date = value.split(this.DELIMITER);
+      const date = value.split(this.DELIMITER);
       return {
         day : parseInt(date[0], 10),
         month : parseInt(date[1], 10),
@@ -41,7 +41,7 @@ export class CustomDateParserFormatter extends NgbDateParserFormatter {
 
   parse(value: string): NgbDateStruct | null {
     if (value) {
-      let date = value.split(this.DELIMITER);
+      const date = value.split(this.DELIMITER);
       return {
         day : parseInt(date[0], 10),
         month : parseInt(date[1], 10),
@@ -52,7 +52,7 @@ export class CustomDateParserFormatter extends NgbDateParserFormatter {
   }
 
   addZero(num: number): string {
-  	return num > 9 ? "" + num : "0" + num;
+  	return num > 9 ? '' + num : '0' + num;
   }
 
   format(date: NgbDateStruct | null): string {
@@ -81,19 +81,19 @@ export class CreationReleveComponent implements OnInit {
   add: boolean;
   validMessage: string;
   typeReleves: TypeReleve[];
-  noIMC: boolean = true;
+  noIMC = true;
   today: NgbDate;
 
-  constructor(private fb: FormBuilder, private typeReleveService: TypeReleveService, private calendar: NgbCalendar, private dateAdapter: NgbDateAdapter<string>, private config: NgbInputDatepickerConfig, private releveService: ReleveService) { 
+  constructor(private fb: FormBuilder, private typeReleveService: TypeReleveService, private calendar: NgbCalendar, private dateAdapter: NgbDateAdapter<string>, private config: NgbInputDatepickerConfig, private releveService: ReleveService) {
   	this.typeReleves = [];
-    this.error = false;
-    this.errorMessage = 'Un problème est survenu. Vérifiez votre connexion.';
-    this.userId = sessionStorage.getItem('id');
-    this.add = false;
-    this.validMessage = 'Le relevé a bien été ajouté.';
-    this.today = this.calendar.getToday();
+   this.error = false;
+   this.errorMessage = 'Un problème est survenu. Vérifiez votre connexion.';
+   this.userId = sessionStorage.getItem('id');
+   this.add = false;
+   this.validMessage = 'Le relevé a bien été ajouté.';
+   this.today = this.calendar.getToday();
 
-    this.addReleveForm = this.fb.group({
+   this.addReleveForm = this.fb.group({
       TypeReleveId: ['1', Validators.required],
       valeur: ['', Validators.required],
       value2: ['', Validators.required],
@@ -107,25 +107,30 @@ export class CreationReleveComponent implements OnInit {
   }
 
   getTypeReleves(): void{
-    this.typeReleveService.getTypeReleves().subscribe((typeReleves)=>{
+    this.typeReleveService.getTypeReleves().subscribe((typeReleves) => {
       this.typeReleves = typeReleves;
     });
   }
 
   choiceIMC(): void {
-  	const label = this.addReleveForm.value.TypeReleveId;
+    const label = this.addReleveForm.value.TypeReleveId;
 
-  	if (label === "6") {
-  	  this.noIMC = false;
-  	} else {
-  	  this.noIMC = true;
+    if (label === '6') {
+      this.noIMC = false;
+    } else {
+      this.noIMC = true;
   	}
   }
 
   create(): void {
   	this.addReleveForm.value.UtilisateurId = this.userId;
+
+   const splitDate = this.addReleveForm.value.prise_de_mesure.split('-');
+
+   this.addReleveForm.value.prise_de_mesure = `${splitDate[2]}-${splitDate[1]}-${splitDate[0]}`;
+
   	this.releveService.createReleve(this.addReleveForm.value).subscribe((releve) => {
-  	  console.log("Yay !");
+  	  console.log('Yay !');
   	});
   }
 

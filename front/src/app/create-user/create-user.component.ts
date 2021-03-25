@@ -82,7 +82,7 @@ export class CreateUserComponent implements OnInit {
   errorMessage: string;
   today: NgbDate;
 
-  constructor(private fb: FormBuilder, private userService: UtilisateurService, private calendar: NgbCalendar, private dateAdapter: NgbDateAdapter<string>, private config: NgbInputDatepickerConfig) { 
+  constructor(private fb: FormBuilder, private userService: UtilisateurService, private calendar: NgbCalendar, private dateAdapter: NgbDateAdapter<string>, private config: NgbInputDatepickerConfig) {
     this.createUserForm = this.fb.group({
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
@@ -101,7 +101,10 @@ export class CreateUserComponent implements OnInit {
   }
 
   create(): void{
-    this.createUserForm.value.naissance = `${this.createUserForm.value.naissance.year}-${this.createUserForm.value.naissance.month}-${this.createUserForm.value.naissance.day}`;
+
+    const splitDate = this.createUserForm.value.naissance.split('-');
+
+    this.createUserForm.value.naissance = `${splitDate[2]}-${splitDate[1]}-${splitDate[0]}`;
 
     this.userService.createUser(this.createUserForm.value).subscribe( (user) => {
 

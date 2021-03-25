@@ -126,7 +126,9 @@ export class EditUserComponent implements OnInit {
     this.update = false;
     this.error = false;
 
-    this.editUserForm.value.naissance = `${this.editUserForm.value.naissance.year}-${this.editUserForm.value.naissance.month}-${this.editUserForm.value.naissance.day}`;
+    const splitDate = this.editUserForm.value.naissance.split('-');
+
+    this.editUserForm.value.naissance = `${splitDate[2]}-${splitDate[1]}-${splitDate[0]}`;
 
     this.userService.updateUser(this.userId, this.editUserForm.value).subscribe( (update) => {
       if (update){
