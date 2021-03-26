@@ -38,4 +38,8 @@ export class UtilisateurService {
   public getUserReleves(id: string | null): Observable<ComplexeReleve[]> {
     return this.http.get<ComplexeReleve[]>(`http://localhost:3000/api/utilisateur/${id}/releves`);
   }
+
+  public getUserRelevesFilterType(id: string | null, idType: string): Observable<ComplexeReleve[]> {
+    return this.http.get<ComplexeReleve[]>(`http://localhost:3000/api/utilisateur/${id}/releves?type=${idType}`);
+  }
 }

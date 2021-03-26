@@ -1,6 +1,11 @@
-.button {
+.ConteneurBtns {
 	display:flex;
 	justify-content: space-around;
+}
+
+.pastille{
+  padding-right: 22px;
+  border-radius: 20px;
 }
 
 .buttonPoubelle {
@@ -9,4 +14,10 @@
 
 .buttonEdit {
 	cursor: pointer;
+}
+
+#typeReleve{
+  width: 5px;
+  border: none;
+  margin-top: -5px;
 }

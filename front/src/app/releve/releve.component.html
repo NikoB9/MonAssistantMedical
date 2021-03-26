@@ -4,16 +4,21 @@
 	<app-creation-releve (createReleve)="create($event)"></app-creation-releve>
 
 	<h3>Mes relevés</h3>
-	<form>
-		<div class="form-group form-inline">
-			Full text search: <input class="form-control ml-2" type="text" /> <!-- [formControl]="filter" -->
-		</div>
-	</form>
 
-	<table class="table table-striped">
+	<table class="table table-striped table-responsive">
 		<thead>
 			<tr>
-				<th scope="col">Type</th>
+        <th scope="col">
+          <div class="flexrow">
+            Type
+            <form [formGroup]="switchTypeForm">
+            <select class="form-control" formControlName="typeReleve" id="typeReleve" (change)="selectType()">
+              <option value="-1">Sans filtre</option>
+              <option *ngFor="let type of typeReleves" value="{{type.id}}">{{type.label}}</option>
+            </select>
+            </form>
+          </div>
+        </th>
 				<th scope="col">Date</th>
 				<th scope="col">Valeur</th>
 				<th scope="col">Information</th>
@@ -25,10 +30,14 @@
 				<td>{{complexeReleve.releve.TypeReleve.label}}</td>
 				<td>{{this.dateFormat(complexeReleve.releve.prise_de_mesure)}}</td>
 				<td>{{complexeReleve.releve.valeur}}</td>
-				<td *ngIf="complexeReleve.analyse ; else noAnalyse">{{complexeReleve.analyse.Dangerosite.Couleur.label}} ; {{complexeReleve.analyse.Dangerosite.message}}</td>
-				<ng-template #noAnalyse><td>Indisponible.</td></ng-template>
+				<td *ngIf="complexeReleve.analyse ; else noAnalyse">
+          <span class="pastille" style="background-color: {{complexeReleve.analyse.Dangerosite.Couleur.label}}"></span>&nbsp;{{complexeReleve.analyse.Dangerosite.message}}
+        </td>
+				<ng-template #noAnalyse>
+          <td>Indisponible.</td>
+        </ng-template>
 				<td>
-					<div class="button">
+					<div class="ConteneurBtns">
 						<span class="buttonPoubelle" (click)="this.deleteReleve(complexeReleve.releve.id)"><i class="fas fa-trash-alt"></i></span>
 						<span class="buttonEdit"><i class="fas fa-edit"></i></span>
 						<!-- <i class="fas fa-check-circle"></i> -->

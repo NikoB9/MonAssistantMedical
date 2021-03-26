@@ -274,9 +274,9 @@ paths:
         format: "int64"
       - name: "type"
         in: "query"
-        description: "type des relevés que l'on veut récupérer."
+        description: "id du type des relevés que l'on veut récupérer."
         required: false
-        type: "string"
+        type: "integer"
         format: "int64"
       responses:
         "200":

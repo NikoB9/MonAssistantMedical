@@ -124,20 +124,14 @@ module.exports = () => {
                 start = (req.query.page - 1) * NOMBRE_RELEVES_PAR_PAGE;
                 end = (req.query.page) * NOMBRE_RELEVES_PAR_PAGE;
                 if (req.query.type) {
-                    const type = await models.TypeReleve.findOne(
-                        {
-                            where: {
-                                label: req.query.type
-                            }
-                        }
-                    );
+
                     const releves = await models.ReleveMedical.findAll(
                         {
                             offset: start,
                             limit: end,
                             where: {
                                 UtilisateurId: req.params.id,
-                                TypeReleveId: type.id
+                                TypeReleveId: req.query.type
                             },
                             order: [['prise_de_mesure', 'desc']],
                             include: [
@@ -167,16 +161,11 @@ module.exports = () => {
                     res.status(200).send(await correlateReleveAnalyse(profilsId, releves));
                 }
             } else if (req.query.type) {
-                const type = await
-                models.TypeReleve.findOne({
-                    where: {
-                        label: req.query.type
-                    }
-                });
+
                 const releves = await models.ReleveMedical.findAll({
                     where: {
                         UtilisateurId: req.params.id,
-                        TypeReleveId: type.id
+                        TypeReleveId: req.query.type
                     },
                     order: [['prise_de_mesure', 'desc']],
                     include: [
