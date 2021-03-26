@@ -9,6 +9,18 @@
         <option *ngFor="let type of typeReleves" value="{{type.id}}">{{type.label}}</option>
       </select>
     </div>
+    
+    <div *ngFor="let chart of charts">
+      <google-chart
+        [width]="800"
+        [title]="chart.title"
+        [type]="chart.type"
+        [data]="chart.data"
+        [columns]="chart.columns"
+        [options]="chart.options"
+      >
+      </google-chart>
+    </div>
   </div>
 
   <ng-template #elseError>

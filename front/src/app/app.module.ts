@@ -27,6 +27,7 @@ import { ReleveService } from './services/releve.service';
 import { TypeReleveService } from './services/type-releve.service';
 import { ReleveComponent } from './releve/releve.component';
 import { CreationReleveComponent } from './creation-releve/creation-releve.component';
+import { GoogleChartsModule } from 'angular-google-charts';
 
 const appRoutes: Routes = [
   { path: 'informations', component: AccueilComponent },
@@ -60,6 +61,7 @@ const appRoutes: Routes = [
     [RouterModule.forRoot(appRoutes)],
     ReactiveFormsModule,
     HttpClientModule,
+    GoogleChartsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
