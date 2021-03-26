@@ -111,7 +111,7 @@ module.exports = () => {
     });
 
     // récupération des relevés d'un utilisateur, possibilité de filtré par type de relevé et de paginer
-    router.get('/:id/releve', async (req, res) => {
+    router.get('/:id/releves', async (req, res) => {
         try {
             const utilisateur = await models.Utilisateur.findByPk(req.params.id);
             const profils = await utilisateur.getProfils();
@@ -120,7 +120,7 @@ module.exports = () => {
                 profilsId.push(profil.id);
             });
             if (req.query.page) {
-                NOMBRE_RELEVES_PAR_PAGE = 5
+                NOMBRE_RELEVES_PAR_PAGE = 100
                 start = (req.query.page - 1) * NOMBRE_RELEVES_PAR_PAGE;
                 end = (req.query.page) * NOMBRE_RELEVES_PAR_PAGE;
                 if (req.query.type) {
@@ -139,6 +139,12 @@ module.exports = () => {
                                 UtilisateurId: req.params.id,
                                 TypeReleveId: type.id
                             },
+                            order: [['prise_de_mesure', 'dec']],
+                            include: [
+                                {
+                                    model: models.TypeReleve,
+                                },
+                            ],
                         }
                     );
                     res.status(200).send(await correlateReleveAnalyse(profilsId, releves));
@@ -149,7 +155,13 @@ module.exports = () => {
                             limit: end,
                             where: {
                                 UtilisateurId: req.params.id
-                            }
+                            },
+                            order: [['prise_de_mesure', 'dec']],
+                            include: [
+                                {
+                                    model: models.TypeReleve,
+                                },
+                            ],
                         }
                     );
                     res.status(200).send(await correlateReleveAnalyse(profilsId, releves));
@@ -166,13 +178,25 @@ module.exports = () => {
                         UtilisateurId: req.params.id,
                         TypeReleveId: type.id
                     },
+                    order: [['prise_de_mesure', 'dec']],
+                    include: [
+                        {
+                            model: models.TypeReleve,
+                        },
+                    ],
                 });
                 res.status(200).send(await correlateReleveAnalyse(profilsId, releves));
             } else {
                 const releves = await models.ReleveMedical.findAll({
                     where: {
                         UtilisateurId: req.params.id
-                    }
+                    },
+                    order: [['prise_de_mesure', 'dec']],
+                    include: [
+                        {
+                            model: models.TypeReleve,
+                        },
+                    ],
                 });
                 res.status(200).send(await correlateReleveAnalyse(profilsId, releves));
             }

@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a7367ba2-ed7a-4a7d-88f9-a4688256e7b3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/app/accueil/accueil.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/accueil/accueil.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/routes/utilisateur.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/routes/utilisateur.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,19 +39,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="SwaggerCodegen">
       <option name="activeConfigurationType" value="FILE" />
       <option name="configurationPath" value="" />
@@ -83,6 +68,7 @@
       <workItem from="1615997232323" duration="8233000" />
       <workItem from="1616172667866" duration="7488000" />
       <workItem from="1616232084713" duration="15085000" />
+      <workItem from="1616762590005" duration="324000" />
     </task>
     <servers />
   </component>
