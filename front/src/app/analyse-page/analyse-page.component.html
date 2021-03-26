@@ -2,6 +2,13 @@
 
 <div class="flexrow">
   <div *ngIf="connected; else elseError" class="conteneurPage">
+    <div>
+      <H3>Analyses</H3>
+      <label for="TypeReleveId">Type du relevé :</label>
+      <select class="form-control" formControlName="TypeReleveId" id="TypeReleveId">
+        <option *ngFor="let type of typeReleves" value="{{type.id}}">{{type.label}}</option>
+      </select>
+    </div>
   </div>
 
   <ng-template #elseError>
