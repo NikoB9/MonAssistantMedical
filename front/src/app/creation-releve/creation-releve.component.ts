@@ -1,7 +1,8 @@
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit, Injectable, Output, EventEmitter} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TypeReleveService} from '../services/type-releve.service';
 import {TypeReleve} from '../models/typeReleve.model';
+import {Releve} from '../models/releve.model';
 import {ReleveService} from '../services/releve.service';
 import {NgbCalendar, NgbDateAdapter, NgbDateParserFormatter, NgbDateStruct, NgbInputDatepickerConfig, NgbDate} from '@ng-bootstrap/ng-bootstrap';
 
@@ -84,6 +85,9 @@ export class CreationReleveComponent implements OnInit {
   noIMC = true;
   today: NgbDate;
 
+  @Output()
+  createReleve: EventEmitter<Releve> = new EventEmitter<Releve>();
+
   constructor(private fb: FormBuilder, private typeReleveService: TypeReleveService, private calendar: NgbCalendar, private dateAdapter: NgbDateAdapter<string>, private config: NgbInputDatepickerConfig, private releveService: ReleveService) {
   	this.typeReleves = [];
    this.error = false;
@@ -125,15 +129,12 @@ export class CreationReleveComponent implements OnInit {
   create(): void {
   	this.addReleveForm.value.UtilisateurId = this.userId;
 
-   const splitDate = this.addReleveForm.value.prise_de_mesure.split('-');
+    const splitDate = this.addReleveForm.value.prise_de_mesure.split('-');
 
-   this.addReleveForm.value.prise_de_mesure = `${splitDate[2]}-${splitDate[1]}-${splitDate[0]}`;
+    this.addReleveForm.value.prise_de_mesure = `${splitDate[2]}-${splitDate[1]}-${splitDate[0]}`;
 
-  	this.releveService.createReleve(this.addReleveForm.value).subscribe((releve) => {
-  	  console.log('Yay !');
-  	});
+  	this.createReleve.emit(this.addReleveForm.value);
   }
-
 }
 
 

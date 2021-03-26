@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UtilisateurService } from '../services/utilisateur.service';
 import { ReleveService } from '../services/releve.service';
 import {Observable} from "rxjs";
-import { Releve } from '../models/releve.model';
+import { Releve, ComplexeReleve } from '../models/releve.model';
 
 @Component({
   selector: 'app-releve',
@@ -11,7 +11,7 @@ import { Releve } from '../models/releve.model';
 })
 
 export class ReleveComponent implements OnInit {
-  releves?: Releve[];
+  releves?: ComplexeReleve[];
   id: string | null;
 
   constructor(private utilisateurService: UtilisateurService, private releveService: ReleveService) {
@@ -42,4 +42,16 @@ export class ReleveComponent implements OnInit {
     })
   }
 
+  create(releve: Releve): void {
+    this.releveService.createReleve(releve).subscribe((releve) => {
+      this.getReleves();
+    });
+  }
 }
+
+
+
+
+
+
+

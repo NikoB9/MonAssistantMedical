@@ -139,7 +139,7 @@ module.exports = () => {
                                 UtilisateurId: req.params.id,
                                 TypeReleveId: type.id
                             },
-                            order: [['prise_de_mesure', 'dec']],
+                            order: [['prise_de_mesure', 'desc']],
                             include: [
                                 {
                                     model: models.TypeReleve,
@@ -156,7 +156,7 @@ module.exports = () => {
                             where: {
                                 UtilisateurId: req.params.id
                             },
-                            order: [['prise_de_mesure', 'dec']],
+                            order: [['prise_de_mesure', 'desc']],
                             include: [
                                 {
                                     model: models.TypeReleve,
@@ -178,7 +178,7 @@ module.exports = () => {
                         UtilisateurId: req.params.id,
                         TypeReleveId: type.id
                     },
-                    order: [['prise_de_mesure', 'dec']],
+                    order: [['prise_de_mesure', 'desc']],
                     include: [
                         {
                             model: models.TypeReleve,
@@ -191,7 +191,7 @@ module.exports = () => {
                     where: {
                         UtilisateurId: req.params.id
                     },
-                    order: [['prise_de_mesure', 'dec']],
+                    order: [['prise_de_mesure', 'desc']],
                     include: [
                         {
                             model: models.TypeReleve,
@@ -228,8 +228,8 @@ module.exports = () => {
                         ]
                     }
                 ]
-            }).then((analyses) => {
-                relevesAnalyse.push([releve, analyses]);
+            }).then((analyse) => {
+                relevesAnalyse.push({'releve':releve, 'analyse':analyse});
             });
         }
         return relevesAnalyse;

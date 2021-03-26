@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Utilisateur, UtilisateurLogin} from '../models/utilisateur.model';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Releve} from '../models/releve.model';
+import {Releve, ComplexeReleve} from '../models/releve.model';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +35,7 @@ export class UtilisateurService {
     return this.http.delete<boolean>(`http://localhost:3000/api/utilisateur/${idUser}/profil/${idProfil}`);
   }
 
-  public getUserReleves(id: string | null): Observable<Releve[]> {
-    return this.http.get<Releve[]>(`http://localhost:3000/api/utilisateur/${id}/releves`);
+  public getUserReleves(id: string | null): Observable<ComplexeReleve[]> {
+    return this.http.get<ComplexeReleve[]>(`http://localhost:3000/api/utilisateur/${id}/releves`);
   }
 }
