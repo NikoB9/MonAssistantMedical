@@ -48,27 +48,27 @@ export class AnalysePageComponent implements OnInit {
         'Date',
         'Valeur',
         'Danger. Appelez les urgences.',
-        'Etat de santé stable.',
         'A surveiller. Consulter votre médecin.',
         'Danger. Appelez les urgences.'
       ],
       data: [
-        [new Date('03/17/2020'), 125, 100, 140, 160, 200],
-        [new Date('04/17/2020'), 120, 100, 140, 160, 200],
-        [new Date('05/17/2020'), 110, 100, 140, 160, 200],
-        [new Date('06/17/2020'), 105, 100, 140, 160, 200],
-        [new Date('07/17/2020'), 90, 100, 140, 160, 200],
-        [new Date('08/17/2020'), 85, 100, 140, 160, 200],
-        [new Date('09/17/2020'), 90, 100, 140, 160, 200],
-        [new Date('10/17/2020'), 100, 100, 140, 160, 200],
-        [new Date('11/17/2020'), 115, 100, 140, 160, 200],
-        [new Date('12/17/2020'), 130, 100, 140, 160, 200],
-        [new Date('01/17/2021'), 145, 100, 140, 160, 200],
-        [new Date('02/17/2021'), 155, 100, 140, 160, 200],
-        [new Date('03/17/2021'), 165, 100, 140, 160, 200]
+        [new Date('03/17/2020'), 125, 100, 140, 160],
+        [new Date('04/17/2020'), 120, 100, 140, 160],
+        [new Date('05/17/2020'), 110, 100, 140, 160],
+        [new Date('06/17/2020'), 105, 100, 140, 160],
+        [new Date('07/17/2020'), 90, 100, 140, 160],
+        [new Date('08/17/2020'), 85, 100, 140, 160],
+        [new Date('09/17/2020'), 90, 100, 140, 160],
+        [new Date('10/17/2020'), 100, 100, 140, 160],
+        [new Date('11/17/2020'), 115, 100, 140, 160],
+        [new Date('12/17/2020'), 130, 100, 140, 160],
+        [new Date('01/17/2021'), 145, 100, 140, 160],
+        [new Date('02/17/2021'), 155, 100, 140, 160],
+        [new Date('03/17/2021'), 165, 100, 140, 160]
       ],
       options: {
-        colors: ['blue', 'red', 'green', 'orange', 'red'],
+        colors: ['blue', 'red', 'orange', 'red'],
+        vAxis: {viewWindow: {min: 80}}, 
         series: {
           0: {
             lineWidth: 3
@@ -82,10 +82,6 @@ export class AnalysePageComponent implements OnInit {
             lineDashStyle: [2, 2]
           },
           3: {
-            lineWidth: 2,
-            lineDashStyle: [2, 2]
-          },
-          4: {
             lineWidth: 2,
             lineDashStyle: [2, 2]
           }
