@@ -141,7 +141,18 @@ module.exports = () => {
                             ],
                         }
                     );
-                    res.status(200).send(await correlateReleveAnalyse(profilsId, releves));
+
+                    const count = await models.ReleveMedical.count(
+                        {
+                            where: {
+                                UtilisateurId: req.params.id,
+                                TypeReleveId: req.query.type
+                            }
+                        }
+                    );
+
+                    res.status(200).send(await correlateReleveAnalyse(profilsId, releves, Math.ceil(count/NOMBRE_RELEVES_PAR_PAGE)));
+
                 } else {
                     const releves = await models.ReleveMedical.findAll(
                         {
@@ -158,7 +169,16 @@ module.exports = () => {
                             ],
                         }
                     );
-                    res.status(200).send(await correlateReleveAnalyse(profilsId, releves));
+
+                    const count = await models.ReleveMedical.count(
+                        {
+                            where: {
+                                UtilisateurId: req.params.id,
+                            }
+                        }
+                    );
+
+                    res.status(200).send(await correlateReleveAnalyse(profilsId, releves, Math.ceil(count/NOMBRE_RELEVES_PAR_PAGE)));
                 }
             } else if (req.query.type) {
 
@@ -174,7 +194,7 @@ module.exports = () => {
                         },
                     ],
                 });
-                res.status(200).send(await correlateReleveAnalyse(profilsId, releves));
+                res.status(200).send(await correlateReleveAnalyse(profilsId, releves, 1));
             } else {
                 const releves = await models.ReleveMedical.findAll({
                     where: {
@@ -187,7 +207,7 @@ module.exports = () => {
                         },
                     ],
                 });
-                res.status(200).send(await correlateReleveAnalyse(profilsId, releves));
+                res.status(200).send(await correlateReleveAnalyse(profilsId, releves, 1));
             }
         } catch (error) {
             console.log(error);
@@ -195,7 +215,7 @@ module.exports = () => {
         }
     });
 
-    async function correlateReleveAnalyse(profilsId, releves) {
+    async function correlateReleveAnalyse(profilsId, releves, nbPages) {
         const relevesAnalyse = [];
         for(i in releves) {
             console.log(i);
@@ -221,7 +241,7 @@ module.exports = () => {
                 relevesAnalyse.push({'releve':releve, 'analyse':analyse});
             });
         }
-        return relevesAnalyse;
+        return {'complexesReleves':relevesAnalyse, 'nbPages': nbPages};
     }
 
     return router;

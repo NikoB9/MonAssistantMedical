@@ -18,6 +18,9 @@ export class ReleveComponent implements OnInit {
   typeReleves: TypeReleve[];
   switchTypeForm: FormGroup;
   idType: string;
+  actualPage: number;
+  maxPage?: number;
+  pages: number[];
 
   constructor(private fb: FormBuilder, private utilisateurService: UtilisateurService, private releveService: ReleveService, private typeReleveService: TypeReleveService) {
     this.id = sessionStorage?.getItem('id');
@@ -26,6 +29,8 @@ export class ReleveComponent implements OnInit {
       typeReleve: ['', Validators.required],
     });
     this.idType = '-1';
+    this.actualPage = 1;
+    this.pages = [];
   }
 
   ngOnInit(): void {
@@ -35,14 +40,17 @@ export class ReleveComponent implements OnInit {
 
   getReleves(): void{
     if (this.idType === '-1'){
-      this.utilisateurService.getUserReleves(this.id).subscribe((releves) => {
-        this.releves = releves;
+      this.utilisateurService.getUserReleves(this.id, this.actualPage).subscribe((releves) => {
+        this.releves = releves.complexesReleves;
+        this.maxPage = releves.nbPages;
+        this.pages = Array(this.maxPage).fill(1).map((x, i) => i + 1);
       });
     }
     else {
-      this.utilisateurService.getUserRelevesFilterType(this.id, this.idType).subscribe((releves) => {
-        console.log(releves);
-        this.releves = releves;
+      this.utilisateurService.getUserRelevesFilterType(this.id, this.idType, this.actualPage).subscribe((releves) => {
+        this.releves = releves.complexesReleves;
+        this.maxPage = releves.nbPages;
+        this.pages = Array(this.maxPage).fill(1).map((x, i) => i + 1);
       });
     }
   }
@@ -74,8 +82,23 @@ export class ReleveComponent implements OnInit {
   }
 
   selectType(): void{
+    this.actualPage = 1;
     this.idType = this.switchTypeForm.value.typeReleve;
-    console.log(this.idType);
+    this.getReleves();
+  }
+
+  pre(): void{
+    this.actualPage--;
+    this.getReleves();
+  }
+
+  next(): void{
+    this.actualPage++;
+    this.getReleves();
+  }
+
+  page(page: number): void{
+    this.actualPage = page;
     this.getReleves();
   }
 }

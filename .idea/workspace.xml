@@ -4,7 +4,9 @@
     <list default="true" id="a7367ba2-ed7a-4a7d-88f9-a4688256e7b3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/api/routes/utilisateur.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/routes/utilisateur.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/docs/openapi3.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/back/docs/openapi3.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/migrations/1.0.8-dataset.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/migrations/1.0.8-dataset.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/models/releve.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/models/releve.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/models/typeReleve.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/models/typeReleve.model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/app/releve/releve.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/releve/releve.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/app/releve/releve.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/releve/releve.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/app/releve/releve.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/releve/releve.component.ts" afterDir="false" />
@@ -73,7 +75,8 @@
       <workItem from="1615997232323" duration="8233000" />
       <workItem from="1616172667866" duration="7488000" />
       <workItem from="1616232084713" duration="15085000" />
-      <workItem from="1616762590005" duration="7311000" />
+      <workItem from="1616762590005" duration="7715000" />
+      <workItem from="1616838240673" duration="4335000" />
     </task>
     <servers />
   </component>

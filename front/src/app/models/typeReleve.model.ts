@@ -1,4 +1,4 @@
-export type TypeReleve = {
-	id: number,
-	label:string
+export interface TypeReleve{
+  'id': number;
+  'label': string;
 }
