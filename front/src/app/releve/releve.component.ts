@@ -5,6 +5,7 @@ import { TypeReleveService } from '../services/type-releve.service';
 import { Releve, ComplexeReleve } from '../models/releve.model';
 import { TypeReleve } from '../models/typeReleve.model';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-releve',
@@ -21,8 +22,11 @@ export class ReleveComponent implements OnInit {
   actualPage: number;
   maxPage?: number;
   pages: number[];
+  closeResult = '';
+  active = 1;
+  idReleve: number;
 
-  constructor(private fb: FormBuilder, private utilisateurService: UtilisateurService, private releveService: ReleveService, private typeReleveService: TypeReleveService) {
+  constructor(private fb: FormBuilder, private utilisateurService: UtilisateurService, private releveService: ReleveService, private typeReleveService: TypeReleveService, private modalService: NgbModal) {
     this.id = sessionStorage?.getItem('id');
     this.typeReleves = [];
     this.switchTypeForm = this.fb.group({
@@ -31,6 +35,8 @@ export class ReleveComponent implements OnInit {
     this.idType = '-1';
     this.actualPage = 1;
     this.pages = [];
+    this.idReleve = 0;
+
   }
 
   ngOnInit(): void {
@@ -100,6 +106,36 @@ export class ReleveComponent implements OnInit {
   page(page: number): void{
     this.actualPage = page;
     this.getReleves();
+  }
+
+  open(content: any, idReleve: number): void {
+    this.idReleve = idReleve;
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  close(reason: string): void {
+    this.modalService.dismissAll(reason);
+  }
+  
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+  edit(releve: Releve): void {
+    this.releveService.editReleve(releve, releve.id).subscribe((releve) => {
+      this.getReleves();
+      this.close("Modification réussi.");
+    });
   }
 }
 

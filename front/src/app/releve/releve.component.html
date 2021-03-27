@@ -1,3 +1,15 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="edit-modal">Modification</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-edit-releve [idReleve]="this.idReleve" (editReleve)="edit($event)"></app-edit-releve>
+  </div>
+</ng-template>
+
 <div>
 <!-- 	<p>You can do filter table data, in this case with observables and our <code>NgbHighlight</code> component used in Typeahead</p> -->
 
@@ -56,7 +68,7 @@
 				<td>
 					<div class="ConteneurBtns">
 						<span class="buttonPoubelle" (click)="this.deleteReleve(complexeReleve.releve.id)"><i class="fas fa-trash-alt"></i></span>
-						<span class="buttonEdit"><i class="fas fa-edit"></i></span>
+						<span class="buttonEdit" (click)="open(content, complexeReleve.releve.id)"><i class="fas fa-edit"></i></span>
 						<!-- <i class="fas fa-check-circle"></i> -->
 					</div>
 				</td>

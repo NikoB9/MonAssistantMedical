@@ -1,4 +1,4 @@
-import { Component, OnInit, Injectable, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Injectable, Output, EventEmitter, Input} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TypeReleveService} from '../services/type-releve.service';
 import {TypeReleve} from '../models/typeReleve.model';
@@ -62,9 +62,9 @@ export class CustomDateParserFormatter extends NgbDateParserFormatter {
 }
 
 @Component({
-  selector: 'app-creation-releve',
-  templateUrl: './creation-releve.component.html',
-  styleUrls: ['./creation-releve.component.css'],
+  selector: 'app-edit-releve',
+  templateUrl: './edit-releve.component.html',
+  styleUrls: ['./edit-releve.component.css'],
 
   providers: [
     {provide: NgbDateAdapter, useClass: CustomAdapter},
@@ -73,41 +73,55 @@ export class CustomDateParserFormatter extends NgbDateParserFormatter {
   ]
 })
 
-export class CreationReleveComponent implements OnInit {
+export class EditReleveComponent implements OnInit {
 
   error: boolean;
   errorMessage: string;
-  addReleveForm: FormGroup;
+  editReleveForm: FormGroup;
   userId: string | null;
   add: boolean;
   validMessage: string;
   typeReleves: TypeReleve[];
-  noIMC = true;
   today: NgbDate;
 
+  @Input()
+  idReleve: number;
+
   @Output()
-  createReleve: EventEmitter<Releve> = new EventEmitter<Releve>();
+  editReleve: EventEmitter<Releve> = new EventEmitter<Releve>();
 
   constructor(private fb: FormBuilder, private typeReleveService: TypeReleveService, private calendar: NgbCalendar, private dateAdapter: NgbDateAdapter<string>, private config: NgbInputDatepickerConfig, private releveService: ReleveService) {
   	this.typeReleves = [];
-   this.error = false;
-   this.errorMessage = 'Un problème est survenu. Vérifiez votre connexion.';
-   this.userId = sessionStorage.getItem('id');
-   this.add = false;
-   this.validMessage = 'Le relevé a bien été ajouté.';
-   this.today = this.calendar.getToday();
-
-   this.addReleveForm = this.fb.group({
-      TypeReleveId: ['1', Validators.required],
+    this.error = false;
+    this.errorMessage = 'Un problème est survenu. Vérifiez votre connexion.';
+    this.userId = sessionStorage.getItem('id');
+    this.add = false;
+    this.validMessage = 'Le relevé a bien été modifié.';
+    this.today = this.calendar.getToday();
+    this.idReleve = 0;
+    this.editReleveForm = this.fb.group({
+      TypeReleveId: ['', Validators.required],
       valeur: ['', Validators.required],
-      value2: ['', Validators.required],
-      prise_de_mesure: [this.dateAdapter.toModel(this.today)!, Validators.required],
+      prise_de_mesure: ['', Validators.required], 
     });
 
   }
 
   ngOnInit(): void {
   	this.getTypeReleves();
+
+  	this.releveService.getReleve(this.idReleve).subscribe((releve) => {
+
+	  const dateSplit = releve.prise_de_mesure.split('-');
+      const dateMesure = {year: +dateSplit[0], month: +dateSplit[1], day: +dateSplit[2].split('T')[0]};
+
+  	  this.editReleveForm = this.fb.group({
+  	  	id: [this.idReleve, Validators.required],
+	    TypeReleveId: [releve.TypeReleveId, Validators.required],
+	    valeur: [releve.valeur, Validators.required],
+	    prise_de_mesure: [this.dateAdapter.toModel(dateMesure)!, Validators.required], 
+	  });
+  	});
   }
 
   getTypeReleves(): void{
@@ -116,50 +130,13 @@ export class CreationReleveComponent implements OnInit {
     });
   }
 
-  choiceIMC(): void {
-    const id = this.addReleveForm.value.TypeReleveId;
+  edit(): void {
+  	this.editReleveForm.value.UtilisateurId = this.userId;
 
-    if (id === '6') {
-      this.noIMC = false;
-    } else {
-      this.noIMC = true;
-  	}
-  }
+    const splitDate = this.editReleveForm.value.prise_de_mesure.split('-');
 
-  create(): void {
-  	this.addReleveForm.value.UtilisateurId = this.userId;
+    this.editReleveForm.value.prise_de_mesure = `${splitDate[2]}-${splitDate[1]}-${splitDate[0]}`;
 
-    const id = this.addReleveForm.value.TypeReleveId;
-
-    if (id === '6') {
-      const taille = this.addReleveForm.value.valeur;
-      const masse = this.addReleveForm.value.value2;
-      this.addReleveForm.value.valeur = this.calculIMC(masse, taille);
-    }
-
-    const splitDate = this.addReleveForm.value.prise_de_mesure.split('-');
-
-    this.addReleveForm.value.prise_de_mesure = `${splitDate[2]}-${splitDate[1]}-${splitDate[0]}`;
-
-  	this.createReleve.emit(this.addReleveForm.value);
-  }
-
-  calculIMC(masse: number, taille: number): number {
-    if (taille > 5) {
-      taille = taille/100;
-    }
-
-    return masse/(taille*taille);
+  	this.editReleve.emit(this.editReleveForm.value);
   }
 }
-
-
-
-
-
-
-
-
-
-
-

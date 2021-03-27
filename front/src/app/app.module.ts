@@ -27,6 +27,7 @@ import { ReleveService } from './services/releve.service';
 import { TypeReleveService } from './services/type-releve.service';
 import { ReleveComponent } from './releve/releve.component';
 import { CreationReleveComponent } from './creation-releve/creation-releve.component';
+import { EditReleveComponent } from './edit-releve/edit-releve.component';
 
 const appRoutes: Routes = [
   { path: 'informations', component: AccueilComponent },
@@ -51,7 +52,8 @@ const appRoutes: Routes = [
     EditProfilsComponent,
     ValidMessageComponent,
     ReleveComponent,
-    CreationReleveComponent
+    CreationReleveComponent,
+    EditReleveComponent
   ],
   imports: [
     BrowserModule,

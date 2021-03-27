@@ -23,4 +23,12 @@ export class ReleveService {
   public createReleve(releve: Releve): Observable<Releve> {
   	return this.http.post<Releve>("http://localhost:3000/api/releve_medical", releve);
   }
+
+  public getReleve(id: number): Observable<Releve> {
+    return this.http.get<Releve>(`http://localhost:3000/api/releve_medical/${id}`);
+  }
+
+  public editReleve(releve: Releve, id: number): Observable<Releve> {
+    return this.http.put<Releve>(`http://localhost:3000/api/releve_medical/${id}`, releve);
+  }
 }
