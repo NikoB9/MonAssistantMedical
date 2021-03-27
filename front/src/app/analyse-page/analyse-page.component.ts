@@ -42,65 +42,82 @@ export class AnalysePageComponent implements OnInit {
   	this.getTypeReleves();
 
     this.charts.push({
-      title: 'Pie Chart',
-      type: ChartType.PieChart,
-      columns: ['Task', 'Hours per Day'],
-      data: [
-        ['Work', 11],
-        ['Eat', 2],
-        ['Commute', 2],
-        ['Watch TV', 2],
-        ['Sleep', 7]
-      ],
-      options: {}
-    });
-
-    this.charts.push({
-      title: 'Bar Chart',
-      type: ChartType.BarChart,
+      title: 'Evolution des relevés',
+      type: ChartType.LineChart,
       columns: [
-        'City',
-        '2010 Population',
-        { role: 'annotation', type: 'string' },
-        '2000 Population',
-        { role: 'annotation', type: 'string' }
+        'Date',
+        'Valeur',
+        'Danger. Appelez les urgences.',
+        'Etat de santé stable.',
+        'A surveiller. Consulter votre médecin.',
+        'Danger. Appelez les urgences.'
       ],
       data: [
-        ['New York City, NY', 8175000, '8.1M', 8008000, '8M'],
-        ['Los Angeles, CA', 3792000, '3.8M', 3694000, '3.7M'],
-        ['Chicago, IL', 2695000, '2.7M', 2896000, '2.9M'],
-        ['Houston, TX', 2099000, '2.1M', 1953000, '2.0M'],
-        ['Philadelphia, PA', 1526000, '1.5M', 1517000, '1.5M']
+        [new Date('03/17/2020'), 125, 100, 140, 160, 200],
+        [new Date('04/17/2020'), 120, 100, 140, 160, 200],
+        [new Date('05/17/2020'), 110, 100, 140, 160, 200],
+        [new Date('06/17/2020'), 105, 100, 140, 160, 200],
+        [new Date('07/17/2020'), 90, 100, 140, 160, 200],
+        [new Date('08/17/2020'), 85, 100, 140, 160, 200],
+        [new Date('09/17/2020'), 90, 100, 140, 160, 200],
+        [new Date('10/17/2020'), 100, 100, 140, 160, 200],
+        [new Date('11/17/2020'), 115, 100, 140, 160, 200],
+        [new Date('12/17/2020'), 130, 100, 140, 160, 200],
+        [new Date('01/17/2021'), 145, 100, 140, 160, 200],
+        [new Date('02/17/2021'), 155, 100, 140, 160, 200],
+        [new Date('03/17/2021'), 165, 100, 140, 160, 200]
       ],
       options: {
-        annotations: {
-          alwaysOutside: true,
-          textStyle: {
-            fontSize: 12,
-            auraColor: 'none',
-            color: '#555'
+        colors: ['blue', 'red', 'green', 'orange', 'red'],
+        series: {
+          0: {
+            lineWidth: 3
           },
-          boxStyle: {
-            stroke: '#ccc',
-            strokeWidth: 1,
-            gradient: {
-              color1: '#f3e5f5',
-              color2: '#f3e5f5',
-              x1: '0%',
-              y1: '0%',
-              x2: '100%',
-              y2: '100%'
-            }
+          1: {
+            lineWidth: 2,
+            lineDashStyle: [2, 2]
+          },
+          2: {
+            lineWidth: 2,
+            lineDashStyle: [2, 2]
+          },
+          3: {
+            lineWidth: 2,
+            lineDashStyle: [2, 2]
+          },
+          4: {
+            lineWidth: 2,
+            lineDashStyle: [2, 2]
           }
-        },
-        hAxis: {
-          title: 'Total Population',
-          minValue: 0
-        },
-        vAxis: {
-          title: 'City'
         }
       }
+    });
+
+    var data = [
+      [0, 0, 0],    [1, 10, 5],   [2, 23, 15],  [3, 17, 9],   [4, 18, 10],  [5, 9, 5],
+      [6, 11, 3],   [7, 27, 19],  [8, 33, 25],  [9, 40, 32],  [10, 32, 24], [11, 35, 27],
+      [12, 30, 22], [13, 40, 32], [14, 42, 34], [15, 47, 39], [16, 44, 36], [17, 48, 40],
+      [18, 52, 44], [19, 54, 46], [20, 42, 34], [21, 55, 47], [22, 56, 48], [23, 57, 49],
+      [24, 60, 52], [25, 50, 42], [26, 52, 44], [27, 51, 43], [28, 49, 41], [29, 53, 45],
+      [30, 55, 47], [31, 60, 52], [32, 61, 53], [33, 59, 51], [34, 62, 54], [35, 65, 57],
+      [36, 62, 54], [37, 58, 50], [38, 55, 47], [39, 61, 53], [40, 64, 56], [41, 65, 57],
+      [42, 63, 55], [43, 66, 58], [44, 67, 59], [45, 69, 61], [46, 69, 61], [47, 70, 62],
+      [48, 72, 64], [49, 68, 60], [50, 66, 58], [51, 65, 57], [52, 67, 59], [53, 70, 62],
+      [54, 71, 63], [55, 72, 64], [56, 73, 65], [57, 75, 67], [58, 70, 62], [59, 68, 60],
+      [60, 64, 56], [61, 60, 52], [62, 65, 57], [63, 67, 59], [64, 68, 60], [65, 69, 61],
+      [66, 70, 62], [67, 72, 64], [68, 75, 67], [69, 80, 72]
+    ];
+    
+    this.charts.push({
+      title: 'Styled Line Chart',
+      type: ChartType.LineChart,
+      columns: [
+        'Element',
+        'Density',
+        'aya'
+      ],
+      data: data,
+      options: {}
     });
 
     this.charts.push({
@@ -122,167 +139,6 @@ export class AnalysePageComponent implements OnInit {
         ['July', 1030, null, null, null, null, false]
       ],
       options: {}
-    });
-
-    this.charts.push({
-      title: 'Styled Line Chart',
-      type: ChartType.LineChart,
-      columns: [
-        'Element',
-        'Density',
-        { type: 'number', role: 'interval' },
-        { type: 'number', role: 'interval' },
-        { type: 'string', role: 'annotation' },
-        { type: 'string', role: 'annotationText' },
-        { type: 'boolean', role: 'certainty' }
-      ],
-      data: [
-        ['April', 1000, 900, 1100, 'A', 'Stolen data', true],
-        ['May', 1170, 1000, 1200, 'B', 'Coffee spill', true],
-        ['June', 660, 550, 800, 'C', 'Wumpus attack', true],
-        ['July', 1030, null, null, null, null, false]
-      ],
-      options: {}
-    });
-
-    this.charts.push({
-      title: 'Material Bar Chart',
-      type: ChartType.Bar,
-      columns: ['Year', 'Sales', 'Expenses', 'Profit'],
-      data: [
-        ['2014', 1000, 400, 200],
-        ['2015', 1170, 460, 250],
-        ['2016', 660, 1120, 300],
-        ['2017', 1030, 540, 350]
-      ],
-      options: {
-        chart: {
-          title: 'Material Bar Chart',
-          subtitle: 'Sales, Expenses, and Profit: 2014-2017'
-        },
-        bars: 'horizontal' // Required for Material Bar Charts.
-      }
-    });
-
-    this.charts.push({
-      title: 'Area Chart',
-      type: ChartType.AreaChart,
-      columns: ['Year', 'Sales', 'Expenses'],
-      data: [
-        ['2013', 1000, 400],
-        ['2014', 1170, 460],
-        ['2015', 660, 1120],
-        ['2016', 1030, 540]
-      ],
-      options: {}
-    });
-
-    this.charts.push({
-      title: 'Bubble Chart',
-      type: ChartType.BubbleChart,
-      columns: ['ID', 'X', 'Y'],
-      data: [
-        ['Hallo', 80, 167],
-        ['', 79, 136],
-        ['', 78, 184],
-        ['', 72, 278],
-        ['', 81, 200],
-        ['', 72, 170],
-        ['', 68, 477]
-      ],
-      options: {}
-    });
-
-    this.charts.push({
-      title: 'Candlestick Chart',
-      type: ChartType.CandlestickChart,
-      columns: undefined,
-      data: [
-        ['Mon', 20, 28, 38, 45],
-        ['Tue', 31, 38, 55, 66],
-        ['Wed', 50, 55, 77, 80],
-        ['Thu', 77, 77, 66, 50],
-        ['Fri', 68, 66, 22, 15]
-      ],
-      options: {}
-    });
-
-    this.charts.push({
-      title: 'Combo Chart',
-      type: ChartType.ComboChart,
-      columns: ['Month', 'Bolivia', 'Ecuador', 'Madagascar', 'Papua New Guinea', 'Rwanda', 'Average'],
-      data: [
-        ['2004/05', 165, 938, 522, 998, 450, 614.6],
-        ['2005/06', 135, 1120, 599, 1268, 288, 682],
-        ['2006/07', 157, 1167, 587, 807, 397, 623],
-        ['2007/08', 139, 1110, 615, 968, 215, 609.4],
-        ['2008/09', 136, 691, 629, 1026, 366, 569.6]
-      ],
-      options: {
-        vAxis: { title: 'Cups' },
-        hAxis: { title: 'Month' },
-        seriesType: 'bars',
-        series: { 5: { type: 'line' } }
-      }
-    });
-
-    this.charts.push({
-      title: 'Histogram',
-      type: ChartType.Histogram,
-      columns: ['Dinosaur', 'Length'],
-      data: [
-        ['Acrocanthosaurus (top-spined lizard)', 12.2],
-        ['Albertosaurus (Alberta lizard)', 9.1],
-        ['Allosaurus (other lizard)', 12.2],
-        ['Apatosaurus (deceptive lizard)', 22.9],
-        ['Archaeopteryx (ancient wing)', 0.9],
-        ['Argentinosaurus (Argentina lizard)', 36.6],
-        ['Baryonyx (heavy claws)', 9.1],
-        ['Brachiosaurus (arm lizard)', 30.5],
-        ['Ceratosaurus (horned lizard)', 6.1],
-        ['Coelophysis (hollow form)', 2.7],
-        ['Compsognathus (elegant jaw)', 0.9],
-        ['Deinonychus (terrible claw)', 2.7],
-        ['Diplodocus (double beam)', 27.1],
-        ['Dromicelomimus (emu mimic)', 3.4],
-        ['Gallimimus (fowl mimic)', 5.5],
-        ['Mamenchisaurus (Mamenchi lizard)', 21.0],
-        ['Megalosaurus (big lizard)', 7.9],
-        ['Microvenator (small hunter)', 1.2],
-        ['Ornithomimus (bird mimic)', 4.6],
-        ['Oviraptor (egg robber)', 1.5],
-        ['Plateosaurus (flat lizard)', 7.9],
-        ['Sauronithoides (narrow-clawed lizard)', 2.0],
-        ['Seismosaurus (tremor lizard)', 45.7],
-        ['Spinosaurus (spiny lizard)', 12.2],
-        ['Supersaurus (super lizard)', 30.5],
-        ['Tyrannosaurus (tyrant lizard)', 15.2],
-        ['Ultrasaurus (ultra lizard)', 30.5],
-        ['Velociraptor (swift robber)', 1.8]
-      ],
-      options: {}
-    });
-
-    this.charts.push({
-      title: 'Scatter Chart',
-      type: ChartType.ScatterChart,
-      columns: ['Age', 'Weight'],
-      data: [
-        [8, 12],
-        [4, 5.5],
-        [11, 14],
-        [4, 5],
-        [3, 3.5],
-        [6.5, 7]
-      ],
-      options: {
-        explorer: {
-          actions: ['dragToZoom', 'rightClickToReset'],
-          keepInBounds: true,
-          maxZoomIn: 4,
-          zoomDelta: 1
-        }
-      }
     });
   }
 
