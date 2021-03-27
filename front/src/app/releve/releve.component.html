@@ -16,7 +16,7 @@
         <span class="page disabled">{{i}}</span>
       </ng-template>
     </span>
-    <span *ngIf="actualPage != 1; else disableNext" class="page next" (click)="next()">Suivant</span>
+    <span *ngIf="actualPage != maxPage; else disableNext" class="page next" (click)="next()">Suivant</span>
     <ng-template #disableNext>
       <span class="page next disabled">Suivant</span>
     </ng-template>
@@ -75,7 +75,7 @@
         <span class="page disabled">{{i}}</span>
       </ng-template>
     </span>
-    <span *ngIf="actualPage != 1; else disableNext" class="page next" (click)="next()">Suivant</span>
+    <span *ngIf="actualPage != maxPage; else disableNext" class="page next" (click)="next()">Suivant</span>
     <ng-template #disableNext>
       <span class="page next disabled">Suivant</span>
     </ng-template>
