@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Utilisateur, UtilisateurLogin} from '../models/utilisateur.model';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Releve} from '../models/releve.model';
+import {ComplexeRelevePaginate} from '../models/releve.model';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +35,11 @@ export class UtilisateurService {
     return this.http.delete<boolean>(`http://localhost:3000/api/utilisateur/${idUser}/profil/${idProfil}`);
   }
 
-  public getUserReleves(id: string | null): Observable<Releve[]> {
-    return this.http.get<Releve[]>(`http://localhost:3000/api/utilisateur/${id}/releves`);
+  public getUserReleves(id: string | null, page: number): Observable<ComplexeRelevePaginate> {
+    return this.http.get<ComplexeRelevePaginate>(`http://localhost:3000/api/utilisateur/${id}/releves?page=${page}`);
+  }
+
+  public getUserRelevesFilterType(id: string | null, idType: string, page: number): Observable<ComplexeRelevePaginate> {
+    return this.http.get<ComplexeRelevePaginate>(`http://localhost:3000/api/utilisateur/${id}/releves?type=${idType}?page=${page}`);
   }
 }

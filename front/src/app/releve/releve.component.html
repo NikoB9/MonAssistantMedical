@@ -1,18 +1,53 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="edit-modal">Modification</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-edit-releve [idReleve]="this.idReleve" (editReleve)="edit($event)"></app-edit-releve>
+  </div>
+</ng-template>
+
 <div>
 <!-- 	<p>You can do filter table data, in this case with observables and our <code>NgbHighlight</code> component used in Typeahead</p> -->
 
-	<app-creation-releve></app-creation-releve>
+	<app-creation-releve (createReleve)="create($event)"></app-creation-releve>
 
-	<form>
-		<div class="form-group form-inline">
-			Full text search: <input class="form-control ml-2" type="text" /> <!-- [formControl]="filter" -->
-		</div>
-	</form>
+	<h3>Mes relevés</h3>
 
-	<table class="table table-striped">
+  <div class="pages">
+    <span *ngIf="actualPage != 1; else disablePre" class="page pre" (click)="pre()">Précédent</span>
+    <ng-template #disablePre>
+      <span class="page pre disabled">Précédent</span>
+    </ng-template>
+    <span *ngFor="let i of this.pages">
+      <span *ngIf="actualPage != i; else disablePage" class="page" (click)="page(i)">{{i}}</span>
+      <ng-template #disablePage>
+        <span class="page disabled">{{i}}</span>
+      </ng-template>
+    </span>
+    <span *ngIf="actualPage != maxPage; else disableNext" class="page next" (click)="next()">Suivant</span>
+    <ng-template #disableNext>
+      <span class="page next disabled">Suivant</span>
+    </ng-template>
+  </div>
+
+	<table class="table table-striped table-responsive">
 		<thead>
 			<tr>
-				<th scope="col">Type</th>
+        <th scope="col">
+          <div class="flexrow">
+            Type
+            <form [formGroup]="switchTypeForm">
+            <select class="form-control" formControlName="typeReleve" id="typeReleve" (change)="selectType()">
+              <option value="-1">Sans filtre</option>
+              <option *ngFor="let type of typeReleves" value="{{type.id}}">{{type.label}}</option>
+            </select>
+            </form>
+          </div>
+        </th>
 				<th scope="col">Date</th>
 				<th scope="col">Valeur</th>
 				<th scope="col">Information</th>
@@ -20,20 +55,42 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr *ngFor="let releve of releves">
-				<td>{{releve.TypeReleve.label}}</td>
-				<td>{{this.dateFormat(releve.prise_de_mesure)}}</td>
-				<td>{{releve.valeur}}</td>
-				<td></td>
+			<tr *ngFor="let complexeReleve of releves">
+				<td>{{complexeReleve.releve.TypeReleve.label}}</td>
+				<td>{{this.dateFormat(complexeReleve.releve.prise_de_mesure)}}</td>
+				<td>{{complexeReleve.releve.valeur}}</td>
+				<td *ngIf="complexeReleve.analyse ; else noAnalyse">
+          <span class="pastille" style="background-color: {{complexeReleve.analyse.Dangerosite.Couleur.label}}"></span>&nbsp;{{complexeReleve.analyse.Dangerosite.message}}
+        </td>
+				<ng-template #noAnalyse>
+          <td>Indisponible.</td>
+        </ng-template>
 				<td>
-					<span class="buttonPoubelle" (click)="this.deleteReleve(releve.id)"><i class="fas fa-trash-alt"></i></span>
+					<div class="ConteneurBtns">
+						<span class="buttonPoubelle" (click)="this.deleteReleve(complexeReleve.releve.id)"><i class="fas fa-trash-alt"></i></span>
+						<span class="buttonEdit" (click)="open(content, complexeReleve.releve.id)"><i class="fas fa-edit"></i></span>
+						<!-- <i class="fas fa-check-circle"></i> -->
+					</div>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-<!--     <p> {{this.id}} </p>
-    <p> {{this.prise_de_mesure}} </p>
-    <p> {{this.valeur}} </p>
-    <p> {{this.UtilisateurId}} </p>
-    <p> {{this.TypeReleveId}} </p> -->
+
+  <div class="pages">
+    <span *ngIf="actualPage != 1; else disablePre" class="page pre" (click)="pre()">Précédent</span>
+    <ng-template #disablePre>
+      <span class="page pre disabled">Précédent</span>
+    </ng-template>
+    <span *ngFor="let i of this.pages">
+      <span *ngIf="actualPage != i; else disablePage" class="page" (click)="page(i)">{{i}}</span>
+      <ng-template #disablePage>
+        <span class="page disabled">{{i}}</span>
+      </ng-template>
+    </span>
+    <span *ngIf="actualPage != maxPage; else disableNext" class="page next" (click)="next()">Suivant</span>
+    <ng-template #disableNext>
+      <span class="page next disabled">Suivant</span>
+    </ng-template>
+  </div>
+
 </div>

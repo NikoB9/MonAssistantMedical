@@ -1,3 +1,55 @@
+.ConteneurBtns {
+	display:flex;
+	justify-content: space-around;
+}
+
+.pastille{
+  padding-right: 22px;
+  border-radius: 20px;
+}
+
 .buttonPoubelle {
 	cursor:pointer;
+}
+
+.buttonEdit {
+	cursor: pointer;
+}
+
+#typeReleve{
+  width: 5px;
+  border: none;
+  margin-top: -5px;
+}
+
+.page {
+  background-color: #042952;
+  color: white;
+  padding: 5px;
+  border: 2px solid white;
+}
+
+
+.page:hover {
+  background-color: #1c518f;
+  cursor: pointer;
+}
+
+.page.pre{
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.page.next{
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.page.disabled{
+  background-color: #5c5f64;
+  cursor: not-allowed;
+}
+
+.pages{
+  margin-top: 20px;
 }
