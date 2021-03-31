@@ -23,33 +23,54 @@
 }
 
 .page {
-  background-color: #042952;
+/*  background-color: #042952;
   color: white;
   padding: 5px;
-  border: 2px solid white;
+  border: 2px solid white;*/
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  color: #343a40;
+  border-color: #343a40;
 }
 
 
 .page:hover {
-  background-color: #1c518f;
+  background-color: #343a40;
+  color:#FFF;
   cursor: pointer;
 }
 
 .page.pre{
-  border-bottom-left-radius: 10px;
-  border-top-left-radius: 10px;
+  /*border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;*/
 }
 
 .page.next{
-  border-bottom-right-radius: 10px;
-  border-top-right-radius: 10px;
+ /* border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;*/
 }
 
 .page.disabled{
   background-color: #5c5f64;
   cursor: not-allowed;
+  color:#FFF;
 }
 
 .pages{
   margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.typePos {
+  align-items: flex-end;
 }
