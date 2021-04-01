@@ -1,0 +1,17 @@
+
+  <div class="pages">
+    <span *ngIf="actualPage != 1; else disablePre" class="page pre" (click)="pre()">Précédent</span>
+    <ng-template #disablePre>
+      <span class="page pre disabled">Précédent</span>
+    </ng-template>
+    <span *ngFor="let i of this.pages">
+      <span *ngIf="actualPage != i; else disablePage" class="page" (click)="page(i)">{{i}}</span>
+      <ng-template #disablePage>
+        <span class="page disabled">{{i}}</span>
+      </ng-template>
+    </span>
+    <span *ngIf="actualPage != maxPage; else disableNext" class="page next" (click)="next()">Suivant</span>
+    <ng-template #disableNext>
+      <span class="page next disabled">Suivant</span>
+    </ng-template>
+  </div>

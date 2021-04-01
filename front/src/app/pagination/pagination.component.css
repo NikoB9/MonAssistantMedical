@@ -1,0 +1,35 @@
+
+.page {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  color: #343a40;
+  border-color: #343a40;
+}
+
+
+.page:hover {
+  background-color: #343a40;
+  color:#FFF;
+  cursor: pointer;
+}
+
+.page.disabled{
+  background-color: #5c5f64;
+  cursor: not-allowed;
+  color:#FFF;
+}
+
+.pages{
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
