@@ -22,34 +22,6 @@
   margin-top: -5px;
 }
 
-.page {
-  background-color: #042952;
-  color: white;
-  padding: 5px;
-  border: 2px solid white;
-}
-
-
-.page:hover {
-  background-color: #1c518f;
-  cursor: pointer;
-}
-
-.page.pre{
-  border-bottom-left-radius: 10px;
-  border-top-left-radius: 10px;
-}
-
-.page.next{
-  border-bottom-right-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.page.disabled{
-  background-color: #5c5f64;
-  cursor: not-allowed;
-}
-
-.pages{
-  margin-top: 20px;
+.typePos {
+  align-items: flex-end;
 }

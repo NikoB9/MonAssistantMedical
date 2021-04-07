@@ -29,6 +29,7 @@ import { ReleveComponent } from './releve/releve.component';
 import { CreationReleveComponent } from './creation-releve/creation-releve.component';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { EditReleveComponent } from './edit-releve/edit-releve.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 const appRoutes: Routes = [
   { path: 'informations', component: AccueilComponent },
@@ -54,7 +55,8 @@ const appRoutes: Routes = [
     ValidMessageComponent,
     ReleveComponent,
     CreationReleveComponent,
-    EditReleveComponent
+    EditReleveComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,

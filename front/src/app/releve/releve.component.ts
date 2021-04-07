@@ -45,11 +45,13 @@ export class ReleveComponent implements OnInit {
   }
 
   getReleves(): void{
+    this.cursor("wait");
     if (this.idType === '-1'){
       this.utilisateurService.getUserReleves(this.id, this.actualPage).subscribe((releves) => {
         this.releves = releves.complexesReleves;
         this.maxPage = releves.nbPages;
         this.pages = Array(this.maxPage).fill(1).map((x, i) => i + 1);
+        this.cursor("initial");
       });
     }
     else {
@@ -57,6 +59,7 @@ export class ReleveComponent implements OnInit {
         this.releves = releves.complexesReleves;
         this.maxPage = releves.nbPages;
         this.pages = Array(this.maxPage).fill(1).map((x, i) => i + 1);
+        this.cursor("initial");
       });
     }
   }
@@ -136,6 +139,10 @@ export class ReleveComponent implements OnInit {
       this.getReleves();
       this.close("Modification réussi.");
     });
+  }
+
+  cursor(cursorType: string) {
+    document.getElementsByTagName("body")[0].style.cursor = cursorType;
   }
 }
 
