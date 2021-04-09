@@ -13,6 +13,9 @@
 # Installation
 
 * Téléchargement du dossier git
+* modification de l'url de l'api dans :
+  `front/src/app/services/global.ts`
+  Ce changement permet de travailler avec l'api du docker et non l'api distante. 
 * Construction des conteneurs
 ```bash
 $ cd chemin/projet/MonAssistantMedical/
