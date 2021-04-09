@@ -14,13 +14,14 @@ RUN npm install
 RUN npm install -g @angular/cli@11.1.4
 
 # installation du serveur http pour servir angular
-RUN npm install http-server
+RUN npm install -g http-server
 
 # Copy du reste de l'application dans le conteneur
 COPY . .
 
 # On Lance la génération des fichiers
-RUN ng build --prod
+RUN ng build
 
 CMD ["http-server", "dist/front","-o","-a","0.0.0.0","-p","8080"]
+#CMD ["ng", "serve","--host","0.0.0.0","--port","8080"]
 EXPOSE 8080

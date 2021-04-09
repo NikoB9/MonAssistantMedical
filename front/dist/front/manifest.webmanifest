@@ -1,13 +1,11 @@
 {
   "name": "MonAssistantMedical",
   "short_name": "MonAssistantMedical",
-  "description": "Suivi médical personnel",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
-  "orientation": "any",
   "display": "standalone",
-  "scope": "/",
-  "start_url": "/MonAssistantMedical/",
+  "scope": "./",
+  "start_url": "./",
   "icons": [
     {
       "src": "assets/icons/icon-16x16.png",
