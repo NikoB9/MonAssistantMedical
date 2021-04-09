@@ -14,7 +14,7 @@
       </form>
     </div>
     
-    <div>
+    <div *ngIf="idTypeSelected != '-1'">
       <google-chart
         [width]="800"
         [title]="chart.title"
