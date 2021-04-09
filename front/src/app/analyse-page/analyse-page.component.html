@@ -4,10 +4,14 @@
   <div *ngIf="connected; else elseError" class="conteneurPage">
     <div>
       <H3>Analyses</H3>
-      <label for="TypeReleveId">Type du relevé :</label>
-      <select class="form-control" id="TypeReleveId">
-        <option *ngFor="let type of typeReleves" value="{{type.id}}" (change)="changeType()">{{type.label}}</option>
-      </select>
+      <form [formGroup]="analyseForm">
+        <div class="form-group">
+          <label for="TypeReleveId">Type du relevé :</label>
+          <select class="form-control" id="TypeReleveId" formControlName="TypeReleveId" (change)="changeType()">
+            <option *ngFor="let type of typeReleves" value="{{type.id}}">{{type.label}}</option>
+          </select>
+        </div>
+      </form>
     </div>
     
     <div *ngFor="let chart of charts">
@@ -21,7 +25,6 @@
       >
       </google-chart>
     </div>
-    <button (click)="changeData()">huehuehuehueheuheu</button>
   </div>
 
   <ng-template #elseError>
