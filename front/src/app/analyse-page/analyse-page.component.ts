@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {Menu} from '../models/menu.model';
+import { Menu } from '../models/menu.model';
 import { UtilisateurService } from '../services/utilisateur.service';
-import {TypeReleveService} from '../services/type-releve.service';
-import {TypeReleve} from '../models/typeReleve.model';
-import { ComplexeReleve } from '../models/releve.model';
+import { TypeReleveService } from '../services/type-releve.service';
+import { TypeReleve } from '../models/typeReleve.model';
+import { Releve, ComplexeReleve } from '../models/releve.model';
 import {
   ChartType,
   Column,
   GoogleChartComponent
 } from 'angular-google-charts';
+import { stringify } from '@angular/compiler/src/util';
 
 const ANIMATION_DURATION = 1500;
 @Component({
@@ -22,17 +23,21 @@ export class AnalysePageComponent implements OnInit {
     type: ChartType;
     data: any[][];
     columns?: Column[];
-    options: {};
+    options: {
+      colors: string[];
+      series: {};
+      animation: {};
+    };
   }[] = [];
   public chartValues: {
-    idType: string,
-    values: {
+    [idType: string]:
+    {
       data: any[][];
       columns: Column[];
-      colors: [];
+      colors: string[];
       series: {};
     }
-  }[] = [];
+  } = {};
 
   releves?: ComplexeReleve[];
   id: string | null;
@@ -40,33 +45,39 @@ export class AnalysePageComponent implements OnInit {
   navElems: Menu;
   connected: boolean;
   errorMessage: string;
-  idType: string;
+  idTypeSelected: string;
 
-  constructor(private utilisateurService: UtilisateurService, private typeReleveService: TypeReleveService) {
+  constructor(private utilisateurService: UtilisateurService) {
     this.typeReleves = [];
     this.id = sessionStorage?.getItem('id');
-    this.navElems = {accueil: false, releves: false, analyses: true, profil: false};
+    this.navElems = { accueil: false, releves: false, analyses: true, profil: false };
     this.connected = sessionStorage?.getItem('id') !== null;
     this.errorMessage = 'Vous êtes déconnecté. Veuillez vous connecter afin d\'accéder à cette page';
-    this.idType = '-1';
+    this.idTypeSelected = '-1';
   }
 
   ngOnInit(): void {
     this.getReleves();
-  	this.getTypeReleves();
 
     this.charts.push({
       title: 'Evolution des relevés',
       type: ChartType.LineChart,
       columns: [],
       data: [],
-      options: {}
+      options: {
+        colors: [],
+        series: {},
+        animation: {
+          duration: ANIMATION_DURATION,
+          startup: true
+        }
+      }
       // columns: this.chartValues[this.idType]['columns'],
       // data: this.chartValues[this.idType]['data'],
       // options.colors: this.chartValues[this.idType]['colors'],
       // options.series: this.chartValues[this.idType]['colors']
     });
-    
+
     this.charts.push({
       title: 'Evolution des relevés HARDCODED',
       type: ChartType.LineChart,
@@ -119,8 +130,8 @@ export class AnalysePageComponent implements OnInit {
     });
 
     var data = [
-      [0, 0, 0],    [1, 10, 5],   [2, 23, 15],  [3, 17, 9],   [4, 18, 10],  [5, 9, 5],
-      [6, 11, 3],   [7, 27, 19],  [8, 33, 25],  [9, 40, 32],  [10, 32, 24], [11, 35, 27],
+      [0, 0, 0], [1, 10, 5], [2, 23, 15], [3, 17, 9], [4, 18, 10], [5, 9, 5],
+      [6, 11, 3], [7, 27, 19], [8, 33, 25], [9, 40, 32], [10, 32, 24], [11, 35, 27],
       [12, 30, 22], [13, 40, 32], [14, 42, 34], [15, 47, 39], [16, 44, 36], [17, 48, 40],
       [18, 52, 44], [19, 54, 46], [20, 42, 34], [21, 55, 47], [22, 56, 48], [23, 57, 49],
       [24, 60, 52], [25, 50, 42], [26, 52, 44], [27, 51, 43], [28, 49, 41], [29, 53, 45],
@@ -143,6 +154,8 @@ export class AnalysePageComponent implements OnInit {
       ],
       data: data,
       options: {
+        colors: ['blue', 'red'],
+        series: {},
         animation: {
           duration: ANIMATION_DURATION,
           startup: true
@@ -151,10 +164,10 @@ export class AnalysePageComponent implements OnInit {
     });
   }
 
-  changeData(): void{
-    this.charts[this.charts.length-1].data = [
-      [0, 0, 0],    [1, 10, 5],   [2, 23, 15],  [3, 17, 9],   [4, 18, 10],  [5, 9, 5],
-      [6, 11, 3],   [7, 27, 19],  [8, 33, 25],  [9, 40, 32],  [10, 32, 24], [11, 35, 27],
+  changeData(): void {
+    this.charts[this.charts.length - 1].data = [
+      [0, 0, 0], [1, 10, 5], [2, 23, 15], [3, 17, 9], [4, 18, 10], [5, 9, 5],
+      [6, 11, 3], [7, 27, 19], [8, 33, 25], [9, 40, 32], [10, 32, 24], [11, 35, 27],
       [12, 30, 22], [13, 40, 32], [14, 42, 34], [15, 47, 39], [16, 44, 36], [17, 48, 40],
       [18, 52, 44], [19, 54, 46], [20, 42, 34], [21, 55, 47], [22, 56, 48], [23, 57, 49],
       [24, 60, 52], [25, 50, 42], [26, 52, 44], [27, 51, 43], [28, 49, 41], [29, 53, 45],
@@ -168,19 +181,60 @@ export class AnalysePageComponent implements OnInit {
     ];
   }
 
-  getTypeReleves(): void{
-    this.typeReleveService.getTypeReleves().subscribe((typeReleves) => {
-      this.typeReleves = typeReleves;
-    });
-  }
-
   getReleves(): void {
     this.cursor("wait");
     this.utilisateurService.getUserReleves(this.id).subscribe((releves) => {
       this.releves = releves.complexesReleves;
       this.cursor("initial");
       console.log(this.releves);
+      releves.complexesReleves.forEach(complexeReleve => {
+        const idType: number = complexeReleve.releve.TypeReleve.id
+        const releve: Releve = complexeReleve.releve
+        if (!this.typeReleves.some(e => e.id === idType)) {
+          if(this.idTypeSelected === '-1') {
+            this.idTypeSelected = "" + idType;
+          }
+          this.typeReleves.push(releve.TypeReleve);
+          this.chartValues[idType] = {
+            data: [],
+            columns: [
+              'Date',
+              'Valeur'],
+            colors: ['blue'],
+            series: {
+              0: {
+                lineWidth: 3
+              }
+            }
+          }
+        }
+        this.chartValues[idType]['data'].push([releve.prise_de_mesure, releve.valeur]);
+      });
+      console.log(this.chartValues);
+      console.log(this.charts[0]);
+      this.idTypeSelected = '1';
+      this.applyChartValuesOnMain();
+      console.log(this.charts[0]);
+      this.typeReleves.forEach(typeReleve => {
+        
+      });
     });
+  }
+
+  changeType() {
+    this.applyChartValuesOnMain();
+    console.log("HEY");
+  }
+
+  applyChartValuesOnMain(): void {
+    const mainChart = this.charts[0];
+    console.log(this.idTypeSelected);
+    if(this.idTypeSelected !== '-1') {
+      mainChart.data = this.chartValues[this.idTypeSelected]['data'];
+      mainChart.columns = this.chartValues[this.idTypeSelected]['columns'];
+      mainChart.options.colors = this.chartValues[this.idTypeSelected]['colors'];
+      mainChart.options.series = this.chartValues[this.idTypeSelected]['series'];
+    }
   }
 
   cursor(cursorType: string) {

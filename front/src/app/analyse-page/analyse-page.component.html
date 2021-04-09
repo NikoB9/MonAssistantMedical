@@ -6,7 +6,7 @@
       <H3>Analyses</H3>
       <label for="TypeReleveId">Type du relevé :</label>
       <select class="form-control" id="TypeReleveId">
-        <option *ngFor="let type of typeReleves" value="{{type.id}}">{{type.label}}</option>
+        <option *ngFor="let type of typeReleves" value="{{type.id}}" (change)="changeType()">{{type.label}}</option>
       </select>
     </div>
     
