@@ -218,7 +218,6 @@ module.exports = () => {
     async function correlateReleveAnalyse(profilsId, releves, nbPages) {
         const relevesAnalyse = [];
         for(i in releves) {
-            console.log(i);
             const releve = releves[i];
             await models.Analyse.findOne({
                 where: {

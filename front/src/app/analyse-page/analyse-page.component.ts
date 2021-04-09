@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Menu } from '../models/menu.model';
 import { UtilisateurService } from '../services/utilisateur.service';
-import { TypeReleveService } from '../services/type-releve.service';
 import { TypeReleve } from '../models/typeReleve.model';
 import { Releve, ComplexeReleve } from '../models/releve.model';
 import {
@@ -9,7 +8,7 @@ import {
   Column,
   GoogleChartComponent
 } from 'angular-google-charts';
-import { stringify } from '@angular/compiler/src/util';
+import { AnalyseService } from '../services/analyse.service';
 
 const ANIMATION_DURATION = 1500;
 @Component({
@@ -35,7 +34,7 @@ export class AnalysePageComponent implements OnInit {
       data: any[][];
       columns: Column[];
       colors: string[];
-      series: {};
+      series: any;
     }
   } = {};
 
@@ -47,7 +46,7 @@ export class AnalysePageComponent implements OnInit {
   errorMessage: string;
   idTypeSelected: string;
 
-  constructor(private utilisateurService: UtilisateurService) {
+  constructor(private analyseService: AnalyseService, private utilisateurService: UtilisateurService) {
     this.typeReleves = [];
     this.id = sessionStorage?.getItem('id');
     this.navElems = { accueil: false, releves: false, analyses: true, profil: false };
@@ -215,8 +214,34 @@ export class AnalysePageComponent implements OnInit {
       this.idTypeSelected = '1';
       this.applyChartValuesOnMain();
       console.log(this.charts[0]);
+      console.log(this.charts[1]);
       this.typeReleves.forEach(typeReleve => {
-        
+        this.analyseService.getAnalyseByReleveType(typeReleve.id).subscribe((analyses) => {
+          let count = 1;
+          for(let i in analyses) {
+            const analyse = analyses[i];
+            this.chartValues[typeReleve.id]['columns'].push(analyse.Dangerosite.message);
+            this.chartValues[typeReleve.id]['colors'].push(analyse.Dangerosite.Couleur.label);
+            this.chartValues[typeReleve.id]['series'][count++] = {lineWidth: 1, lineDashStyle: [2, 2]};
+            if(analyse.Dangerosite.Couleur.id != 3) {
+              this.chartValues[typeReleve.id]['columns'].push(analyse.Dangerosite.message);
+              this.chartValues[typeReleve.id]['colors'].push(analyse.Dangerosite.Couleur.label);
+              this.chartValues[typeReleve.id]['series'][count++] = {lineWidth: 1, lineDashStyle: [2, 2]};
+            }
+            this.chartValues[typeReleve.id]['data'].forEach(d => {
+              if(analyse.Dangerosite.Couleur.id == 3) {
+                if(analyse.mini == 0) {
+                  d.push(analyse.maxi)
+                } else {
+                  d.push(analyse.mini)
+                }
+              } else {
+                d.push(analyse.mini)
+                d.push(analyse.maxi)
+              }
+            });
+          }
+        })
       });
     });
   }

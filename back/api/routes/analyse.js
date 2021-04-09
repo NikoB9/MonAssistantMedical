@@ -55,6 +55,31 @@ module.exports = () => {
         });
     });
 
+    // récupération des analyses d'un type de relevé
+    router.get('/typeReleve/:typeReleveId', async(req, res) => {
+        try {
+            const analyses = await models.Analyse.findAll({
+                where: {
+                    TypeReleveId: req.params.typeReleveId
+                },
+                include: [
+                    {
+                        model: models.Dangerosite, 
+                        include: [
+                            {
+                                model: models.Couleur,
+                            }
+                        ]
+                    }
+                ]
+            });
+            res.status(200).send(analyses);
+        } catch(error) {
+            console.log(error);
+            res.status(500).send(error);
+        }
+    });
+
     // récupération des analyses d'un relevé
     router.get('/releve/:releveId', async(req, res) => {
         try {

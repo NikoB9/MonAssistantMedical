@@ -773,6 +773,33 @@ paths:
           description: "Suppression OK"
         "500":
           description: "erreur"
+  /analyse/typeReleve/{id}:
+    get:
+      tags:
+      - "Analyse"
+      summary: "Récupération des analyses d'un type de relevé"
+      description: ""
+      operationId: "getAnalyseByReleveType"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Identifiant du type de relevé à analyser."
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "Récupération OK"
+          schema:
+            $ref: "#/definitions/ListeAnalysesDangerositeCouleur"
+        "500":
+          description: "erreur"
   /analyse/relevé/{id}:
     get:
       tags:

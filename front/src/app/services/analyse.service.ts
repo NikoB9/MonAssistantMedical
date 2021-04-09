@@ -10,7 +10,7 @@ export class AnalyseService {
 
   constructor(private http: HttpClient) { }
 
-  public getAnalyse(id: string | null): Observable<Analyse> {
-    return this.http.get<Analyse>(`http://localhost:3000/api/analyse/${id}`);
+  public getAnalyseByReleveType(id: number | null): Observable<Analyse[]> {
+    return this.http.get<Analyse[]>(`http://localhost:3000/api/analyse/typeReleve/${id}`);
   }
 }
