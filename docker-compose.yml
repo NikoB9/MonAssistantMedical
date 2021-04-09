@@ -22,6 +22,16 @@ services:
         - db.env
     ports:
         - "3306:3306"
+
+  front:
+    image: mam-front
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    networks:
+      - MonAssistantMedical
+    ports:
+      - "8080:8080"
     
 
 networks:
