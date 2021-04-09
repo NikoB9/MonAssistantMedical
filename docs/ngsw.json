@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1617988783112,
+  "timestamp": 1617989324891,
   "index": "https://nikob9.github.io/MonAssistantMedical/index.html",
   "assetGroups": [
     {
@@ -100,7 +100,7 @@
     "https://nikob9.github.io/MonAssistantMedical/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
     "https://nikob9.github.io/MonAssistantMedical/index.html": "0a9e6ea5e18fc3a308f0bded4e5e07d0b9747e9d",
     "https://nikob9.github.io/MonAssistantMedical/main.d7dd5d2950a038b6f846.js": "2524766d852f69203dec0a443c8a531724815c48",
-    "https://nikob9.github.io/MonAssistantMedical/manifest.webmanifest": "e986fd89aec513226524fc024d6a5992a0d18211",
+    "https://nikob9.github.io/MonAssistantMedical/manifest.webmanifest": "0cc28c052905a07533bab14911bb9a065e76a93f",
     "https://nikob9.github.io/MonAssistantMedical/polyfills.995aa8d020d23b5acd01.js": "a5081f9061cd4695295ba7c6e6e43104c81f2a70",
     "https://nikob9.github.io/MonAssistantMedical/runtime.7b63b9fd40098a2e8207.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
     "https://nikob9.github.io/MonAssistantMedical/scripts.40c803dbcbc5bf1060d3.js": "b24274f7bc0f278c9310dfa21196103a6cc24aa1",
