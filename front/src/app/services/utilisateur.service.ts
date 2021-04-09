@@ -36,11 +36,15 @@ export class UtilisateurService {
     return this.http.delete<boolean>(`${VariablesGlobales.baseURL}utilisateur/${idUser}/profil/${idProfil}`);
   }
 
-  public getUserReleves(id: string | null, page: number): Observable<ComplexeRelevePaginate> {
+  public getUserReleves(id: string | null): Observable<ComplexeRelevePaginate> {
+    return this.http.get<ComplexeRelevePaginate>(`${VariablesGlobales.baseURL}utilisateur/${id}/releves`);
+  }
+
+  public getUserRelevesFilterPage(id: string | null, page: number): Observable<ComplexeRelevePaginate> {
     return this.http.get<ComplexeRelevePaginate>(`${VariablesGlobales.baseURL}utilisateur/${id}/releves?page=${page}`);
   }
 
-  public getUserRelevesFilterType(id: string | null, idType: string, page: number): Observable<ComplexeRelevePaginate> {
+  public getUserRelevesFilterTypePage(id: string | null, idType: string, page: number): Observable<ComplexeRelevePaginate> {
     return this.http.get<ComplexeRelevePaginate>(`${VariablesGlobales.baseURL}utilisateur/${id}/releves?type=${idType}?page=${page}`);
   }
 }

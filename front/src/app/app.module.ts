@@ -24,9 +24,11 @@ import {UtilisateurService} from './services/utilisateur.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ReleveService } from './services/releve.service';
+import { AnalyseService } from './services/analyse.service';
 import { TypeReleveService } from './services/type-releve.service';
 import { ReleveComponent } from './releve/releve.component';
 import { CreationReleveComponent } from './creation-releve/creation-releve.component';
+import { GoogleChartsModule } from 'angular-google-charts';
 import { EditReleveComponent } from './edit-releve/edit-releve.component';
 import { PaginationComponent } from './pagination/pagination.component';
 
@@ -64,12 +66,14 @@ const appRoutes: Routes = [
     [RouterModule.forRoot(appRoutes)],
     ReactiveFormsModule,
     HttpClientModule,
+    GoogleChartsModule,
     ServiceWorkerModule.register('../ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     UtilisateurService,
     ProfilService,
     ReleveService,
+    AnalyseService,
     TypeReleveService
   ],
   bootstrap: [AppComponent]

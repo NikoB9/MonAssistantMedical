@@ -2,6 +2,29 @@
 
 <div class="flexrow">
   <div *ngIf="connected; else elseError" class="conteneurPage">
+    <div>
+      <H3>Analyses</H3>
+      <form [formGroup]="analyseForm">
+        <div class="form-group">
+          <label for="TypeReleveId">Type du relevé :</label>
+          <select class="form-control" id="TypeReleveId" formControlName="TypeReleveId" (change)="changeType()">
+            <option *ngFor="let type of typeReleves" value="{{type.id}}">{{type.label}}</option>
+          </select>
+        </div>
+      </form>
+    </div>
+    
+    <div *ngIf="idTypeSelected != '-1'">
+      <google-chart
+        [width]="800"
+        [title]="chart.title"
+        [type]="chart.type"
+        [data]="chart.data"
+        [columns]="chart.columns"
+        [options]="chart.options"
+      >
+      </google-chart>
+    </div>
   </div>
 
   <ng-template #elseError>
