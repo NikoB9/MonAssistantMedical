@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a7367ba2-ed7a-4a7d-88f9-a4688256e7b3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/docs/ngsw.json" beforeDir="false" afterPath="$PROJECT_DIR$/docs/ngsw.json" afterDir="false" />
-    </list>
+    <list default="true" id="a7367ba2-ed7a-4a7d-88f9-a4688256e7b3" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -88,7 +86,7 @@
       <workItem from="1616232084713" duration="15085000" />
       <workItem from="1616762590005" duration="7715000" />
       <workItem from="1616838240673" duration="6904000" />
-      <workItem from="1617955074290" duration="13883000" />
+      <workItem from="1617955074290" duration="14241000" />
     </task>
     <servers />
   </component>
