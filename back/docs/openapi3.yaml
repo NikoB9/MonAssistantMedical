@@ -49,8 +49,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - in: "body"
         name: "body"
@@ -81,8 +81,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - name: "login"
         in: "path"
@@ -113,8 +113,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - name: "id"
         in: "path"
@@ -139,8 +139,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - name: "id"
         in: "path"
@@ -169,8 +169,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - name: "id"
         in: "path"
@@ -195,8 +195,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - name: "id"
         in: "path"
@@ -225,8 +225,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - name: "id"
         in: "path"
@@ -257,8 +257,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - name: "id"
         in: "path"
@@ -304,8 +304,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - in: "body"
         name: "body"
@@ -330,8 +330,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       responses:
         "200":
           description: "Liste des profils"
@@ -351,8 +351,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - name: "id"
         in: "path"
@@ -378,8 +378,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - name: "id"
         in: "path"
@@ -409,8 +409,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - name: "id"
         in: "path"
@@ -440,8 +440,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       responses:
         "200":
           description: "Récupération OK"
@@ -459,8 +459,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - in: "body"
         name: "body"
@@ -486,8 +486,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - name: "id"
         in: "path"
@@ -516,8 +516,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - name: "id"
         in: "path"
@@ -542,8 +542,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - name: "id"
         in: "path"
@@ -592,8 +592,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - in: "body"
         name: "body"
@@ -620,8 +620,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - name: "id"
         in: "path"
@@ -651,8 +651,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - name: "id"
         in: "path"
@@ -683,8 +683,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       responses:
         "200":
           description: "Récupération OK"
@@ -702,8 +702,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - in: "body"
         name: "body"
@@ -729,8 +729,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - name: "id"
         in: "path"
@@ -759,8 +759,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - name: "id"
         in: "path"
@@ -784,8 +784,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - name: "id"
         in: "path"
@@ -817,8 +817,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       responses:
         "200":
           description: "Récupération OK"
@@ -836,8 +836,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - in: "body"
         name: "body"
@@ -863,8 +863,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - name: "id"
         in: "path"
@@ -893,8 +893,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - name: "id"
         in: "path"
@@ -924,8 +924,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       responses:
         "200":
           description: "Récupération OK"
@@ -943,8 +943,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - in: "body"
         name: "body"
@@ -970,8 +970,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - name: "id"
         in: "path"
@@ -1000,8 +1000,8 @@ paths:
       - "application/json"
       - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
+      - "application/xml"
       parameters:
       - name: "id"
         in: "path"
@@ -1014,20 +1014,6 @@ paths:
           description: "Suppression OK"
         "500":
           description: "erreur"
-
-securityDefinitions:
-  petstore_auth:
-    type: "oauth2"
-    authorizationUrl: "http://petstore.swagger.io/oauth/dialog"
-    flow: "implicit"
-    scopes:
-      write:pets: "modify pets in your account"
-      read:pets: "read your pets"
-  api_key:
-    type: "apiKey"
-    name: "api_key"
-    in: "header"
-
 
 definitions:
   Utilisateur:
@@ -1127,46 +1113,34 @@ definitions:
         schema:
           $ref: "#/definitions/Profil"
 
-  ReleveMedical:
+  TypeReleve:
     type: "object"
     required:
-    - "id"
-    - "prise_de_mesure"
-    - "valeur"
-    - "utilisateurId"
-    - "typeReleveId"
+      - "label"
     properties:
       id:
         type: "integer"
-        example: 1
-      prise_de_mesure:
+        format: "int64"
+      label:
         type: "string"
-        example: "1997-04-23T00:00:00.511Z"
-      valeur:
-        type: "integer"
-        example: 110
-      utilisateurId:
-        type: "integer"
-        example: 19
-      typeReleveId:
-        type: "integer"
-        example: 6
-  ListeRelevesMedicaux:
+        example: "Taille"
+  ListeTypeReleves:
     type: "array"
     items:
       type: "object"
       properties:
         schema:
-          $ref: "#/definitions/ReleveMedical"
+          $ref: "#/definitions/TypeReleve"
+
   Analyse:
     type: "object"
     required:
-    - "id"
-    - "mini"
-    - "maxi"
-    - "dangerositeId"
-    - "profilId"
-    - "typeReleveId"
+      - "id"
+      - "mini"
+      - "maxi"
+      - "dangerositeId"
+      - "profilId"
+      - "typeReleveId"
     properties:
       id:
         type: "integer"
@@ -1193,6 +1167,85 @@ definitions:
       properties:
         schema:
           $ref: "#/definitions/Analyse"
+
+  ReleveMedical:
+    type: "object"
+    required:
+    - "id"
+    - "prise_de_mesure"
+    - "valeur"
+    - "utilisateurId"
+    - "typeReleveId"
+    properties:
+      id:
+        type: "integer"
+        example: 1
+      prise_de_mesure:
+        type: "string"
+        example: "1997-04-23T00:00:00.511Z"
+      valeur:
+        type: "integer"
+        example: 110
+      utilisateurId:
+        type: "integer"
+        example: 19
+      typeReleveId:
+        type: "integer"
+        example: 6
+
+  ReleveMedicalBis:
+    type: "object"
+    required:
+      - "id"
+      - "prise_de_mesure"
+      - "valeur"
+      - "utilisateurId"
+      - "typeReleveId"
+      - "typeReleve"
+    properties:
+      id:
+        type: "integer"
+        example: 1
+      prise_de_mesure:
+        type: "string"
+        example: "1997-04-23T00:00:00.511Z"
+      valeur:
+        type: "integer"
+        example: 110
+      utilisateurId:
+        type: "integer"
+        example: 19
+      typeReleveId:
+        type: "integer"
+        example: 6
+      typeReleve:
+        $ref: "#/definitions/TypeReleve"
+
+  ReleveMedicalComplexe:
+    type: "object"
+    required:
+      - "releve"
+      - "analyse"
+    properties:
+      releve:
+        type: "object"
+        properties:
+          schema:
+            $ref: "#/definitions/ReleveMedicalBis"
+      analyse:
+        type: "object"
+        properties:
+          schema:
+            $ref: "#/definitions/Analyse"
+
+  ListeRelevesMedicaux:
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        schema:
+          $ref: "#/definitions/ReleveMedicalComplexe"
+
   Dangerosite:
     type: "object"
     required:
@@ -1216,24 +1269,7 @@ definitions:
       properties:
         schema:
           $ref: "#/definitions/Dangerosite"
-  TypeReleve:
-    type: "object"
-    required:
-    - "label"
-    properties:
-      id:
-        type: "integer"
-        format: "int64"
-      label:
-        type: "string"
-        example: "Taille"
-  ListeTypeReleves:
-    type: "array"
-    items:
-      type: "object"
-      properties:
-        schema:
-          $ref: "#/definitions/TypeReleve"
+
   Couleur:
     type: "object"
     required:
