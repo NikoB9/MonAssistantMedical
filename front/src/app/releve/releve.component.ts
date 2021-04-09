@@ -47,7 +47,7 @@ export class ReleveComponent implements OnInit {
   getReleves(): void{
     this.cursor("wait");
     if (this.idType === '-1'){
-      this.utilisateurService.getUserReleves(this.id, this.actualPage).subscribe((releves) => {
+      this.utilisateurService.getUserRelevesFilterPage(this.id, this.actualPage).subscribe((releves) => {
         this.releves = releves.complexesReleves;
         this.maxPage = releves.nbPages;
         this.pages = Array(this.maxPage).fill(1).map((x, i) => i + 1);
@@ -55,7 +55,7 @@ export class ReleveComponent implements OnInit {
       });
     }
     else {
-      this.utilisateurService.getUserRelevesFilterType(this.id, this.idType, this.actualPage).subscribe((releves) => {
+      this.utilisateurService.getUserRelevesFilterTypePage(this.id, this.idType, this.actualPage).subscribe((releves) => {
         this.releves = releves.complexesReleves;
         this.maxPage = releves.nbPages;
         this.pages = Array(this.maxPage).fill(1).map((x, i) => i + 1);
@@ -145,10 +145,3 @@ export class ReleveComponent implements OnInit {
     document.getElementsByTagName("body")[0].style.cursor = cursorType;
   }
 }
-
-
-
-
-
-
-
