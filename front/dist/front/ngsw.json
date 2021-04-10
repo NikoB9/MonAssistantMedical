@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1618049077872,
+  "timestamp": 1618052994723,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,18 +13,22 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
+        "/main.2440794234c8654e0aef.js",
         "/main.ea63b7e7b4d15a77d496.js",
         "/main.js",
         "/manifest.webmanifest",
+        "/ngsw-worker.js",
         "/polyfills.995aa8d020d23b5acd01.js",
         "/polyfills.js",
         "/runtime.7b63b9fd40098a2e8207.js",
         "/runtime.js",
+        "/safety-worker.js",
         "/scripts.40c803dbcbc5bf1060d3.js",
         "/scripts.js",
         "/styles.b83d976c1d37d02fc053.css",
         "/styles.css",
-        "/vendor.js"
+        "/vendor.js",
+        "/worker-basic.min.js"
       ],
       "patterns": []
     },
@@ -135,19 +139,23 @@
     "/fa-solid-900.woff": "52751432ded489dfdf27fb1cf64c570c4c27a1d7",
     "/fa-solid-900.woff2": "a9922842a120a7f1eaced667480c5e185a106d69",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/index.html": "e960996d5c10dcd831f8470d9bb5fe722b6f04e6",
+    "/index.html": "83f4b80c06113764ee8c1d5a2177d88393a9c656",
+    "/main.2440794234c8654e0aef.js": "c54899814b4464489ad8286f0fa8996f39af887d",
     "/main.ea63b7e7b4d15a77d496.js": "fd6b88c9a0ae49d2a7ce752bec63fa21cc2dfad5",
     "/main.js": "c9735f2e8bc80dcd8180a6b72a8c2d60ce4939c5",
-    "/manifest.webmanifest": "69879f3f9d23c6055835d7e38ab277999792fbef",
+    "/manifest.webmanifest": "aa3bedfe16a76575ff5f043145b9c54ec0014ac4",
+    "/ngsw-worker.js": "b44316be1c1338e9e8bd30ee40946085916c58e4",
     "/polyfills.995aa8d020d23b5acd01.js": "a5081f9061cd4695295ba7c6e6e43104c81f2a70",
     "/polyfills.js": "98917574ec81f098aeb84e51c165c3281ea3e892",
     "/runtime.7b63b9fd40098a2e8207.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
     "/runtime.js": "154c277c076cfc8ee335df5d9349395c6bf58db5",
+    "/safety-worker.js": "f532926317210be6e2679d21748dc44a35389807",
     "/scripts.40c803dbcbc5bf1060d3.js": "b24274f7bc0f278c9310dfa21196103a6cc24aa1",
     "/scripts.js": "974b1b42a8f65e3f6ffa46c83a43349513aadaf6",
     "/styles.b83d976c1d37d02fc053.css": "ad10c49d14d6d54b776725bdb3ea51784bc426ed",
     "/styles.css": "132a3e3d8d3611767d1ddda9daff61e6ef658257",
-    "/vendor.js": "218084a1d757aa8295163d8bd74b9ea73fa256b7"
+    "/vendor.js": "218084a1d757aa8295163d8bd74b9ea73fa256b7",
+    "/worker-basic.min.js": "f532926317210be6e2679d21748dc44a35389807"
   },
   "navigationUrls": [
     {

@@ -6,6 +6,8 @@
   "background_color": "#042952",
   "orientation": "any",
   "display": "standalone",
+  "prefer_related_applications": false,
+  "related_applications": [],
   "scope": "./",
   "start_url": "./",
   "icons": [
