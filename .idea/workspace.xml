@@ -3,9 +3,42 @@
   <component name="ChangeListManager">
     <list default="true" id="a7367ba2-ed7a-4a7d-88f9-a4688256e7b3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-brands-400.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-brands-400.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-brands-400.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-brands-400.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-brands-400.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-regular-400.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-regular-400.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-regular-400.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-regular-400.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-regular-400.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-solid-900.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-solid-900.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-solid-900.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-solid-900.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-solid-900.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/favicon.ico" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/front/dist/front/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/dist/front/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/main.15b917adf52bf0885f3f.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/main.2440794234c8654e0aef.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/main.57e78989c5a30f47d0ec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/main.e3ab87c53e3a4039d7bd.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/main.ea63b7e7b4d15a77d496.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/main.js.map" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/front/dist/front/manifest.webmanifest" beforeDir="false" afterPath="$PROJECT_DIR$/front/dist/front/manifest.webmanifest" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/dist/front/ngsw.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/dist/front/ngsw.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/polyfills.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/polyfills.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/runtime.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/runtime.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/scripts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/scripts.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/styles.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/vendor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/vendor.js.map" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/front/ngsw-config.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/ngsw-config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/manifest.webmanifest" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/manifest.webmanifest" afterDir="false" />
@@ -98,7 +131,7 @@
       <workItem from="1616762590005" duration="7715000" />
       <workItem from="1616838240673" duration="6904000" />
       <workItem from="1617955074290" duration="16906000" />
-      <workItem from="1618044537700" duration="18039000" />
+      <workItem from="1618044537700" duration="21952000" />
     </task>
     <servers />
   </component>

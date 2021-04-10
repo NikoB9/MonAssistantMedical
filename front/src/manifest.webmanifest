@@ -8,8 +8,8 @@
   "display": "standalone",
   "prefer_related_applications": false,
   "related_applications": [],
-  "scope": "/",
-  "start_url": "/index.html",
+  "scope": "./",
+  "start_url": "./",
   "icons": [
     {
       "src": "assets/icons/icon-16x16.png",
