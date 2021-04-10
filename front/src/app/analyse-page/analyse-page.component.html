@@ -13,17 +13,20 @@
         </div>
       </form>
     </div>
-    
+
     <div *ngIf="idTypeSelected != '-1'">
-      <google-chart
-        [width]="800"
-        [title]="chart.title"
-        [type]="chart.type"
-        [data]="chart.data"
-        [columns]="chart.columns"
-        [options]="chart.options"
-      >
-      </google-chart>
+      <!-- responsive conteneur -->
+      <div (window:resize) = "resetWindowSize($event)">
+        <google-chart
+          [width]="800"
+          [title]="chart.title"
+          [type]="chart.type"
+          [data]="chart.data"
+          [columns]="chart.columns"
+          [options]="chart.options"
+        >
+        </google-chart>
+      </div>
     </div>
   </div>
 

@@ -3,35 +3,35 @@
   "short_name": "MonAssistantMedical",
   "description": "Suivi médical personnel",
   "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "background_color": "#042952",
   "orientation": "any",
   "display": "standalone",
-  "scope": "/",
-  "start_url": "/MonAssistantMedical/",
+  "scope": "./",
+  "start_url": "./",
   "icons": [
     {
       "src": "assets/icons/icon-16x16.png",
       "sizes": "16x16",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "any maskable"
     },
     {
       "src": "assets/icons/icon-32x32.png",
       "sizes": "32x32",
       "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "assets/icons/icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "any maskable"
     },
     {
       "src": "assets/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
