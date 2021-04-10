@@ -15,6 +15,8 @@ const RED_COLOR_ID = 3;
   styleUrls: ['./analyse-page.component.css']
 })
 export class AnalysePageComponent implements OnInit {
+  width = document.documentElement.clientWidth * 0.7;
+  /*height = document.documentElement.clientHeight;*/
   public chart: {
     title: string;
     type: ChartType;
@@ -72,6 +74,12 @@ export class AnalysePageComponent implements OnInit {
     this.analyseForm = this.fb.group({
       TypeReleveId: ['1', Validators.required]
     });
+  }
+
+  resetWindowSize(event: any): void{
+    /*Reset the width and height based on current window size*/
+    this.width = event.target.innerWidth * 0.7;
+    /*this.height = event.target.innerHeight;*/
   }
 
   ngOnInit(): void {

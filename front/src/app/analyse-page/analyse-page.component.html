@@ -16,9 +16,9 @@
 
     <div *ngIf="idTypeSelected != '-1'">
       <!-- responsive conteneur -->
-      <div (window:resize) = "resetWindowSize($event)">
+      <div (window:resize) = "resetWindowSize($event)" id="divResp" style="width: 70vw">
         <google-chart
-          [width]="800"
+          [width]="this.width"
           [title]="chart.title"
           [type]="chart.type"
           [data]="chart.data"
