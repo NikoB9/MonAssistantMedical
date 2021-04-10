@@ -1,16 +1,23 @@
 # MonAssistantMedical
+***
 
  Application d'assistance médicale électronique.
 
+***
 # Schéma de la base de données
+***
 
 ![Alt text](ressources/MCD.PNG?raw=true "schéma bd")
 
+***
 # Pré-requis
+***
 
 * Docker
 
-# Installation
+***
+# Installation des environnements de dev
+***
 
 * Téléchargement du dossier git
 * modification de l'url de l'api dans :
@@ -22,7 +29,9 @@ $ cd chemin/projet/MonAssistantMedical/
 $ docker-compose build
 ```
 
-# Lancement de l'API
+***
+# Lancement des environnements de dev
+***
 
 * Lancement des conteneurs
 ```bash
@@ -36,7 +45,9 @@ $ docker-compose up -d front
 $ docker-compose run --rm back npx sequelize db:migrate
 ```
 
+***
 # Sécurité
+***
 
 Cette application ne permet pas de sécuriser les données des utilisateurs que ce soit pour le back comme pour le front. 
 En effet il y a une fausse sécurisation avec l'authentification qui, en réalité, ne sert qu'à récupérer l'id. 
@@ -46,12 +57,32 @@ En changeant l'id on peut interférer avec les données d'un autre utilisateur s
 Pour le front l'id est stocké dans le "sessionStorage". 
 Dû à la flexibilité de l'API il suffit de changer l'id de la session dans le navigateur pour se faire passer pour un autre utilisateur.
 
+***
 # Pistes d'amélioration
+***
 
 * Chiffrement des mots de passes
 * Sécurisation des requêtes par authentification, login/mot de passe, au lieu du simple id
 * Interface d'administration pour ajouter des profils, gérer les types et ajouter de entrées d'analyse
 
+***
 # Guide d'utilisation de l'API
+***
 
 La [documentation d'utilisation](https://app.swaggerhub.com/apis-docs/NikoB9/MonAssitantMedical/1.1.0 "documentation") de l'api est disponible ici : [https://app.swaggerhub.com/apis-docs/NikoB9/MonAssitantMedical/1.1.0](https://app.swaggerhub.com/apis-docs/NikoB9/MonAssitantMedical/1.1.0).
+
+***
+# Accès à la production
+***
+
+- [API - BackOffice]()
+- [WPA - FrontOffice]
+
+## API
+
+- [https://mammedica.alwaysdata.net/api/](https://mammedica.alwaysdata.net/api/)
+
+## WPA
+
+- [https://nikob9.github.io/MonAssistantMedical/](https://nikob9.github.io/MonAssistantMedical/)
+- [https://mammedica.alwaysdata.net/MonAssistantMedical/](https://mammedica.alwaysdata.net/MonAssistantMedical/)
