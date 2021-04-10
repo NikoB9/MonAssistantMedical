@@ -2,10 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7367ba2-ed7a-4a7d-88f9-a4688256e7b3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/main.d7dd5d2950a038b6f846.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/ngsw.json" beforeDir="false" afterPath="$PROJECT_DIR$/docs/ngsw.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ngsw-worker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/3rdpartylicenses.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-brands-400.216edb96b562c79adc09.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-brands-400.329a95a9172fdb2cccb4.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-brands-400.89a52ae1d02b86d61439.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-brands-400.9e138496e8f1719c6ebf.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-brands-400.c1210e5ebe4344da5083.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-regular-400.1017bce89c72f95bcf8e.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-regular-400.19e27d348fefc21941e0.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-regular-400.3672264812746c3c7225.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-regular-400.4079ae2d2a15d0689568.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-regular-400.68c5af1f48e2bfca1e57.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-solid-900.07c3313b24f7b1ca85ee.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-solid-900.13de59f1a36b6cb4bca0.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-solid-900.ada6e6df937f7e5e8b79.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-solid-900.c6ec080084769a6d8a34.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/fa-solid-900.efbd5d20e407bbf85f2b.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/dist/front/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/main.d7dd5d2950a038b6f846.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/manifest.webmanifest" beforeDir="false" afterPath="$PROJECT_DIR$/front/dist/front/manifest.webmanifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/ngsw-worker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/ngsw.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/polyfills.995aa8d020d23b5acd01.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/runtime.7b63b9fd40098a2e8207.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/safety-worker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/scripts.40c803dbcbc5bf1060d3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/styles.b83d976c1d37d02fc053.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/dist/front/worker-basic.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/ngsw-config.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/ngsw-config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,17 +78,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="SwaggerCodegen">
       <option name="activeConfigurationType" value="FILE" />
       <option name="configurationPath" value="" />
@@ -93,6 +110,7 @@
       <workItem from="1616762590005" duration="7715000" />
       <workItem from="1616838240673" duration="6904000" />
       <workItem from="1617955074290" duration="16906000" />
+      <workItem from="1618044537700" duration="1034000" />
     </task>
     <servers />
   </component>

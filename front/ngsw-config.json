@@ -30,7 +30,7 @@
   "dataGroups": [
     {
       "name": "monassistantmedical-api",
-      "urls": ["http://localhost:3000/api/"],
+      "urls": ["https://mammedica.alwaysdata.net/api/", "http://localhost:3000/api/"],
       "cacheConfig": {
         "strategy": "freshness",
         "maxSize": 100,
