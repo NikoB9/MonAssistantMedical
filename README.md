@@ -75,8 +75,8 @@ La [documentation d'utilisation](https://app.swaggerhub.com/apis-docs/NikoB9/Mon
 # Accès à la production
 ***
 
-1- [API - BackOffice](#api)
-2- [WPA - FrontOffice](#wpa)
+1. [API - BackOffice](#api)
+2. [WPA - FrontOffice](#wpa)
 
 ## API
 
