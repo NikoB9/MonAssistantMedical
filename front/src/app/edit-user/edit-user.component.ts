@@ -104,7 +104,7 @@ export class EditUserComponent implements OnInit {
       if (user as Utilisateur){
 
         const birthSplit = user.naissance.split('-');
-        const birth = {year: +birthSplit[0], month: +birthSplit[1], day: +birthSplit[2].split('T')[0]};
+        const birth = {year: +birthSplit[0], month: +birthSplit[1], day: +birthSplit[2].split(' ')[0]};
 
         this.editUserForm = this.fb.group({
           nom: [user.nom, Validators.required],

@@ -113,7 +113,7 @@ export class EditReleveComponent implements OnInit {
   	this.releveService.getReleve(this.idReleve).subscribe((releve) => {
 
 	  const dateSplit = releve.prise_de_mesure.split('-');
-      const dateMesure = {year: +dateSplit[0], month: +dateSplit[1], day: +dateSplit[2].split('T')[0]};
+      const dateMesure = {year: +dateSplit[0], month: +dateSplit[1], day: +dateSplit[2].split(' ')[0]};
 
   	  this.editReleveForm = this.fb.group({
   	  	id: [this.idReleve, Validators.required],

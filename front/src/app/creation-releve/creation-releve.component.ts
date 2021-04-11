@@ -138,7 +138,6 @@ export class CreationReleveComponent implements OnInit {
     }
 
     const splitDate = this.addReleveForm.value.prise_de_mesure.split('-');
-
     this.addReleveForm.value.prise_de_mesure = `${splitDate[2]}-${splitDate[1]}-${splitDate[0]}`;
 
   	this.createReleve.emit(this.addReleveForm.value);

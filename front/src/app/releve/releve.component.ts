@@ -67,14 +67,14 @@ export class ReleveComponent implements OnInit {
   dateFormat(date: string): string {
     const dateSplit = date.split('-');
 
-    return '' + dateSplit[2].split('T')[0] + '/' + dateSplit[1] + '/' + dateSplit[0];
+    return '' + dateSplit[2].split(' ')[0] + '/' + dateSplit[1] + '/' + dateSplit[0];
   }
 
   deleteReleve(id: number): void{
     this.releveService.deleteReleves(id).subscribe((supression) => {
       if (supression) {
         this.getReleves();
-      } // TODO else avec msg d'erreur
+      } 
     });
   }
 
